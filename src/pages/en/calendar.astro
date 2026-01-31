@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={`Semmelweisklinik • ${t('nav.calendar')}`}>
+  <div class="page-wrapper">
+    <div class="content container-wide">
+      <h1 class="hero-title mb-25">{t('calendar.title')}</h1>
+
+      <!-- Eventscalendar.co embed -->
+      <div data-events-calendar-app data-project-id="proj_R3cmzbYqvdeLwGZxuakQd"></div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline src="//dist.eventscalendar.co/embed.js"></script>

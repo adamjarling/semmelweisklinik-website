@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import participateImg from '../../assets/images/participate/participate.jpg';
+---
+
+<BaseLayout title="Semmelweisklinik • Mitwirken">
+  <div class="page-wrapper">
+    <div class="content container-narrow">
+      <h1 class="hero-title">MITWIRKEN</h1>
+      <p class="mt-50">
+        Wir renovieren, verwalten, organisieren - leisten Struktur- und Öffentlichkeitsarbeit, vernetzen, schaffen Raum und beziehen unsere Umgebung aktiv mit ein. Gemeinsam mit der Community sammeln wir neue Erfahrungen. Es gibt viele Wege, Teil unseres Projekts zu werden.
+      </p>
+
+      <Image
+        src={participateImg}
+        alt="Mitwirken bei der Semmelweisklinik"
+        class="mt-50 full-width-image"
+        widths={[400, 600, 800]}
+        sizes="(max-width: 800px) 90vw, 800px"
+      />
+
+      <h2 class="mt-50">Werde Mitglied und unterstütze uns ehrenamtlich!</h2>
+      <p class="mt-20">
+        Unser Verein hat inzwischen zahlreiche Mitglieder, die kein eigenes Atelier bei uns haben, aber die Menschen und das Projekt sehr schätzen. Wenn du unsere Vision teilst und dich für unsere Veranstaltungen interessierst, gibt es viele Möglichkeiten, dich aktiv einzubringen:
+      </p>
+      <div class="mt-20">
+        <p class="mt-10">• Helfende Hände: Unterstützung bei Entrümpelungen, Müllfahrten und anderen praktischen Aufgaben.</p>
+        <p class="mt-10">• Spenden von Geld oder Sachleistungen: Spenden sind eine wertvolle Unterstützung für unsere Arbeit.</p>
+        <p class="mt-10">• Kommunikation: Wir suchen aktuell Menschen, die Interesse an Pressearbeit oder Dokumentation im Bereich Fotografie und Video haben.</p>
+      </div>
+      <p class="mt-20">
+        Bei Interesse melde dich bei <a href="mailto:info@semmelweisklinik.at">info@semmelweisklinik.at</a> - wir besprechen gerne, wie du dich einbringen kannst.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Gib uns dein Feedback!</h2>
+      <p class="mt-20">
+        Wir freuen uns über positives Feedback und Ermutigung. Hast du eine besondere Erfahrung mit uns gemacht? Teile sie uns mit unter <a href="mailto:info@semmelweisklinik.at">info@semmelweisklinik.at</a>.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Tritt unserem Freundeskreis auf Telegram bei</h2>
+      <p class="mt-20">
+        In unserer <a href="https://t.me/+rt9pVM1zZewwZTdi" target="_blank" rel="noopener noreferrer">Telegram-Gruppe</a> kündigen wir regelmäßig Veranstaltungen an, suchen helfende Hände und vieles mehr.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Melde dich für unseren Newsletter an</h2>
+      <p class="mt-20">
+        Erhalte regelmäßig eine Auswahl aktueller Veranstaltungen, spannende Hintergrundinformationen, Interviews mit Künstler:innen und Neuigkeiten über unsere Projekte. <a href="/de/newsletter">Jetzt anmelden!</a>
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Besuche unsere Events und Workshops</h2>
+      <p class="mt-20">
+        Lerne unser Zentrum und unsere vielfältigen Veranstaltungen kennen. Zum Beispiel bei 'Freitags in der Klinik': Regelmäßige Events wie Lesungen, Open Stages, Open Decks oder Jam Sessions im Bandland erwarten dich hier ab 19 Uhr. Oder lass dir die Ateliers bei unseren 'Open Studios' zeigen. Es gibt auch viele Workshops, bei denen du Neues ausprobieren kannst. Schau einfach in unseren <a href="/de/calendar">Kalender</a>!
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .full-width-image {
+    width: 100%;
+    object-fit: cover;
+  }
+</style>

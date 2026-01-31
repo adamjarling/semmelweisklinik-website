@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ImageViewer from '../../../components/ImageViewer.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const artists = await getCollection('artists');
+  return artists.map((artist) => ({
+    params: { slug: artist.slug },
+    props: { artist },
+  }));
+}
+
+const { artist } = Astro.props;
+const { Content } = await artist.render();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { name, location, email, phone, website, instagram, facebook, profileImage, galleryImages } = artist.data;
+---
+
+<BaseLayout title={`Semmelweisklinik • ${name}`}>
+  <ImageViewer />
+  <div class="page-wrapper">
+    <div class="content container-wide">
+      <div class="artist-detail-section">
+        <h1 class="only-mobile hero-title hero-title-no-margin">{name}</h1>
+
+        <img class="artist-detail-image" src={profileImage} alt={name} />
+
+        <div class="artist-info-container">
+          <h1 class="only-desktop hero-title hero-title-desktop">{name}</h1>
+
+          {location && (
+            <div class="social-link-row artist-location-row">
+              <img class="icon-21" src="/svg/map-pin.svg" alt="Location" />
+              <p>{location}</p>
+            </div>
+          )}
+
+          {website && (
+            <div class="social-link-row mt-10">
+              <img class="icon-small" src="/svg/link.svg" alt="Website" />
+              <p><a href={website} target="_blank" rel="noopener noreferrer">Website</a></p>
+            </div>
+          )}
+
+          {instagram && (
+            <div class="social-link-row mt-10">
+              <img class="icon-small" src="/svg/link.svg" alt="Instagram" />
+              <p><a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a></p>
+            </div>
+          )}
+
+          {facebook && (
+            <div class="social-link-row mt-10">
+              <img class="icon-small" src="/svg/link.svg" alt="Facebook" />
+              <p><a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a></p>
+            </div>
+          )}
+
+          {email && (
+            <div class="social-link-row mt-10">
+              <img class="icon-21" src="/svg/@.svg" alt="Email" />
+              <p>{email}</p>
+            </div>
+          )}
+
+          {phone && (
+            <div class="social-link-row mt-10">
+              <img class="icon-19" src="/svg/phone.svg" alt="Phone" />
+              <p>{phone}</p>
+            </div>
+          )}
+
+          <div class="mt-20">
+            <Content />
+          </div>
+        </div>
+      </div>
+
+      {galleryImages && galleryImages.length > 0 && (
+        <div class="artist-more-works-section">
+          <p class="mb-25">Selected Works</p>
+          <div class="artist-more-works-gallery">
+            {galleryImages.map((img) => (
+              <img class="artist-detail-image" src={img} alt={`${name} work`} />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

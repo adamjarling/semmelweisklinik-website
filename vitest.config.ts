@@ -1,0 +1,8 @@
+import { getViteConfig } from 'astro/config';
+
+export default getViteConfig({
+  test: {
+    /* for example, use 'happy-dom' to run tests in browser-like environment */
+    environment: 'happy-dom',
+  },
+});

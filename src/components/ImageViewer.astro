@@ -1,0 +1,59 @@
+---
+// ImageViewer.astro
+// Global lightbox overlay for artist image galleries
+// Include this component once in your layout and it will handle
+// all images with the class "artist-detail-image"
+---
+
+<div class="imageViewerWrapper" style="display: none;">
+  <div class="imageViewerContainer">
+    <img class="imageViewerImage" alt="Enlarged view" />
+  </div>
+</div>
+
+<script>
+  function initImageViewer() {
+    const imageViewerWrapper = document.querySelector('.imageViewerWrapper') as HTMLElement | null;
+    const imageViewerImage = document.querySelector('.imageViewerImage') as HTMLImageElement | null;
+
+    if (!imageViewerWrapper || !imageViewerImage) return;
+
+    // Close viewer when clicking anywhere
+    document.documentElement.addEventListener('click', () => {
+      imageViewerWrapper.style.display = 'none';
+    });
+
+    // Set up click handlers for all artist detail images
+    const artistImages = document.querySelectorAll('.artist-detail-image');
+    artistImages.forEach((img) => {
+      img.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        const imgElement = event.currentTarget as HTMLImageElement;
+        const imagePath = imgElement.src;
+
+        // For optimized images, extract the original filename
+        // The src might be like /_astro/image.hash.webp or the original path
+        const imageName = imagePath.split('/').pop();
+
+        // Try to use the original image if it's in the artists/original folder
+        // Otherwise, just use the current src
+        if (imagePath.includes('/artists/') && !imagePath.includes('/original/')) {
+          // Try to construct path to original
+          const originalPath = `/images/artists/original/${imageName?.replace(/\.[^/.]+$/, '.jpg')}`;
+          imageViewerImage.src = originalPath;
+        } else {
+          imageViewerImage.src = imagePath;
+        }
+
+        imageViewerWrapper.style.display = 'block';
+      });
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initImageViewer);
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener('astro:page-load', initImageViewer);
+</script>

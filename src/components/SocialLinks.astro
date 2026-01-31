@@ -1,0 +1,61 @@
+---
+// SocialLinks.astro
+// Social media icon grid
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const links = [
+  {
+    href: `/${lang}/newsletter`,
+    icon: '/svg/newsletter.svg',
+    label: t('home.social_newsletter'),
+  },
+  {
+    href: 'https://t.me/+rt9pVM1zZewwZTdi',
+    icon: '/svg/telegram.svg',
+    label: t('home.social_telegram'),
+    external: true,
+  },
+  {
+    href: 'https://www.instagram.com/semmelweisklinik/',
+    icon: '/svg/instagram.svg',
+    label: t('home.social_instagram'),
+    external: true,
+  },
+  {
+    href: 'https://www.facebook.com/zwischenkulturwien',
+    icon: '/svg/facebook.svg',
+    label: t('home.social_facebook'),
+    external: true,
+  },
+  {
+    href: 'https://www.google.at/maps/place/Semmelweisklinik/@48.2365663,16.3206476,17z',
+    icon: '/svg/location.svg',
+    label: t('home.social_location'),
+    external: true,
+  },
+  {
+    href: `/${lang}/calendar`,
+    icon: '/svg/events.svg',
+    label: t('home.social_events'),
+  },
+];
+---
+
+<div class="container link-container">
+  {links.map((link) => (
+    <a
+      class="naked-link"
+      href={link.href}
+      target={link.external ? '_blank' : undefined}
+      rel={link.external ? 'noopener noreferrer' : undefined}
+    >
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 100px; text-align: center;">
+        <img class="link-svg" src={link.icon} alt={link.label} />
+        <p style="font-size: 16px; margin-top: -10px;">{link.label}</p>
+      </div>
+    </a>
+  ))}
+</div>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArtistCard from '../../../components/ArtistCard.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const artists = await getCollection('artists');
+const sortedArtists = artists.sort((a, b) => {
+  const orderA = a.data.sortOrder ?? 999;
+  const orderB = b.data.sortOrder ?? 999;
+  return orderA - orderB;
+});
+---
+
+<BaseLayout title={`Semmelweisklinik • ${t('nav.people')}`}>
+  <div class="page-wrapper">
+    <div class="content container-wide">
+      <h1 class="hero-title">{t('nav.people')}</h1>
+      <div class="grid-artists mt-50">
+        {sortedArtists.map((artist) => (
+          <ArtistCard
+            name={artist.data.name}
+            slug={artist.slug}
+            profileImage={artist.data.profileImage}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

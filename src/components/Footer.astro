@@ -1,0 +1,139 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const socialLinks = [
+  { href: 'https://www.instagram.com/semmelweisklinik/', label: t('footer.instagram') },
+  { href: 'https://www.facebook.com/zwischenkulturwien', label: t('footer.facebook') },
+  { href: 'https://t.me/+rt9pVM1zZewwZTdi', label: t('footer.telegram') },
+  { href: 'https://www.linkedin.com/company/semmelweisklinik', label: t('footer.linkedin') },
+  { href: `/${lang}/newsletter`, label: t('footer.newsletter') },
+];
+
+const photographers = [
+  { href: 'https://www.johannalealassnig.xyz/', name: 'Johanna Lea Lassnig' },
+  { href: 'https://www.creativegardenvienna.net', name: 'Elisabeth Blum' },
+  { name: 'Manuel Fasch' },
+  { href: 'https://laurasperl.com/', name: 'Laura Sperl' },
+  { name: 'Daniela Schindler' },
+];
+
+// Format the address with line breaks
+const addressLines = t('footer.address').split('\n');
+---
+
+<div class="footer-outer-container">
+  <div class="footer-container">
+    <img class="footer-logo" src="/svg/logo-dark.svg" alt="Semmelweisklinik Logo" />
+
+    <div style="display: flex; flex-direction: column; gap: 40px;">
+      <!-- Where to find us -->
+      <div>
+        <div class="footer-header" style="text-align: center;">
+          {t('footer.where_to_find_us')}
+        </div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          {addressLines.map((line, i) => (
+            <>
+              {line}
+              {i < addressLines.length - 1 && <br />}
+            </>
+          ))}
+        </p>
+      </div>
+
+      <!-- Follow us -->
+      <div>
+        <div class="footer-header" style="text-align: center;">
+          {t('footer.follow_us')}
+        </div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          {socialLinks.map((link, i) => (
+            <>
+              <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                {link.label}
+              </a>
+              {i < socialLinks.length - 1 && <br />}
+            </>
+          ))}
+        </p>
+      </div>
+
+      <!-- Book a venue -->
+      <div>
+        <div class="footer-header" style="text-align: center;">
+          {t('footer.book_a_venue')}
+        </div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          <a href={`mailto:${t('footer.email_program')}`}>{t('footer.email_program')}</a>
+        </p>
+      </div>
+
+      <!-- General questions -->
+      <div>
+        <div class="footer-header" style="text-align: center;">
+          {t('footer.general_questions')}
+        </div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          <a href={`mailto:${t('footer.email_info')}`}>{t('footer.email_info')}</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="only-mobile" style="border-bottom: 1px solid white;"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 40px;">
+      <!-- Copyright -->
+      <div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          {t('footer.copyright_year')}<br />
+          {t('footer.copyright_text_1')}<br />
+          {t('footer.copyright_text_2')}
+        </p>
+      </div>
+
+      <!-- Web design -->
+      <div>
+        <div class="footer-header" style="text-align: center;">
+          {t('footer.web_design_code_by')}
+        </div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          <a href="https://www.webzauber.at/" target="_blank" rel="noopener noreferrer">Webzauber</a>, Sören Herschel & Maryann Alexy
+        </p>
+      </div>
+
+      <!-- Photography -->
+      <div>
+        <div class="footer-header" style="text-align: center;">
+          {t('footer.photography_by')}
+        </div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          {photographers.map((p, i) => (
+            <>
+              {p.href ? (
+                <a href={p.href} target="_blank" rel="noopener noreferrer">{p.name}</a>
+              ) : (
+                p.name
+              )}
+              {i < photographers.length - 1 && ', '}
+            </>
+          ))}
+          {' '}& others
+        </p>
+      </div>
+
+      <!-- Legal links -->
+      <div>
+        <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
+          <a href={`/${lang === 'de' ? 'de' : 'de'}/impressum`}>{t('footer.legal_notice')}</a><br />
+          <a href={`/${lang === 'de' ? 'de' : 'de'}/datenschutz`}>{t('footer.data_protection')}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Close the outer container div from Header -->
+</div>

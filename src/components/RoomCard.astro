@@ -1,0 +1,29 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+
+interface Props {
+  name: { en: string; de: string };
+  tagline?: { en: string; de: string };
+  slug: string;
+  image: string;
+}
+
+const { name, tagline, slug, image } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const displayName = name[lang as keyof typeof name] || name.de;
+const displayTagline = tagline ? (tagline[lang as keyof typeof tagline] || tagline.de) : '';
+---
+
+<div class="grid-2col-item">
+  <a href={`/${lang}/rooms/${slug}`} class="naked-link">
+    <img class="grid-2col-image program-image" src={image} alt={displayName} />
+  </a>
+  <p class="only-desktop text-32">{displayName}</p>
+  <p class="only-mobile text-28">{displayName}</p>
+  {displayTagline && (
+    <p>
+      {displayTagline}<br />
+      <a href={`/${lang}/rooms/${slug}`}>{lang === 'de' ? 'Mehr erfahren' : 'Learn more'}</a>
+    </p>
+  )}
+</div>

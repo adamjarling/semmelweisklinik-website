@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSlideshow from '../../components/HeroSlideshow.astro';
+import InfoSection from '../../components/InfoSection.astro';
+import ImageCarousel from '../../components/ImageCarousel.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
+import { Image } from 'astro:assets';
+
+import start1 from '../../assets/images/start/start-1.jpg';
+import start5 from '../../assets/images/start/start-5.jpg';
+import start6 from '../../assets/images/start/start-6.jpg';
+import groupFoto from '../../assets/images/start/group-foto.jpg';
+import inMedioStill from '../../assets/images/start/in-medio-still.jpg';
+import resetNetwork from '../../assets/images/start/reset-network.jpg';
+
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <!-- Hero Slideshow -->
+    <HeroSlideshow />
+
+    <!-- Section 1 -->
+    <div class="container">
+      <h1 class="hero-title" style="max-width: 1000px;">
+        {t('home.hero_title')}
+      </h1>
+      <div class="mixed-section">
+        <p style="grid-column: 2; grid-row: 1;">
+          {t('home.intro_p1')}
+        </p>
+        <Image
+          src={start1}
+          alt="Semmelweisklinik interior"
+          style="width: 100%; object-fit: cover; grid-column: 1; grid-row: 2;"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 800px) 90vw, 50vw"
+        />
+      </div>
+
+      <InfoSection />
+    </div>
+
+    <!-- Image Carousel -->
+    <ImageCarousel />
+
+    <!-- Section 2 -->
+    <div class="container">
+      <div class="mixed-section">
+        <p style="grid-column: 1; grid-row: 1;">
+          {t('home.intro_p2')}
+        </p>
+        <Image
+          src={start5}
+          alt="Semmelweisklinik space"
+          style="width: 100%; object-fit: cover; grid-column: 2; grid-row: 2;"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 800px) 90vw, 50vw"
+        />
+        <Image
+          src={start6}
+          alt="Semmelweisklinik event"
+          style="width: 100%; object-fit: cover; grid-column: 1; grid-row: 3;"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 800px) 90vw, 50vw"
+        />
+        <p style="grid-column: 2; grid-row: 4;">
+          {t('home.intro_p3')}
+        </p>
+      </div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="container video-container">
+      <div style="width: min(800px, 100%); display: flex; flex-direction: column; align-items: center;">
+        <a class="naked-link" href="https://player.vimeo.com/video/856325390" target="_blank" rel="noopener noreferrer">
+          <Image
+            src={inMedioStill}
+            alt="In Medio documentary"
+            style="width: 100%;"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 800px) 90vw, min(800px, 70vw)"
+          />
+        </a>
+        <p class="video-title">
+          {t('home.video_description')}
+        </p>
+      </div>
+    </div>
+
+    <!-- Social Links -->
+    <SocialLinks />
+
+    <!-- Group Photo -->
+    <Image
+      src={groupFoto}
+      alt="Semmelweisklinik team"
+      class="group-foto"
+      widths={[800, 1200, 1600, 2000]}
+      sizes="100vw"
+    />
+
+    <!-- Partners Section -->
+    <div class="container cooperations-container">
+      <p style="font-size: 32px; font-family: 'Lexend ExtraLight', sans-serif; text-align: center;">
+        {t('home.partners_title')}
+      </p>
+      <div class="cooperation-logos">
+        <img style="width: 100px;" src="/svg/ig-kultur-wien.svg" alt="IG Kultur Wien" />
+        <img style="width: 170px;" src="/svg/bundes-immobilien-gesellschaft.svg" alt="Bundes Immobilien Gesellschaft" />
+        <img style="width: 90px;" src="/svg/kreative-räume-wien.svg" alt="Kreative Räume Wien" />
+        <img style="width: 190px;" src="/svg/d-arts.svg" alt="D-Arts" />
+        <Image
+          src={resetNetwork}
+          alt="Reset Network"
+          style="width: 80px;"
+          width={80}
+        />
+        <img style="width: 120px;" src="/svg/european-textile-network.svg" alt="European Textile Network" />
+        <img style="width: 120px;" src="/svg/hakuk-logo.svg" alt="Hakuk" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

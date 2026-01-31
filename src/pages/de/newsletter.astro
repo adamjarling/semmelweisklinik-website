@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Semmelweisklinik • Newsletter">
+  <div class="page-wrapper">
+    <div class="content container-narrower">
+      <h1 class="hero-title">NEWSLETTER</h1>
+      <p class="mt-50">
+        Melde dich für den Newsletter der Semmelweisklinik an und bleibe über zukünftige Entwicklungen informiert. Wir respektieren deine Privatsphäre und werden dich nicht mit Spam belästigen.
+      </p>
+      <p class="mt-20 mb-50">
+        Weitere Informationen zur Verwendung deiner E-Mail-Adresse findest du in unserer <a href="/de/datenschutz">Datenschutzerklärung</a>.
+      </p>
+
+      <iframe
+        width="540"
+        height="800"
+        src="https://9d23e94a.sibforms.com/serve/MUIFAJnE5e0flJF19-r4ImZauAfnM8dcH2mFkuxj6ATP7R-T4IqXKmkb6jID4VBS1OalzJfKxPr9IYN_dsEhWLK6mbO3SehTF4raN9BdxNi9Y2X7I83UX6ktkRLOU4B7zA_eCewwuVQ5uyc8eBiNnDv9OSq0U5aJ4QJfI5rZGkNfAGM6eL61Gzy7Uisc9CYZIBbIxA0wRCUkdwFm"
+        frameborder="0"
+        scrolling="auto"
+        allowfullscreen
+        class="newsletter-iframe"
+      ></iframe>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .newsletter-iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+</style>

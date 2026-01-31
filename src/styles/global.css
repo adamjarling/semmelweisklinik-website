@@ -1,0 +1,773 @@
+/* Semmelweisklinik CSS */
+
+
+/* --- FONTS --- */
+@font-face {
+    font-family: "Lexend ExtraLight";
+    src: url(/fonts/Lexend-ExtraLight.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Lexend Light";
+    src: url(/fonts/Lexend-Light.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Lexend Regular";
+    src: url(/fonts/Lexend-Regular.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Lexend Semibold";
+    src: url(/fonts/Lexend-SemiBold.ttf) format("truetype");
+}
+
+
+/* --- BASICS --- */
+html, body, h1, h2, h3, h4, h5, h6, p, .footer-header {
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    scroll-behavior: smooth;
+}
+h1 {
+    font-family: "Lexend ExtraLight", sans-serif;
+    font-size: 100px;
+    font-weight: 100;
+}
+h2 {
+    font-family: "Lexend Regular", sans-serif;
+    font-size: 18px;
+}
+h3 {
+    font-family: "Lexend ExtraLight", sans-serif;
+    font-size: 18px;
+}
+/* Info text on start page */
+h4 {
+    font-size: 24px;
+    font-weight: 100;
+    font-family: "Lexend Light", sans-serif;
+    line-height: 2;
+}
+/* New info text on start page */
+h5 {
+    font-size: 18px;
+    font-family: "Lexend Light", sans-serif;
+    font-weight: 100;
+    margin: 0;
+}
+h6 {
+    font-size: 20px;
+    font-weight: 100;
+    font-family: "Lexend Light", sans-serif;
+    line-height: 1.5;
+    margin-bottom: 50px;
+}
+p {
+    font-size: 18px;
+    font-family: "Lexend Light", sans-serif;
+    line-height: 1.6;
+}
+.footer-header {
+    font-size: 18px;
+    font-family: 'Lexend Regular', sans-serif;
+    line-height: 1.6;
+}
+::selection {
+    color: inherit;
+    background: rgba(0,0,0,0.276);
+}
+
+
+/* --- GENERAL LAYOUT --- */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    width: 70vw;
+}
+.container-wide {
+    width: 80vw;
+}
+.container-narrow {
+    width: min(800px, 90vw);
+}
+.container-narrower {
+    width: min(600px, 90vw);
+}
+.content {
+    margin-top: 80px;
+    margin-bottom: 120px;
+}
+
+/* --- SPACING UTILITIES --- */
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+.mt-40 { margin-top: 40px; }
+.mt-50 { margin-top: 50px; }
+.mt-80 { margin-top: 80px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-25 { margin-bottom: 25px; }
+.mb-50 { margin-bottom: 50px; }
+
+/* --- DIVIDERS --- */
+.divider {
+    border-top: 2px solid black;
+    margin: 50px 0;
+}
+
+/* --- TEXT UTILITIES --- */
+.text-32 { font-size: 32px; }
+.text-28 { font-size: 28px; }
+.text-26 { font-size: 26px; }
+.text-12 { font-size: 12px; }
+
+/* --- IMAGE UTILITIES --- */
+.full-width-image {
+    width: 100%;
+    object-fit: cover;
+}
+.workshop-portrait {
+    width: min(320px, 80vw);
+    height: min(320px, 80vw);
+    min-width: min(320px, 80vw);
+    object-fit: cover;
+}
+.logo-small {
+    max-width: 300px;
+    object-fit: cover;
+}
+.icon-small {
+    height: 20px;
+}
+
+/* --- PARTNER LOGOS --- */
+.partner-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+}
+.partner-logo {
+    max-height: 80px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* --- SOCIAL LINK ROW --- */
+.social-link-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+/* --- ICON HEIGHTS --- */
+.icon-19 { height: 19px; }
+.icon-21 { height: 21px; }
+
+/* --- ARTIST DETAIL --- */
+.artist-info-container {
+    max-width: 660px;
+}
+.artist-location-row {
+    margin-top: -20px;
+}
+.hero-title-no-margin {
+    margin: 0px;
+}
+.hero-title-desktop {
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+/* --- PROGRAM GRID --- */
+.program-image {
+    width: 740px;
+    height: 490px;
+    object-fit: contain;
+}
+
+
+/* --- GRIDS --- */
+.grid-2col {
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 2vw;
+    column-gap: 3vw;
+}
+.grid-2col-item {
+    max-width: 38.5vw;
+}
+.grid-2col-image {
+    max-width: 38.5vw;
+    max-height: 25.7vw;
+    object-fit: cover;
+}
+.grid-img-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: #E9E9E9;
+    height: 25.7vw;
+}
+.artist-detail-section {
+    display: flex;
+    gap: 80px;
+}
+.artist-more-works-section {
+    margin-top: 100px;
+}
+.artist-more-works-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+}
+.grid-artists {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 60px;
+    row-gap: 30px;
+}
+.artist-image {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+}
+.artist-detail-image {
+    width: min(320px, 80vw);
+    height: min(320px, 80vw);
+    min-width: min(320px, 80vw);
+    object-fit: cover;
+    cursor: pointer;
+}
+.imageViewerContainer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.imageViewerImage {
+    object-fit: contain;
+    z-index: 11;
+    height: 90vh;
+    width: 90vw;
+}
+
+
+/* --- NAV --- */
+.navbar-item {
+    border-bottom: none;
+    margin-left: 50px;
+}
+.overlay-item {
+    border-bottom: none;
+    max-width: fit-content;
+}
+.overlay-item:hover {
+    border-bottom: none;
+}
+.navbar-language {
+    border-bottom: none;
+}
+.navbar-item:hover {
+    border-bottom: none;
+    transition: 0s;
+}
+.navbar-item:hover h3 {
+    font-family: "Lexend Light", sans-serif;
+    border-bottom: none;
+    transition: 0s;
+}
+.navbar-img {
+    width: 120px;
+}
+.naked-link, .naked-link:hover {
+    border-bottom: none;
+}
+
+
+/* --- LINKS --- */
+a {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 2px solid #b2b2b2;
+    transition: 0.3s;
+}
+a:active, a:visited {
+    color: inherit;
+}
+a:hover {
+    transition: 0.3s;
+    border-bottom: 2px solid #231F20;
+}
+
+
+/* --- FOOTER --- */
+.footer-outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 120px 0;
+}
+.footer-container {
+    display: flex;
+    gap: 160px;
+}
+.footer-container > div {
+    max-width: 290px;
+}
+.footer-logo {
+    height: 80px;
+    padding: 0 30px;
+}
+
+
+/* --- START --- */
+.slideshow-container {
+    width: 100%;
+    height: 560px;
+    margin-bottom: 50px;
+}
+.slideshow-image {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+}
+.mySlides {
+    display: none;
+}
+.fade {
+    opacity: 0;
+    animation: fade 5s linear;
+}
+@keyframes fade {
+  0%, 100% { opacity: 0 }
+  15%, 85% { opacity: 1 }
+}
+.hero-title {
+    max-width: 1200px;
+}
+.mixed-section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 50px;
+    margin-top: 80px;
+}
+.info-section {
+    display: flex;
+    gap: 60px;
+    margin-top: 160px;
+}
+.info-section-number {
+    font-size: 115px;
+    margin-top: -40px;
+}
+.info-section-separator {
+    border-left: 2px solid black;
+}
+.wide-slideshow-container {
+    position: relative;
+    width: 100%;
+    margin-top: 160px;
+    margin-bottom: 20px;
+}
+.wide-slideshow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+}
+.wide-slideshow-left-button {
+    height: 76px;
+    width: 34px;
+    position: absolute;
+    left: 0;
+    top: 162px;
+    cursor: pointer;
+}
+.wide-slideshow-right-button {
+    height: 76px;
+    width: 34px;
+    position: absolute;
+    right: 0px;
+    top: 162px;
+    cursor: pointer;
+}
+.wide-slideshow-image-1,
+.wide-slideshow-image-2,
+.wide-slideshow-image-3 {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.wide-slideshow-image-1 {
+    grid-column-start: 1; grid-column-end: 2;
+}
+.wide-slideshow-image-2 {
+    grid-column-start: 2; grid-column-end: 3;
+}
+.wide-slideshow-image-3 {
+    grid-column-start: 3; grid-column-end: 4;
+}
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 60px 0;
+    margin-top: 160px;
+}
+.video-title {
+    margin-top: 40px;
+    font-size: 22px;
+    font-family: 'Lexend ExtraLight', sans-serif;
+    max-width: 500px;
+    text-align: center;
+}
+.link-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    gap: 100px;
+}
+.link-svg {
+    width: 80px;
+}
+.group-foto {
+    margin-top: 160px;
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+    object-position: bottom;
+}
+.cooperations-container {
+    margin: 160px 0;
+}
+.cooperation-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 80px;
+    row-gap: 80px;
+    column-gap: 140px;
+    justify-content: center;
+}
+
+
+/* --- PROGRAM --- */
+.picture-next-to-text {
+    display: flex;
+    gap: 20px;
+}
+
+
+/* --- CALENDAR --- */
+.legend {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px;
+}
+.legend-separator {
+    height: 25px;
+    width: 2px;
+    background-color: #d9d9d9;
+}
+.calendar-button {
+    display: flex;
+    gap: 20px;
+    padding: 15px 30px;
+    align-items: center;
+    max-width: fit-content;
+    border: 2px solid #d9d9d9;
+    border-radius: 10px;
+}
+.calendar-button:hover {
+    background-color: #fafafa;
+}
+.calendar-button-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+.calendar-row, .title-row {
+    display: grid;
+    grid-template-columns: 24% 40% 32%;
+    column-gap: 2%;
+    padding: 20px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+.calendar-title {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.calendar-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+.only-desktop {
+    display: block;
+}
+/* NOTE: This is also used for tablet by now */
+.only-mobile {
+    display: none;
+}
+.desktop-and-tablet {
+    display: block;
+}
+.new-only-mobile {
+    display: none;
+}
+
+
+/* Tablet */
+@media only screen and (max-width: 1200px) {
+    .container, .container-wide {
+        max-width: calc(100vw - 60px);
+    }
+    .only-desktop {
+        display: none;
+    }
+    .only-mobile {
+        display: block;
+    }
+    .navbar-img {
+        width: 70px;
+    }
+    .footer-container {
+        flex-direction: column;
+        gap: 60px;
+    }
+    .mixed-section {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 15px;
+    }
+    .info-section {
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 60px;
+        width: 100%;
+        max-width: 500px;
+    }
+    .info-section-number {
+        font-size: 70px;
+        margin-top: -40px;
+    }
+    .info-section-separator {
+        border-top: 2px solid black;
+    }
+    .wide-slideshow {
+        grid-template-columns: auto auto;
+    }
+    .wide-slideshow-image-3 {
+        display: none;
+    }
+    .video-container {
+        padding: 40px 0 30px 0;
+        margin-top: 60px;
+    }
+    .link-container {
+        flex-wrap: wrap;
+        margin-top: 80px;
+        row-gap: 40px;
+        column-gap: 100px;
+    }
+    .link-svg {
+        width: 110px;
+    }
+    .group-foto {
+        height: 425px;
+        margin-top: 80px;
+    }
+    .cooperations-container {
+        margin: 80px 0;
+    }
+    .cooperation-logos {
+        margin-top: 60px;
+    }
+    .artist-detail-section {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+/* --- Mobile --- */
+@media (max-width: 800px)  {
+    .container, .container-wide {
+        width: 90vw;
+    }
+    .desktop-and-tablet {
+        display: none;
+    }
+    .new-only-mobile {
+        display: block;
+    }
+    .footer-logo {
+        height: 60px;
+    }
+    .grid-2col {
+        grid-template-columns: auto;
+        row-gap: 10vw;
+        column-gap: 0vw;
+    }
+    .grid-2col-item {
+        max-width: 90vw;
+    }
+    .grid-2col-image {
+        max-width: 80vw;
+        max-height: 55vw;
+    }
+    .grid-img-wrapper {
+        display: flex;
+        justify-content: center;
+        background-color: #E9E9E9;
+        height: 55vw;
+    }
+    .navbar-item {
+        font-size: 14px;
+        margin-left: 20px;
+    }
+    .navbar-language {
+        font-size: 14px;
+    }
+    .content {
+        margin-top: 40px;
+        margin-bottom: 80px;
+    }
+    .legend {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+    .legend-separator {
+        display: none;
+    }
+    .title-row {
+        display: none;
+    }
+    .calendar-button {
+        padding: 10px 20px;
+    }
+    .calendar-button-container {
+        flex-direction: column;
+    }
+    .calendar-row {
+        display: flex;
+        flex-direction: column;
+    }
+    .calendar-title {
+        flex-direction: column;
+        align-items: start;
+        gap: 0px;
+        margin-bottom: -5px;
+    }
+    .calendar-title > p {
+        font-size: 28px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .calendar-icons {
+        margin-top: 10px;
+    }
+    .imageViewerImage {
+        height: 100vh;
+        width: 100vw;
+    }
+    .artist-more-works-section {
+        margin-top: 20px;
+    }
+    .artist-more-works-gallery {
+        gap: 30px;
+    }
+    .artist-image {
+        width: min(320px, 80vw);
+        height: min(320px, 80vw);
+        object-fit: cover;
+    }
+    /* --- START --- */
+    h6 {
+        font-size: 24px;
+    }
+    .slideshow-container {
+        height: 375px;
+        margin-bottom: 0;
+    }
+    .slideshow-image {
+        height: 375px;
+    }
+    .hero-title {
+        font-size: 32px;
+        max-width: none;
+        font-family: "Lexend Light", sans-serif;
+        margin-top: 25px;
+    }
+    .wide-slideshow-container {
+        margin-top: 80px;
+    }
+    .wide-slideshow {
+        grid-template-columns: auto;
+    }
+    .wide-slideshow-left-button,
+    .wide-slideshow-right-button {
+        top: 87px;
+    }
+    .wide-slideshow-image-1,
+    .wide-slideshow-image-2,
+    .wide-slideshow-image-3 {
+        height: 250px;
+    }
+    .wide-slideshow-image-2 {
+        display: none;
+    }
+    .video-title {
+        font-size: 16px;
+        font-family: 'Lexend Light', sans-serif;
+        margin-top: 20px;
+    }
+    .group-foto {
+        height: auto;
+        width: 100%;
+        margin-top: 80px;
+    }
+    /* --- PROGRAM --- */
+    .picture-next-to-text {
+        flex-direction: column;
+    }
+    /* --- FOOTER --- */
+    .footer-outer-container {
+        padding: 70px 0;
+    }
+}

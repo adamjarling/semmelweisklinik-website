@@ -1,0 +1,75 @@
+---
+// HeroSlideshow.astro
+// Auto-advancing hero images with 5-second intervals
+import { Image } from 'astro:assets';
+
+import hero1 from '../assets/images/start/hero-1.jpg';
+import hero2 from '../assets/images/start/hero-2.jpg';
+import hero3 from '../assets/images/start/hero-3.jpg';
+import hero4 from '../assets/images/start/hero-4.jpg';
+import hero5 from '../assets/images/start/hero-5.jpg';
+import hero6 from '../assets/images/start/hero-6.jpg';
+import hero7 from '../assets/images/start/hero-7.jpg';
+
+const slides = [
+  { src: hero1, position: 'bottom' },
+  { src: hero2, position: 'center' },
+  { src: hero3, position: 'center' },
+  { src: hero4, position: 'center' },
+  { src: hero5, position: 'top' },
+  { src: hero6, position: 'center' },
+  { src: hero7, position: 'center' },
+];
+---
+
+<div class="slideshow-container">
+  {slides.map((slide, index) => (
+    <div class="mySlides fade" data-index={index}>
+      <Image
+        src={slide.src}
+        alt={`Semmelweisklinik ${index + 1}`}
+        class="slideshow-image"
+        style={`object-position: ${slide.position};`}
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+      />
+    </div>
+  ))}
+</div>
+
+<script>
+  function initSlideshow() {
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.mySlides');
+
+    function showSlides() {
+      // Hide all slides
+      slides.forEach(slide => {
+        (slide as HTMLElement).style.display = 'none';
+      });
+
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+
+      // Show current slide
+      const currentSlide = slides[slideIndex - 1] as HTMLElement;
+      if (currentSlide) {
+        currentSlide.style.display = 'block';
+      }
+
+      // Auto-advance every 5 seconds
+      setTimeout(showSlides, 5000);
+    }
+
+    // Start slideshow
+    if (slides.length > 0) {
+      showSlides();
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initSlideshow);
+  document.addEventListener('astro:page-load', initSlideshow);
+</script>

@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const rooms = await getCollection('rooms');
+  return rooms.map((room) => ({
+    params: { slug: room.slug },
+    props: { room },
+  }));
+}
+
+const { room } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { name, tagline, location, description, specs, images } = room.data;
+const displayName = name.en;
+const displayTagline = tagline?.en;
+const displayLocation = location?.en;
+const displayDescription = description?.en;
+const displaySize = specs?.size?.en;
+const displayCapacity = specs?.capacity?.en;
+const displayFeatures = specs?.features?.en;
+---
+
+<BaseLayout title={`Semmelweisklinik • ${displayName}`}>
+  <div class="page-wrapper">
+    <div class="content container-wide">
+      <h1 class="hero-title">{displayName}</h1>
+      {displayTagline && <p class="mt-10">{displayTagline}</p>}
+
+      <div class="grid-2col mt-50">
+        <div class="grid-2col-item">
+          {displayLocation && (
+            <>
+              <h2>Location</h2>
+              <p>{displayLocation}</p>
+            </>
+          )}
+
+          {displaySize && (
+            <>
+              <h2>Size</h2>
+              <p>{displaySize}</p>
+            </>
+          )}
+
+          {displayCapacity && (
+            <>
+              <h2>Capacity</h2>
+              <p>{displayCapacity}</p>
+            </>
+          )}
+
+          {displayFeatures && displayFeatures.length > 0 && (
+            <>
+              <h2>Features</h2>
+              <ul>
+                {displayFeatures.map((feature) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          <p class="mt-40">
+            Interested? Send us an email to:
+            <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
+          </p>
+        </div>
+
+        {images && images.map((img) => (
+          <div>
+            <div class="grid-img-wrapper">
+              <img class="grid-2col-image" src={img} alt={displayName} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {displayDescription && (
+        <p class="mt-40">{displayDescription}</p>
+      )}
+    </div>
+  </div>
+</BaseLayout>
