@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import participateImg from '../../assets/images/participate/participate.jpg';
+---
+
+<BaseLayout title="Semmelweisklinik • Participate">
+  <div class="page-wrapper">
+    <div class="content container-narrow">
+      <h1 class="hero-title">PARTICIPATE</h1>
+      <p class="mt-50">
+        We renovate, manage, organize - provide structural and public relations work, network, create space and actively involve our surroundings. Together with the community, we gain new experiences. There are many ways to become part of our project.
+      </p>
+
+      <Image
+        src={participateImg}
+        alt="Participate at Semmelweisklinik"
+        class="mt-50 full-width-image"
+        widths={[400, 600, 800]}
+        sizes="(max-width: 800px) 90vw, 800px"
+      />
+
+      <h2 class="mt-50">Become a member and support us on a voluntary basis!</h2>
+      <p class="mt-20">
+        Our association now has numerous members who do not have their own studio with us, but who greatly appreciate the people and the project. If you share our vision and are interested in our events, there are many ways in which you can get actively involved:
+      </p>
+      <div class="mt-20">
+        <p class="mt-10">• Helping hands: support with clear-outs, rubbish drives and other practical tasks.</p>
+        <p class="mt-10">• Donations of money or goods: Donations are a valuable support for our work.</p>
+        <p class="mt-10">• Communication: We are currently looking for people who are interested in press work or documentation in the field of photography and video.</p>
+      </div>
+      <p class="mt-20">
+        If you are interested, please contact us at <a href="mailto:info@semmelweisklinik.at">info@semmelweisklinik.at</a> - we will be happy to discuss how you can get involved.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Give us your Feedback!</h2>
+      <p class="mt-20">
+        We look forward to positive feedback and encouragement. Have you had a special experience with us? Share it with us at <a href="mailto:info@semmelweisklinik.at">info@semmelweisklinik.at</a>.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Join our circle of friends on Telegram</h2>
+      <p class="mt-20">
+        In our <a href="https://t.me/+rt9pVM1zZewwZTdi" target="_blank" rel="noopener noreferrer">Telegram group</a> we regularly announce events, look for helping hands and much more.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Sign up for our Newsletter</h2>
+      <p class="mt-20">
+        Receive a regular selection of current events, exciting background information, interviews with artists and news about our projects. <a href="/en/newsletter">Sign up now!</a>
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Visit our Events and Workshops</h2>
+      <p class="mt-20">
+        Get to know our centre and our diverse events. For example, at 'Fridays at the clinic': regular events such as readings, open stages, open decks or jam sessions in Bandland from 7 pm await you here. Or let us show you the studios at our 'Open Studios'. There are also lots of workshops where you can try out new things. Just take a look at our <a href="/en/calendar">calendar</a>!
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .full-width-image {
+    width: 100%;
+    object-fit: cover;
+  }
+</style>

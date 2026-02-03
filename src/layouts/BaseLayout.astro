@@ -1,0 +1,38 @@
+---
+// src/layouts/BaseLayout.astro
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const {
+  title = t('head.title'),
+  description = t('head.description')
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="booking, venue, vienna, event, culture, music, workshops, theatre, performance, art, arts, artist, studio, rent, renting, atelier" />
+  </head>
+  <body>
+    <Header>
+      <slot />
+    </Header>
+    <Footer />
+  </body>
+</html>

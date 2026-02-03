@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RoomCard from '../../../components/RoomCard.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const rooms = await getCollection('rooms');
+const sortedRooms = rooms.sort((a, b) => {
+  const orderA = a.data.sortOrder ?? 999;
+  const orderB = b.data.sortOrder ?? 999;
+  return orderA - orderB;
+});
+---
+
+<BaseLayout title={`Semmelweisklinik • ${t('nav.rooms')}`}>
+  <div class="page-wrapper">
+    <div class="content container-wide">
+      <h1 class="hero-title">{t('rooms.title')}</h1>
+
+      <div class="grid-2col mt-50">
+        {sortedRooms.map((room) => (
+          <RoomCard
+            name={room.data.name}
+            tagline={room.data.tagline}
+            slug={room.slug}
+            image={room.data.images?.[0] || '/images/rooms/placeholder.jpg'}
+          />
+        ))}
+      </div>
+
+      <div class="grid-2col mt-80">
+        <div class="grid-2col-item">
+          <h2>{t('rooms.rent_heading')}</h2><br />
+          <p>{t('rooms.rent_description_1')}</p><br />
+          <p>{t('rooms.rent_description_2')}</p><br />
+          <p>
+            {t('rooms.rent_contact')}<br />
+            <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

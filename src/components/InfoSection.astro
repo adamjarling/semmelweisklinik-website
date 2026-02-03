@@ -1,0 +1,29 @@
+---
+// InfoSection.astro
+// Stats display (40+ studios, 110+ artists, etc.)
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const stats = [
+  { number: '40+', label: t('home.stats_studios') },
+  { number: '110+', label: t('home.stats_artists') },
+  { number: '7+', label: t('home.stats_spaces') },
+];
+---
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <div class="info-section">
+    <div class="info-section-separator"></div>
+    {stats.map((stat, index) => (
+      <>
+        <div style="max-width: 260px;">
+          <p class="info-section-number">{stat.number}</p>
+          <p style="margin-top: -25px;">{stat.label}</p>
+        </div>
+        <div class="info-section-separator"></div>
+      </>
+    ))}
+  </div>
+</div>

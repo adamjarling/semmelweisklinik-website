@@ -1,0 +1,59 @@
+---
+interface Props {
+  currentPath: string;
+  currentLang: string;
+}
+
+const { currentPath, currentLang } = Astro.props;
+
+// Determine the target language (opposite of current)
+const targetLang = currentLang === 'de' ? 'en' : 'de';
+
+function getPathForLang(targetLang: string) {
+  const currentLangPrefix = `/${currentLang}`;
+  const targetLangPrefix = `/${targetLang}`;
+
+  if (currentPath.startsWith(currentLangPrefix)) {
+    if (currentPath === currentLangPrefix) {
+      return targetLangPrefix;
+    }
+    return currentPath.replace(currentLangPrefix, targetLangPrefix);
+  }
+
+  return targetLang === currentLang ? currentPath : `${targetLangPrefix}${currentPath}`;
+}
+---
+
+<a class="navbar-language lang-switcher-link" href={getPathForLang(targetLang)} style="border-bottom: none;">
+  <div class="lang-switcher-pill">
+    <p class="lang-switcher-text">{targetLang.toUpperCase()}</p>
+  </div>
+</a>
+
+<style>
+  .lang-switcher-pill {
+    padding: 5px 15px;
+    background-color: black;
+    border-radius: 50px;
+    height: 18px;
+  }
+
+  .lang-switcher-text {
+    font-size: 13px;
+    font-family: 'Lexend Regular', sans-serif;
+    color: white;
+    margin: 0;
+    margin-top: -1px;
+  }
+
+  /* Mobile overlay styles */
+  @media only screen and (max-width: 1200px) {
+    .lang-switcher-pill {
+      height: 24px;
+    }
+    .lang-switcher-text {
+      font-size: 18px;
+      margin-top: -2px;
+    }
+  }
+</style>

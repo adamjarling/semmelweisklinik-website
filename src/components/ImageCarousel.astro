@@ -1,0 +1,106 @@
+---
+// ImageCarousel.astro
+// Manual carousel with arrow navigation
+import { Image } from 'astro:assets';
+
+import start2 from '../assets/images/start/start-2.jpg';
+import start3 from '../assets/images/start/start-3.jpg';
+import start4 from '../assets/images/start/start-4.jpg';
+
+const slides = [start2, start3, start4];
+---
+
+<div class="wide-slideshow-container">
+  <img
+    class="wide-slideshow-left-button"
+    src="/svg/white-box-arrow-left.svg"
+    alt="Previous"
+  />
+  <img
+    class="wide-slideshow-right-button"
+    src="/svg/white-box-arrow-right.svg"
+    alt="Next"
+  />
+  <div class="wide-slideshow">
+    <Image
+      src={slides[0]}
+      alt="Semmelweisklinik space 1"
+      class="wide-slideshow-image-1"
+      widths={[400, 600, 800]}
+      sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      data-index="0"
+    />
+    <Image
+      src={slides[1]}
+      alt="Semmelweisklinik space 2"
+      class="wide-slideshow-image-2"
+      widths={[400, 600, 800]}
+      sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      data-index="1"
+    />
+    <Image
+      src={slides[2]}
+      alt="Semmelweisklinik space 3"
+      class="wide-slideshow-image-3"
+      widths={[400, 600, 800]}
+      sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      data-index="2"
+    />
+  </div>
+</div>
+
+<script define:vars={{ slideUrls: slides.map(s => s.src) }}>
+  function initCarousel() {
+    const listOfSlides = slideUrls;
+    const numOfSlides = listOfSlides.length;
+    let slidePosition = 0;
+
+    const image1 = document.querySelector('.wide-slideshow-image-1');
+    const image2 = document.querySelector('.wide-slideshow-image-2');
+    const image3 = document.querySelector('.wide-slideshow-image-3');
+    const leftButton = document.querySelector('.wide-slideshow-left-button');
+    const rightButton = document.querySelector('.wide-slideshow-right-button');
+
+    if (!image1 || !leftButton || !rightButton) return;
+
+    function setSlidesAtPosition(pos) {
+      let firstSlideIndex = pos % numOfSlides;
+      if (firstSlideIndex < 0) firstSlideIndex += numOfSlides;
+
+      let secondSlideIndex = (pos + 1) % numOfSlides;
+      if (secondSlideIndex < 0) secondSlideIndex += numOfSlides;
+
+      let thirdSlideIndex = (pos + 2) % numOfSlides;
+      if (thirdSlideIndex < 0) thirdSlideIndex += numOfSlides;
+
+      if (image1) image1.setAttribute('src', listOfSlides[firstSlideIndex]);
+      if (image2) image2.setAttribute('src', listOfSlides[secondSlideIndex]);
+      if (image3) image3.setAttribute('src', listOfSlides[thirdSlideIndex]);
+    }
+
+    function slideToLeft() {
+      slidePosition--;
+      if (slidePosition < 0) {
+        slidePosition += numOfSlides;
+      }
+      setSlidesAtPosition(slidePosition);
+    }
+
+    function slideToRight() {
+      slidePosition++;
+      if (slidePosition >= numOfSlides) {
+        slidePosition -= numOfSlides;
+      }
+      setSlidesAtPosition(slidePosition);
+    }
+
+    leftButton.addEventListener('click', slideToLeft);
+    rightButton.addEventListener('click', slideToRight);
+
+    // Initialize
+    setSlidesAtPosition(slidePosition);
+  }
+
+  document.addEventListener('DOMContentLoaded', initCarousel);
+  document.addEventListener('astro:page-load', initCarousel);
+</script>
