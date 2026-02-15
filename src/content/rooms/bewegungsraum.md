@@ -28,7 +28,8 @@ specs:
       - "Holzparkettboden"
       - "Spiegelwand"
 images:
-  - "/images/rooms/bewegungsraum/250119_SWK_Bewegungsraum_02_c_Elisabeth_Blum.jpg"
-  - "/images/rooms/bewegungsraum/250119_SWK_Bewegungsraum_01_c_Elisabeth_Blum.jpg"
+  - "/images/rooms/bewegungsraum/_x9a7120.jpg"
+  - "/images/rooms/bewegungsraum/_x9a7137.jpg"
+  - "/images/rooms/bewegungsraum/_x9a7143.jpg"
 sortOrder: 1
 ---
