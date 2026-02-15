@@ -1,43 +1,180 @@
-# Astro Starter Kit: Minimal
+# Semmelweisklinik Website
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Official website for the **Semmelweisklinik** arts and culture center in Vienna, Austria.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **Live Demo Site**: [semmelweisklinik-website.netlify.app](https://semmelweisklinik-website.netlify.app/)
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## About Semmelweisklinik
+
+The Semmelweisklinik is a decentralized arts and culture center located at the site of the former Ignaz Semmelweis Women's Clinic (House 4) in Vienna. Opened in June 2022, this self-managed creative space spans **3,800 m²** and operates as an interim use project until the end of 2026.
+
+### Mission
+
+The center serves as a **low-threshold space** for:
+- Independent artistic production
+- Inclusive exchange and cooperation
+- Education and social engagement
+- Experimental possibilities for a diverse, robust, and sustainable urban society
+
+### The Space
+
+- **40 studios** hosting ~110 artists and cultural operators
+- **7 public event spaces** for performances, exhibitions, and gatherings
+- **Meeting zones** for collaboration and community building
+- **Rentable rooms** including performance spaces, seminar rooms, a large-scale kitchen, and specialized workshops
+
+### Values
+
+The Semmelweisklinik actively addresses socio-political issues through artistic and regenerative approaches:
+- Gender equality
+- Diversity-oriented openness
+- Climate-friendly methods
+- Participatory decision-making
+- Local and international networking
+
+---
+
+## Technical Implementation
+
+This website is built with **Astro**, a modern static site generator that delivers exceptional performance while providing the flexibility needed for a dynamic, multilingual arts organization website.
+
+### Why Astro?
+
+Astro enables this website to be:
+
+- **Blazingly Fast**: Zero JavaScript by default means instant page loads
+- **Content-Focused**: Built-in content collections make managing 30+ artist profiles and room listings effortless
+- **Multilingual**: Native i18n routing supports German (primary) and English seamlessly
+- **Developer-Friendly**: Component-based architecture makes updates and maintenance straightforward
+- **SEO Optimized**: Static HTML generation ensures excellent search engine visibility
+- **Image Optimized**: Automatic image optimization with Sharp provides responsive, optimized images
+
+### Key Features
+
+- **Bilingual Content**: Full German and English support with automatic routing
+- **Dynamic Routes**: Individual pages auto-generated for each artist and room from markdown files
+- **Content Collections**: Structured content management for artists, rooms, and program events
+- **Responsive Design**: Mobile-first approach ensures accessibility on all devices
+- **Event Calendar**: Integrated program and event management system
+- **Newsletter Integration**: Built-in newsletter signup functionality
+
+### Tech Stack
+
+- **Framework**: [Astro](https://astro.build) v5.17
+- **Image Processing**: Sharp v0.33
+- **Testing**: Vitest + Happy DOM
+- **Deployment**: [Netlify](https://www.netlify.com/) with continuous deployment
+- **Node Version**: Node 20 (pinned for Netlify builds)
+
+---
+
+## Project Structure
 
 ```text
 /
 ├── public/
+│   ├── svg/              # Partner logos and icons
+│   └── ...               # Static assets
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── assets/
+│   │   └── images/       # Optimized images
+│   ├── components/       # Reusable Astro components
+│   ├── content/
+│   │   ├── artists/      # Artist profiles (markdown)
+│   │   └── rooms/        # Room descriptions (markdown)
+│   ├── i18n/
+│   │   ├── ui.ts         # Translation strings
+│   │   └── utils.ts      # i18n utilities
+│   ├── layouts/          # Page layouts
+│   ├── pages/
+│   │   ├── de/           # German pages
+│   │   ├── en/           # English pages
+│   │   └── index.astro   # Homepage (redirects to /de)
+│   └── styles/           # Global styles
+├── astro.config.mjs      # Astro configuration
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Content Management
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+**Artists**: Add new artist profiles by creating markdown files in `src/content/artists/`
 
-Any static assets, like images, can be placed in the `public/` directory.
+**Rooms**: Add new rentable spaces by creating markdown files in `src/content/rooms/`
 
-## 🧞 Commands
+**Programs**: Add events and programs in `src/pages/[de|en]/program/`
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## Development
 
-## 👀 Want to learn more?
+### Prerequisites
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Node.js 20 or higher
+- pnpm (preferred package manager)
+
+### Commands
+
+All commands are run from the root of the project:
+
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `pnpm install`      | Install dependencies                             |
+| `pnpm dev`          | Start local dev server at `localhost:4321`       |
+| `pnpm build`        | Build production site to `./dist/`               |
+| `pnpm preview`      | Preview build locally before deploying           |
+| `pnpm test`         | Run tests with Vitest                            |
+| `pnpm astro ...`    | Run Astro CLI commands                           |
+
+### Local Development
+
+```sh
+# Install dependencies
+pnpm install
+
+# Start the dev server
+pnpm dev
+
+# Open http://localhost:4321 in your browser
+```
+
+---
+
+## Deployment
+
+The site is automatically deployed to **Netlify** on every push to the `main` branch.
+
+**Production URL**: https://semmelweisklinik-website.netlify.app/
+
+### Build Configuration
+
+- **Build Command**: `pnpm build`
+- **Publish Directory**: `dist`
+- **Node Version**: 20.x (specified in package.json)
+
+---
+
+## Contact
+
+**Website**: [semmelweisklinik-website.netlify.app](https://semmelweisklinik-website.netlify.app/) Questions? adam.arling@semmelweisklinik.at
+
+**General Inquiries**: info@semmelweisklinik.at
+
+**Program/Venue Bookings**: programm@semmelweisklinik.at
+
+**Location**: Hockegasse 37, Haus 4, 1180 Vienna, Austria
+
+---
+
+## Contributing
+
+This is the official website for a physical arts organization. For content updates, corrections, or technical improvements, please contact the team directly.
+
+---
+
+## License
+
+©2022-2026 Kunst- und Kulturzentrum Semmelweisklinik. All Rights Reserved.
+
+**Web Design & Development**: Webzauber, Sören Herschel & Maryann Alexy
