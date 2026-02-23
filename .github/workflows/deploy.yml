@@ -37,12 +37,13 @@ jobs:
         run: pnpm build
 
       # Step 6: Configure SSH using the private key stored as a GitHub Secret.
-      # ssh-keyscan fetches the server's public host key into known_hosts so
-      # rsync can verify the server identity without an interactive prompt.
+      # The key is stored base64-encoded to avoid line-ending issues when pasting
+      # into GitHub Secrets. ssh-keyscan fetches the server's public host key into
+      # known_hosts so rsync can verify the server identity without an interactive prompt.
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p ${{ secrets.SSH_PORT || '22' }} -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
