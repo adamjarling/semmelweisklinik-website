@@ -1,0 +1,57 @@
+name: Build & Deploy to Test
+
+# Triggers on every push to the main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install pnpm (must come before setup-node to enable cache)
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      # Step 3: Setup Node.js 20 with pnpm cache for faster installs
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      # Step 4: Install dependencies using the lockfile (no accidental upgrades)
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Step 5: Build the Astro static site → output goes to dist/
+      - name: Build Astro site
+        run: pnpm build
+
+      # Step 6: Configure SSH using the private key stored as a GitHub Secret.
+      # ssh-keyscan fetches the server's public host key into known_hosts so
+      # rsync can verify the server identity without an interactive prompt.
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SSH_PORT || '22' }} -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      # Step 7: Sync the built files to the test directory on the web host.
+      # --delete removes files on the server that no longer exist locally,
+      # keeping the remote directory in sync with the build output.
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT || '22' }} -o StrictHostKeyChecking=yes" \
+            dist/ \
+            "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}"
