@@ -1,15 +1,17 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
+  integrations: [sitemap()],
   site: 'https://www.semmelweis-klinik.at', // Your domain
   base: process.env.DEPLOY_BASE || undefined,
   output: "static",
   i18n: {
-    defaultLocale: "de",
-    locales: ["de", "en"],
+    defaultLocale: "en",
+    locales: ["en", "de"],
     routing: {
-      prefixDefaultLocale: false, // 'de' stays at root, 'en' at /en
+      prefixDefaultLocale: false, // 'en' has no prefix (root), 'de' is at /de
     },
   },
 });

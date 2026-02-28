@@ -14,9 +14,17 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const {
-  title = t('head.title'),
-  description = t('head.description')
+  title = t('head.title') as string,
+  description = t('head.description') as string
 } = Astro.props;
+
+const siteBase = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const currentPath = Astro.url.pathname;
+const canonicalUrl = `${siteBase}${currentPath}`;
+const enUrl = `${siteBase}${currentPath.replace(/^\/(de|en)/, '/en')}`;
+const deUrl = `${siteBase}${currentPath.replace(/^\/(de|en)/, '/de')}`;
+const ogLocale = lang === 'de' ? 'de_AT' : 'en_US';
+const ogImageUrl = `${siteBase}/images/og-default.jpg`;
 ---
 
 <!doctype html>
@@ -24,10 +32,27 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content="booking, venue, vienna, event, culture, music, workshops, theatre, performance, art, arts, artist, studio, rent, renting, atelier" />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="de" href={deUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Semmelweisklinik" />
+    <meta property="og:locale" content={ogLocale} />
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body>
     <Header>
