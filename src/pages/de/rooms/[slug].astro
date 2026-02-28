@@ -37,28 +37,28 @@ const displayFeatures = specs?.features?.de;
         <div class="grid-2col-item">
           {displayLocation && (
             <>
-              <h2>Lage</h2>
+              <h2>{t('rooms.detail_location')}</h2>
               <p>{displayLocation}</p>
             </>
           )}
 
           {displaySize && (
             <>
-              <h2>Größe</h2>
+              <h2>{t('rooms.detail_size')}</h2>
               <p>{displaySize}</p>
             </>
           )}
 
           {displayCapacity && (
             <>
-              <h2>Kapazität</h2>
+              <h2>{t('rooms.detail_capacity')}</h2>
               <p>{displayCapacity}</p>
             </>
           )}
 
           {displayFeatures && displayFeatures.length > 0 && (
             <>
-              <h2>Ausstattung</h2>
+              <h2>{t('rooms.detail_features')}</h2>
               <ul>
                 {displayFeatures.map((feature) => (
                   <li>{feature}</li>
@@ -68,7 +68,7 @@ const displayFeatures = specs?.features?.de;
           )}
 
           <p class="mt-40">
-            Interessiert? Schreiben Sie uns eine E-Mail an:
+            {t('rooms.detail_contact_prompt')}
             <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
           </p>
         </div>
