@@ -35,7 +35,7 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.where_to_find_us')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          {addressLines.map((line, i) => (
+          {addressLines.map((line: string, i: number) => (
             <>
               {line}
               {i < addressLines.length - 1 && <br />}
@@ -100,7 +100,7 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.web_design_code_by')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          <a href="https://www.webzauber.at/" target="_blank" rel="noopener noreferrer">Webzauber</a>, Sören Herschel & Maryann Alexy
+          <a href="mailto:adam.arling@semmelweisklinik.at">Adam J. Arling</a>, <a href="https://www.webzauber.at/" target="_blank" rel="noopener noreferrer">Webzauber</a>, Sören Herschel & Maryann Alexy
         </p>
       </div>
 
