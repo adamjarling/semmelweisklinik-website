@@ -47,12 +47,16 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p ${{ secrets.SSH_PORT || '22' }} -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
-      # Step 7: Sync the built files to the test directory on the web host.
-      # --delete removes files on the server that no longer exist locally,
-      # keeping the remote directory in sync with the build output.
+      # Step 7: Sync the built files to the web root on the web host.
+      # --delete removes stale Astro files from the server but --exclude
+      # protects server-managed directories from being deleted.
       - name: Deploy via rsync
         run: |
-          rsync -avz --delete \
+          rsync -avz --delete --chmod=D755,F644 \
+            --exclude='stats/' \
+            --exclude='error/' \
+            --exclude='error_logs/' \
+            --exclude='wordpress-semmelweis/' \
             -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT || '22' }} -o StrictHostKeyChecking=yes" \
             dist/ \
             "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}"
