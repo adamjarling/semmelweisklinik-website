@@ -1,10 +1,8 @@
 name: Build & Deploy to Test
 
-# Triggers on every push to the main branch
+# Manually triggered from GitHub Actions UI (Actions tab → select workflow → Run workflow)
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -35,6 +33,8 @@ jobs:
       # Step 5: Build the Astro static site → output goes to dist/
       - name: Build Astro site
         run: pnpm build
+        env:
+          DEPLOY_BASE: '/build-push-test'
 
       # Step 6: Configure SSH using the private key stored as a GitHub Secret.
       # The key is stored base64-encoded to avoid line-ending issues when pasting
