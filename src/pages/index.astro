@@ -1,4 +1,6 @@
 ---
-// Redirect root to default language (English)
-return Astro.redirect('/en');
+// Redirect root to default language (English).
+// In production (Netlify), public/_redirects handles this at CDN level with no flash.
+// This file exists so the Astro dev server has something to serve at /.
+return Astro.redirect('/en', 301);
 ---
