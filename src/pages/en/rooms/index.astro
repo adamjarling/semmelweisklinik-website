@@ -36,10 +36,41 @@ const sortedRooms = rooms.sort((a, b) => {
           <h2>{t('rooms.rent_heading')}</h2><br />
           <p>{t('rooms.rent_description_1')}</p><br />
           <p>{t('rooms.rent_description_2')}</p><br />
+          <p>{t('rooms.rent_description_3')}</p><br />
           <p>
             {t('rooms.rent_contact')}<br />
             <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
           </p>
+        </div>
+      </div>
+
+      <div class="grid-2col mt-80">
+        <div class="grid-2col-item">
+          <h2>{t('rooms.pricing_rooms_heading')}</h2><br />
+          <p>{t('rooms.pricing_rooms_intro')}</p><br />
+          <p><b>Hybridraum</b><br />{t('rooms.pricing_hybridraum_rates')}</p><br />
+          <p><b>Bewegungsraum</b><br />{t('rooms.pricing_bewegungsraum_rates')}</p><br />
+          <p><b>Küche</b><br />{t('rooms.pricing_kueche_rates')}</p><br />
+          <p><b>Waschküche</b><br />{t('rooms.pricing_waschkueche_rates')}</p><br />
+          <p>{t('rooms.pricing_longer_use')}</p><br />
+          <p>
+            {t('rooms.pricing_soli_text')}<br />
+            <a href={t('rooms.pricing_soli_url') as string}>{t('rooms.pricing_soli_link_text')}</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2col mt-80">
+        <div class="grid-2col-item">
+          <h2>{t('rooms.pricing_additional_heading')}</h2><br />
+          <p><b>{t('rooms.pricing_event_support_name')}</b><br />{t('rooms.pricing_event_support_price')}<br />{t('rooms.pricing_event_support_note')}</p><br />
+          <p><b>{t('rooms.pricing_security_name')}</b><br />{t('rooms.pricing_security_price')}<br />{t('rooms.pricing_security_note')}</p><br />
+          <p><b>{t('rooms.pricing_tech_support_name')}</b><br />{t('rooms.pricing_tech_support_price')}</p><br />
+          <p><b>{t('rooms.pricing_documentation_name')}</b><br />{t('rooms.pricing_documentation_price')}</p><br />
+          <p><b>{t('rooms.pricing_setup_name')}</b><br />{t('rooms.pricing_setup_price')}</p><br />
+          <p><b>{t('rooms.pricing_cleaning_name')}</b><br />{t('rooms.pricing_cleaning_price')}</p><br />
+          <p>{t('rooms.pricing_asterisk_note')}</p><br />
+          <p>{t('rooms.pricing_tech_rental')}</p>
         </div>
       </div>
     </div>
