@@ -8,11 +8,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const artists = await getCollection('artists');
-const sortedArtists = artists.sort((a, b) => {
-  const orderA = a.data.sortOrder ?? 999;
-  const orderB = b.data.sortOrder ?? 999;
-  return orderA - orderB;
-});
+const sortedArtists = artists.sort((a, b) =>
+  a.data.name.localeCompare(b.data.name)
+);
 ---
 
 <BaseLayout title={`Semmelweisklinik • ${t('nav.people')}`}>
