@@ -1,6 +1,14 @@
 ---
-// Redirect root to default language (English).
-// In production (Netlify), public/_redirects handles this at CDN level with no flash.
-// This file exists so the Astro dev server has something to serve at /.
-return Astro.redirect('/en', 301);
+// Redirect root to English (default locale).
+// - Netlify: netlify.toml + _redirects handle this at CDN level (force = true), so this file is never served there.
+// - Other hosts: the <script> below fires before first paint, so no visible flash.
 ---
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0;url=/en" />
+    <link rel="canonical" href="/en" />
+    <script>location.replace('/en')</script>
+  </head>
+</html>

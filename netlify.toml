@@ -1,0 +1,8 @@
+# Redirect the root path to the default locale (English).
+# force = true makes this rule take precedence over the static index.html
+# that Astro.redirect() generates (which contains a visible "Redirecting..." link).
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 301
+  force = true
