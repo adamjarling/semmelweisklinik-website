@@ -7,11 +7,11 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: `/${lang}/rooms`, label: t('nav.rooms'), width: '72px' },
-  { href: `/${lang}/calendar`, label: t('nav.calendar'), width: '105px' },
-  { href: `/${lang}/artists`, label: t('nav.people'), width: '75px' },
-  { href: `/${lang}/program`, label: t('nav.program'), width: '100px' },
-  { href: `/${lang}/participate`, label: t('nav.participate'), width: '124px' },
+  { href: `/${lang}/rooms`, label: t('nav.rooms') },
+  { href: `/${lang}/calendar`, label: t('nav.calendar') },
+  { href: `/${lang}/artists`, label: t('nav.people') },
+  { href: `/${lang}/program`, label: t('nav.program') },
+  { href: `/${lang}/participate`, label: t('nav.participate') },
 ];
 ---
 
@@ -35,7 +35,7 @@ const navLinks = [
       <!-- Links -->
       {navLinks.map((link) => (
         <a class="navbar-item" href={link.href}>
-          <h3 style={`width: ${link.width};`}>{link.label}</h3>
+          <h3>{link.label}</h3>
         </a>
       ))}
 
