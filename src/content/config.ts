@@ -36,7 +36,10 @@ const roomsCollection = defineCollection({
         de: z.array(z.string()),
       }).optional(),
     }).optional(),
-    images: z.array(z.string()).optional(),
+    images: z.array(z.object({
+      src: z.string(),
+      caption: bilingualString.optional(),
+    })).optional(),
     sortOrder: z.number().optional(),
   }),
 });

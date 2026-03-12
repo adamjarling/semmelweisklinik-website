@@ -28,6 +28,37 @@ specs:
       - "Moderne Einrichtung"
       - "Beamer verfügbar"
 images:
-  - "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_06.jpg"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_06.jpg"
+    caption:
+      en: "Main room"
+      de: "Hauptraum"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_01.jpg"
+    caption:
+      en: "Side room"
+      de: "Nebenraum"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_02.jpg"
+    caption:
+      en: "Main room"
+      de: "Hauptraum"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_03.jpg"
+    caption:
+      en: "Main room"
+      de: "Hauptraum"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_04.jpg"
+    caption:
+      en: "Side room"
+      de: "Nebenraum"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_05.jpg"
+    caption:
+      en: "Side room"
+      de: "Nebenraum"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_07.jpg"
+    caption:
+      en: "Main room"
+      de: "Hauptraum"
+  - src: "/images/rooms/hybridraum/240616_SWK_Hybridraum_c_Elisabeth_Blum_08.jpg"
+    caption:
+      en: "Main room"
+      de: "Hauptraum"
 sortOrder: 2
 ---

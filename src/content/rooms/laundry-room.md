@@ -25,6 +25,17 @@ specs:
       - "Industrieller Charakter"
       - "Einzigartige Atmosphäre"
 images:
-  - "/images/rooms/waschküche/waschküche-01.jpg"
+  - src: "/images/rooms/waschküche/waschküche-01.jpg"
+    caption:
+      en: "Main room — North window front, east wall with door to storage, south wall"
+      de: "Hauptraum — Nordseitige Fensterfront, Ostwand mit Tür zum Lager, Südwand"
+  - src: "/images/rooms/waschküche/waschküche-02.jpg"
+    caption:
+      en: "Main room — South wall, west wall with connection to entrance room, north window front"
+      de: "Hauptraum — Südwand, Westwand mit Verbindung zum Eingangsraum, nordseitige Fensterfront"
+  - src: "/images/rooms/waschküche/waschküche-03.jpg"
+    caption:
+      en: "Entrance room — Bar/kitchen, opening to main room"
+      de: "Eingangsraum — Bar/Küche, Öffnung zum Hauptraum"
 sortOrder: 3
 ---

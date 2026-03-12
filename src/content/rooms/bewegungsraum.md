@@ -28,8 +28,17 @@ specs:
       - "Holzparkettboden"
       - "Spiegelwand"
 images:
-  - "/images/rooms/bewegungsraum/_x9a7120.jpg"
-  - "/images/rooms/bewegungsraum/_x9a7137.jpg"
-  - "/images/rooms/bewegungsraum/_x9a7143.jpg"
+  - src: "/images/rooms/bewegungsraum/_x9a7120.jpg"
+    caption:
+      en: "Main room — Mirror wall, door to server room, south window front"
+      de: "Hauptraum — Spiegelwand, Tür zum Serverraum, südseitige Fensterfront"
+  - src: "/images/rooms/bewegungsraum/_x9a7137.jpg"
+    caption:
+      en: "Main room — Door to main room, south window"
+      de: "Hauptraum — Tür zum Hauptraum, Südfenster"
+  - src: "/images/rooms/bewegungsraum/_x9a7143.jpg"
+    caption:
+      en: "Adjoining room — Mirror wall, door to server room"
+      de: "Nebenraum — Spiegelwand, Tür zum Serverraum"
 sortOrder: 1
 ---

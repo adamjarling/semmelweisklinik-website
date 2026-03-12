@@ -88,8 +88,27 @@ const displayFeatures = specs?.features?.de;
             images.map((img) => (
               <div>
                 <div class="grid-img-wrapper">
-                  <img class="grid-2col-image" src={img} alt={displayName} />
+                  <img
+                    class="grid-2col-image"
+                    src={img.src}
+                    alt={img.caption?.de ?? displayName}
+                  />
                 </div>
+                {img.caption?.de &&
+                  (() => {
+                    const [title, desc] = img.caption.de.split(" — ");
+                    return (
+                      <p class="mt-10">
+                        <strong>{title}</strong>
+                        {desc && (
+                          <>
+                            <br />
+                            {desc}
+                          </>
+                        )}
+                      </p>
+                    );
+                  })()}
               </div>
             ))
         }

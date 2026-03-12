@@ -25,6 +25,25 @@ specs:
       - "Große Kochtöpfe"
       - "Gewerbeherd"
 images:
-  - "/images/rooms/küche/küche-01.jpg"
+  - src: "/images/rooms/küche/küche-01.jpg"
+    caption:
+      en: "View towards stage, north-facing window front"
+      de: "Blick Richtung Bühne, nordseitige Fensterfront"
+  - src: "/images/rooms/küche/küche-02.jpg"
+    caption:
+      en: "View towards adjoining rooms"
+      de: "Blick Richtung Nebenräume"
+  - src: "/images/rooms/küche/küche-03.jpg"
+    caption:
+      en: "Small space between main room and entrance room"
+      de: "Kleiner Raum zwischen Hauptraum und Eingangsraum"
+  - src: "/images/rooms/küche/küche-04.jpg"
+    caption:
+      en: "View towards entrance room"
+      de: "Blick Richtung Eingangsraum"
+  - src: "/images/rooms/küche/küche-05.jpg"
+    caption:
+      en: "North-facing windows and movable industrial pots"
+      de: "Nordseitige Fenster und fahrbare Industriekochtöpfe"
 sortOrder: 4
 ---
