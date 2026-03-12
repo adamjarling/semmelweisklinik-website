@@ -34,7 +34,7 @@ const displayFeatures = specs?.features?.de;
       {displayTagline && <p class="mt-10">{displayTagline}</p>}
 
       <div class="grid-2col mt-50">
-        <div class="grid-2col-item">
+        <div class="grid-2col-item room-specs">
           {displayLocation && (
             <>
               <h2>{t('rooms.detail_location')}</h2>
@@ -67,7 +67,7 @@ const displayFeatures = specs?.features?.de;
             </>
           )}
 
-          <p class="mt-40">
+          <p class="mt-50 contact-prompt">
             {t('rooms.detail_contact_prompt')}
             <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
           </p>
@@ -88,3 +88,12 @@ const displayFeatures = specs?.features?.de;
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .room-specs > * + * {
+    margin-top: 4px;
+  }
+  .contact-prompt {
+    padding-top: 20px;
+  }
+</style>
