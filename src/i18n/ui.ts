@@ -14,7 +14,7 @@ export const ui = {
       participate: 'PARTICIPATE',
     },
     home: {
-      hero_title: 'CENTER FOR ARTS AND CULTURE SEMMELWEIS\u00ADklinik',
+      hero_title: 'CENTER FOR ARTS AND CULTURE SEMMELWEIS\u00ADKLINIK',
       intro_p1: 'In June 2022, we opened the decentralised Semmelweisklinik art and culture center on the site of the former Ignaz Semmelweis Women\'s Clinic (House 4), a creative interim use of 3,800 m2 currently until the end of 2026. Our self-managed center is intended as a low-threshold space for independent artistic production, inclusive exchange and cooperation as well as education and social action.',
       intro_p2: 'In 40 studios with around 110 artists and cultural operators, seven public event spaces and meeting zones, we explore experimental possibilities for a diverse, robust and sustainable urban society. Joint processes in our microcosm continuously confront us with current socio-political issues such as gender equality, diversity-oriented openness and climate-friendly methods, which we want to address in an artistic and regenerative way.',
       intro_p3: 'Our organisational structure, activities and programmes are characterised by innovative strategies, participatory methods and engagement with society as a whole; we actively network with artists, cultural operators and organisations at local, national and international level.',
@@ -129,7 +129,7 @@ export const ui = {
       participate: 'MITWIRKEN',
     },
     home: {
-      hero_title: 'KUNST- UND KULTUR\u00ADZENTRUM SEMMELWEIS\u00ADklinik',
+      hero_title: 'KUNST- UND KULTUR\u00ADZENTRUM SEMMELWEIS\u00ADKLINIK',
       intro_p1: 'Am Standort der ehemaligen Ignaz-Semmelweis-Frauenklinik (Haus 4) haben wir im Juni 2022 das dezentrale Kunst- und Kulturzentrum Semmelweisklinik eröffnet, eine kreative Zwischennutzung auf 3.800 m2 gegenwärtig bis Ende 2026. Unser selbstverwaltetes Zentrum versteht sich als niederschwelliger Ort für unabhängige künstlerische Produktion, inklusiven Austausch und Kooperationen sowie Bildung und Soziales.',
       intro_p2: 'In 40 Ateliers mit rund 110 Künstler:innen und Kulturakteur:innen, sieben öffentlichen Veranstaltungsräumen, Werkstätten und Begegnungszonen loten wir experimentelle Möglichkeiten aus für eine vielfältige, robuste und zukunftsfähige Stadtgesellschaft. Gemeinsame Prozesse in unserem Mikrokosmos konfrontieren uns ständig mit aktuellen gesellschaftspolitischen Themen wie Gendergerechtigkeit, diversitätsorientierter Öffnung und klimagerechten Methoden, denen wir künstlerisch und regenerativ begegnen möchten.',
       intro_p3: 'Unsere Organisationsstruktur, Aktivitäten und Programme zeichnen sich durch innovative Strategien, partizipative Methoden und die Auseinandersetzung mit der gesamten Gesellschaft aus. Wir vernetzen uns aktiv mit Künstler:innen, Kulturakteur:innen und Organisationen auf lokaler, nationaler und internationaler Ebene.',
