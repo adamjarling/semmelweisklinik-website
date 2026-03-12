@@ -10,7 +10,7 @@ interface Props {
 
 const { name, tagline, slug, image } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const displayName = name[lang as keyof typeof name] || name.de;
+const displayName = name.de;
 const displayTagline = tagline ? (tagline[lang as keyof typeof tagline] || tagline.de) : '';
 ---
 
