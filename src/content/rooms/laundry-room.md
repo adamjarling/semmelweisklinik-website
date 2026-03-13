@@ -4,26 +4,26 @@ name:
   de: "Waschküche"
 tagline:
   en: "Gritty concrete dream"
-  de: "Robuster Betontraum"
+  de: "Ein Traum in Beton"
 location:
-  en: "Basement level"
-  de: "Untergeschoss"
+  en: "Western tract ground floor"
+  de: "Erdgeschoss im Westtrakt"
 description:
-  en: "The Waschküche offers a unique industrial aesthetic with its raw concrete walls and vintage character. Perfect for alternative events, art installations, and atmospheric photo shoots."
-  de: "Die Waschküche bietet eine einzigartige industrielle Ästhetik mit rohen Betonwänden und Vintage-Charakter. Perfekt für alternative Veranstaltungen, Kunstinstallationen und atmosphärische Fotoshootings."
+  en: "The Waschküche offers an industrial aesthetic with its raw concrete walls and vintage character. Perfect for events, art installations, and atmospheric photo shoots."
+  de: "Die Waschküche bietet industrielle Ästhetik mit rohen Betonwänden und Vintage-Charakter. Perfekt für Veranstaltungen, Kunstinstallationen und atmosphärische Fotoshootings."
 specs:
   size:
-    en: "60m²"
-    de: "60m²"
+    en: "127m² (main room) + 53m² (adjoining room)"
+    de: "127m² (Hauptraum) + 53m² (Nebenraum)"
   features:
     en:
-      - "Raw concrete aesthetic"
-      - "Industrial character"
-      - "Unique atmosphere"
+      - "8m high ceiling"
+      - "Smooth concrete floor"
+      - "North-facing window front"
     de:
-      - "Rohe Beton-Ästhetik"
-      - "Industrieller Charakter"
-      - "Einzigartige Atmosphäre"
+      - "8m Raumhöhe"
+      - "Glattgestrichener Beton-Boden"
+      - "Nordseitige Fensterfront"
 images:
   - src: "/images/rooms/waschküche/waschküche-01.jpg"
     caption:
