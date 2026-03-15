@@ -2,7 +2,7 @@
 
 Official website for the **Semmelweisklinik** arts and culture center in Vienna, Austria.
 
-🌐 **Live Demo Site**: [semmelweisklinik-website.netlify.app](https://semmelweisklinik-website.netlify.app/)
+🌐 **Live Site**: [semmelweis-klinik.at](https://www.semmelweis-klinik.at/)
 
 ---
 
@@ -46,7 +46,7 @@ Astro enables this website to be:
 
 - **Blazingly Fast**: Zero JavaScript by default means instant page loads
 - **Content-Focused**: Built-in content collections make managing 30+ artist profiles and room listings effortless
-- **Multilingual**: Native i18n routing supports German (primary) and English seamlessly
+- **Multilingual**: Native i18n routing supports English (primary) and German seamlessly
 - **Developer-Friendly**: Component-based architecture makes updates and maintenance straightforward
 - **SEO Optimized**: Static HTML generation ensures excellent search engine visibility
 - **Image Optimized**: Automatic image optimization with Sharp provides responsive, optimized images
@@ -65,8 +65,8 @@ Astro enables this website to be:
 - **Framework**: [Astro](https://astro.build) v5.17
 - **Image Processing**: Sharp v0.33
 - **Testing**: Vitest + Happy DOM
-- **Deployment**: [Netlify](https://www.netlify.com/) with continuous deployment
-- **Node Version**: Node 20 (pinned for Netlify builds)
+- **Deployment**: GitHub Actions with rsync to production server
+- **Node Version**: Node 20
 
 ---
 
@@ -91,7 +91,7 @@ Astro enables this website to be:
 │   ├── pages/
 │   │   ├── de/           # German pages
 │   │   ├── en/           # English pages
-│   │   └── index.astro   # Homepage (redirects to /de)
+│   │   └── index.astro   # Homepage (redirects to /en)
 │   └── styles/           # Global styles
 ├── astro.config.mjs      # Astro configuration
 └── package.json
@@ -143,21 +143,21 @@ pnpm dev
 
 ## Deployment
 
-The site is automatically deployed to **Netlify** on every push to the `main` branch.
+Every push to the `main` branch automatically triggers a GitHub Actions workflow that builds the site and deploys via rsync to the production server.
 
-**Production URL**: https://semmelweisklinik-website.netlify.app/
+**Production URL**: https://www.semmelweis-klinik.at/
 
 ### Build Configuration
 
 - **Build Command**: `pnpm build`
 - **Publish Directory**: `dist`
-- **Node Version**: 20.x (specified in package.json)
+- **Node Version**: 20.x
 
 ---
 
 ## Contact
 
-**Website**: [semmelweisklinik-website.netlify.app](https://semmelweisklinik-website.netlify.app/) Questions? adam.arling@semmelweisklinik.at
+**Website**: [semmelweis-klinik.at](https://www.semmelweis-klinik.at/) Questions? adam.arling@semmelweisklinik.at
 
 **General Inquiries**: info@semmelweisklinik.at
 

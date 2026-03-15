@@ -1,8 +1,9 @@
 name: Build & Deploy to Production
 
-# Manually triggered from GitHub Actions UI (Actions tab → select workflow → Run workflow)
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
