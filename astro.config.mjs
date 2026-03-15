@@ -5,7 +5,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   integrations: [sitemap()],
   site: 'https://www.semmelweis-klinik.at', // Your domain
-  base: process.env.DEPLOY_BASE || undefined,
   output: "static",
   i18n: {
     defaultLocale: "en",
