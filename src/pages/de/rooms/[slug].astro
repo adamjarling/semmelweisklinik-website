@@ -27,7 +27,7 @@ const displayCapacity = specs?.capacity?.de;
 const displayFeatures = specs?.features?.de;
 ---
 
-<BaseLayout title={`Semmelweisklinik • ${displayName}`}>
+<BaseLayout title={`Semmelweisklinik • ${displayName}`} description={displayDescription} ogImage={images?.[0]?.src}>
   <div class="page-wrapper">
     <div class="content container-wide">
       <h1 class="hero-title">{displayName}</h1>

@@ -20,9 +20,15 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { name, location, email, phone, website, instagram, facebook, profileImage, galleryImages } = artist.data;
+
+const artistDescription = artist.body
+  ?.replace(/[#*_`[\]()!]/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+  .slice(0, 160);
 ---
 
-<BaseLayout title={`Semmelweisklinik • ${name}`}>
+<BaseLayout title={`Semmelweisklinik • ${name}`} description={artistDescription} ogImage={profileImage}>
   <ImageViewer />
   <div class="page-wrapper">
     <div class="content container-wide">

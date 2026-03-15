@@ -6,7 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<BaseLayout title={`Semmelweisklinik • ${t('nav.calendar')}`}>
+<BaseLayout title={`Semmelweisklinik • ${t('nav.calendar')}`} description={t('calendar.description') as string}>
   <div class="page-wrapper">
     <div class="content container-wide">
       <h1 class="hero-title mb-25">{t('calendar.title')}</h1>

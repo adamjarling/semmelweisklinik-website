@@ -97,6 +97,7 @@ export const ui = {
     },
     calendar: {
       title: 'CALENDAR',
+      description: 'Browse upcoming events, workshops, open studios, and performances at the Semmelweisklinik Center for Arts and Culture in Vienna.',
     },
     newsletter: {
       title: 'NEWSLETTER',
@@ -107,6 +108,7 @@ export const ui = {
     },
     participate: {
       title: 'PARTICIPATE',
+      description: 'Become part of the Semmelweisklinik community — volunteer, donate, join events, or get involved with our arts and culture center in Vienna.',
     },
     program: {
       title: 'PROGRAM',
@@ -209,6 +211,7 @@ export const ui = {
     },
     calendar: {
       title: 'KALENDER',
+      description: 'Alle kommenden Veranstaltungen, Workshops, Open Studios und Aufführungen im Kunst- und Kulturzentrum Semmelweisklinik Wien.',
     },
     newsletter: {
       title: 'NEWSLETTER',
@@ -219,6 +222,7 @@ export const ui = {
     },
     participate: {
       title: 'MITWIRKEN',
+      description: 'Werde Teil der Semmelweisklinik-Gemeinschaft — als Ehrenamtliche:r, Spender:in, bei Veranstaltungen oder als aktives Mitglied unseres Kunst- und Kulturzentrums.',
     },
     program: {
       title: 'PROGRAMM',

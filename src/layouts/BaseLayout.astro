@@ -8,6 +8,7 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const lang = getLangFromUrl(Astro.url);
@@ -15,7 +16,8 @@ const t = useTranslations(lang);
 
 const {
   title = t('head.title') as string,
-  description = t('head.description') as string
+  description = t('head.description') as string,
+  ogImage,
 } = Astro.props;
 
 const siteBase = Astro.site?.toString().replace(/\/$/, '') ?? '';
@@ -24,7 +26,31 @@ const canonicalUrl = `${siteBase}${currentPath}`;
 const enUrl = `${siteBase}${currentPath.replace(/^\/(de|en)/, '/en')}`;
 const deUrl = `${siteBase}${currentPath.replace(/^\/(de|en)/, '/de')}`;
 const ogLocale = lang === 'de' ? 'de_AT' : 'en_US';
-const ogImageUrl = `${siteBase}/images/og-default.jpg`;
+const ogImageUrl = ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteBase}${ogImage}`) : `${siteBase}/images/og-default.jpg`;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  "name": "Semmelweisklinik",
+  "alternateName": "Kunst- und Kulturzentrum Semmelweisklinik",
+  "url": siteBase,
+  "logo": `${siteBase}/svg/logo.svg`,
+  "image": `${siteBase}/images/og-default.jpg`,
+  "description": "Center for Arts and Culture in Vienna, Austria. 40 studios with 110+ artists and cultural operators, event spaces, workshops, and meeting zones.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hockegasse 37, Haus 4",
+    "addressLocality": "Vienna",
+    "postalCode": "1180",
+    "addressCountry": "AT"
+  },
+  "email": "info@semmelweisklinik.at",
+  "sameAs": [
+    "https://www.instagram.com/semmelweisklinik/",
+    "https://www.facebook.com/zwischenkulturwien",
+    "https://www.linkedin.com/company/semmelweisklinik"
+  ]
+};
 ---
 
 <!doctype html>
@@ -55,6 +81,8 @@ const ogImageUrl = `${siteBase}/images/og-default.jpg`;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <!-- Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   </head>
   <body>
     <Header>
