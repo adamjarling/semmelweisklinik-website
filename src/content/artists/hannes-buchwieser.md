@@ -15,7 +15,9 @@ galleryImages:
   - "/images/artists/preview/Hannes_Buchwieser_09.jpg"
 ---
 
-Hannes Buchwieser (*1986, Garmisch-Partenkirchen, Germany) is a Vienna-based video artist and experimental musician whose work explores the relationship between individuals, modern societal structures, and technology. His practice spans video art, interactive installations, experimental music, and long-term collaborations at the Ars Electronica Center in Linz. With a background in Time-Based and Interactive Media Art from the University of Art Linz, he works across disciplines to challenge perceptions and foster dialogue between art, technology, and society.
+Hannes Buchwieser (\*1986, Garmisch-Partenkirchen, Germany) is a Vienna-based video artist and experimental musician whose work explores the relationship between individuals, modern societal structures, and technology. His practice spans video art, interactive installations, experimental music, and long-term collaborations at the Ars Electronica Center in Linz. With a background in Time-Based and Interactive Media Art from the University of Art Linz, he works across disciplines to challenge perceptions and foster dialogue between art, technology, and society.
+
+[Works at Ars Electronica Center 2022-2026](https://ars.electronica.art/center/de/small-spaces-large-issues/)
 
 Since 2022, Buchwieser has focused on merging microscopy and media art in his ongoing art-and-science project, developed within the BioLab at Ars Electronica. His work includes programming, Deep Space dance performances, video art, and interactive installations.
 

@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "happy-dom": "^20.4.0",
+    "rehype-external-links": "^3.0.0",
     "vitest": "^4.0.18"
   }
 }
