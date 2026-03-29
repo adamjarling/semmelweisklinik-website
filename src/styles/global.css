@@ -177,6 +177,9 @@ ul {
 .artist-info-container {
     max-width: 660px;
 }
+.artist-info-container p + p {
+    margin-top: 1em;
+}
 .artist-location-row {
     margin-top: -20px;
 }
