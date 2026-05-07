@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Semmelweisklinik • Spontane Raumnutzung"
+  description="Interne Anleitung zur spontanen Nutzung der Semmelweisklinik-Räume für Hausmitglieder."
+>
+  <div class="page-wrapper">
+    <div class="content container-narrow">
+
+      <h1 class="hero-title">SPONTANE RAUMNUTZUNG</h1>
+      <p class="subtitle mt-20">HOW TO</p>
+
+      <h2 class="mt-50">Intro :: Einleitung :: Awareness</h2>
+      <p class="mt-20">
+        Die Semmelweisklinik ist auf die Vermietung der Veranstaltungsräume angewiesen, denn die Einnahmen der Ateliers decken die Gesamtkosten des Hauses nicht. Ergo: das zusätzliche Einmietungen stattfinden und funktionieren ist für uns wichtig.
+      </p>
+      <p class="mt-20 but-label">ABER</p>
+      <p class="mt-20">
+        wenn die Räume nicht vermietet sind, bringt es auch niemandem etwas wenn sie leer stehen, also lasst sie uns nutzen. <strong>Und zwar gratis. Kein Aufwand, keine Kosten.</strong>
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>Bedingungen</h2>
+      <ul class="mt-20">
+        <li>Räume können <strong>max. 1 Woche im Vorhinein</strong> reserviert werden</li>
+        <li>
+          <strong>Keine öffentlichen Veranstaltungen</strong>
+          <span class="sub-note">(dafür braucht es aus rechtlichen Gründen einen Vertrag)</span>
+        </li>
+        <li>
+          <strong>Keine Veränderung der Räumlichkeiten</strong>
+          <span class="sub-note">(alles was aufgebaut wird muss unmittelbar nach der Nutzung wieder abgebaut werden)</span>
+        </li>
+        <li><span class="highlight-item"><strong>Achtet auf die Lautstärke!</strong></span></li>
+        <li>Keine stark ziehenden Geräte <strong>(&gt; 1.000 W)</strong></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2>Und wie geht das jetzt konkret :: Schritt-für-Schritt Anleitung</h2>
+
+      <ol class="mt-20 steps-list">
+        <li>
+          <strong>Kalender checken,</strong> ob der gewünschte Raum zum gewünschten Zeitpunkt frei ist. Wenn ja: reservieren:
+          <br /><a href="https://kalender.digital/1d670462e848c0d7b0d0" target="_blank" rel="noopener noreferrer" class="calendar-link mt-10">kalender.digital/1d670462e848c0d7b0d0</a>
+          <ul class="mt-10">
+            <li><strong>Titel</strong> = dein Name + PRIVAT (falls du ungestört bleiben willst)</li>
+            <li><strong>Beschreibung</strong> = deine TelNr + was auch immer du noch sagen willst</li>
+            <li><strong>Zeitraum</strong> – bitte „ganzer Tag" wegklicken und Uhrzeit angeben</li>
+            <li><strong>Unterkalender</strong> = Raum wählen</li>
+          </ul>
+          <div class="callout mt-20">
+            <p><strong>Achtung:</strong> Folgende Räume hängen lautstärkentechnisch miteinander zusammen und brauchen extra Aufmerksamkeit bzw. können nicht gleichzeitig genutzt werden:</p>
+            <ul class="mt-10">
+              <li>Waschküche + UG West</li>
+              <li>UG West / Bandland + Bewegungsraum</li>
+              <li>Bewegungsraum + Bar</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="mt-20">
+          <span class="highlight-item"><strong>Am Tag davor nochmal reinschauen,</strong></span> ob vielleicht doch noch etwas eingebucht wurde. Eingebuchte (= gezahlte) Buchungen (erkennbar als <em>Busy</em>) <strong><u>gehen IMMER vor</u></strong> — das Booking Team arbeitet in einem anderen Kalender und sieht die Eintragungen in diesem gar nicht.
+        </li>
+
+        <li class="mt-20">
+          <span class="highlight-item"><strong>Den Raum sauber hinterlassen!</strong></span> Mindestens so sauber wie vor der Verwendung, besser noch sauberer. Putzzeug findest du im Ost+Mitteltrakt bei den Toiletten und im Westen in der neuen Garderobe (neben den 2 älteren WCs). Gebt dem Raum etwas zurück!
+        </li>
+
+        <li class="mt-20">
+          <strong>Spenden:</strong> Wenn es euch möglich ist, oder z. B. externe Personen den Raum mit euch nutzen, bitte werft etwas in die Spendenbox. Wir werden in jedem Raum eine aufstellen. Wenn ihr noch keine seht, stellt gerne eine rein!
+        </li>
+      </ol>
+
+      <p class="mt-30 info-note">
+        Das UG West kann erst nach einer <strong>technischen Einschulung</strong> genutzt werden. Einschulungstermine werden im Telegram Infochannel ausgeschrieben.
+      </p>
+
+      <p class="mt-30"><span class="highlight-item">Sollte dem Haus durch deine Nutzung ein Mehraufwand entstehen (sollte der Raum z. B. nach der Nutzung nicht leer oder sauber sein) und jemand anderer muss diese Arbeit für dich machen, wird das nach <strong>Fairpay-Richtlinien</strong> verrechnet!</span></p>
+
+      <div class="mt-80"></div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .subtitle {
+    font-family: "Lexend Regular", sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .but-label {
+    font-size: 28px;
+    font-family: "Lexend Semibold", sans-serif;
+    letter-spacing: 2px;
+  }
+
+  ul, ol {
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-top: 10px;
+  }
+
+  .sub-note {
+    display: block;
+    font-size: 15px;
+    opacity: 0.65;
+    margin-top: 2px;
+    padding-left: 0.5em;
+  }
+
+  .highlight-item {
+    background: rgba(255, 220, 0, 0.3);
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+
+  .calendar-link {
+    display: inline-block;
+    font-family: "Lexend Regular", sans-serif;
+    font-size: 15px;
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    word-break: break-all;
+  }
+
+  .callout {
+    background: rgba(0, 0, 0, 0.04);
+    border-left: 3px solid black;
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout p,
+  .callout li {
+    font-size: 16px;
+  }
+
+  .info-note {
+    font-size: 16px;
+    opacity: 0.75;
+    font-style: italic;
+  }
+
+</style>
