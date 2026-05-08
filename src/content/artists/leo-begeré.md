@@ -1,6 +1,5 @@
 ---
 name: "Leo Begeré"
-email: "contact@example.com"
 phone: "+43 681 10 49 21 12"
 instagram: "https://www.instagram.com/zucker_mapa/"
 website: "http://eepurl.com/hBzXZ5"
