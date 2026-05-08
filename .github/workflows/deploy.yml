@@ -24,12 +24,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: "22"
+          cache: "pnpm"
 
       # Step 4: Install dependencies using the lockfile (no accidental upgrades)
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --allow-scripts
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       # Step 5: Build the Astro static site → output goes to dist/
       - name: Build Astro site
