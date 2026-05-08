@@ -20,11 +20,11 @@ jobs:
         with:
           version: latest
 
-      # Step 3: Setup Node.js 20 with pnpm cache for faster installs
+      # Step 3: Setup Node.js 22 with pnpm cache for faster installs
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'pnpm'
 
       # Step 4: Install dependencies using the lockfile (no accidental upgrades)
