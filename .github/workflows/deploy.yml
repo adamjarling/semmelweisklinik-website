@@ -29,7 +29,7 @@ jobs:
 
       # Step 4: Install dependencies using the lockfile (no accidental upgrades)
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --allow-scripts
 
       # Step 5: Build the Astro static site → output goes to dist/
       - name: Build Astro site
