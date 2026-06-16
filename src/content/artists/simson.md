@@ -2,7 +2,6 @@
 name: "Simson"
 profileImage: "/images/artists/preview/Simson_01.jpg"
 galleryImages:
-  - "/images/artists/original/Simson_01.jpg"
   - "/images/artists/original/Simson_02.jpg"
   - "/images/artists/original/Simson_03.jpg"
 sortOrder: 23

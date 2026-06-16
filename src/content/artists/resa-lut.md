@@ -6,9 +6,9 @@ phone: "0664/393513"
 instagram: "https://www.instagram.com/resa.leuchtkraft.lut/"
 profileImage: "/images/artists/preview/Resa_Lut_01.jpg"
 galleryImages:
-  - "/images/artists/original/Resa_Lut_01.jpg"
   - "/images/artists/original/Resa_Lut_02.jpg"
   - "/images/artists/original/Resa_Lut_03.jpg"
+  - "/images/artists/original/Resa_Lut_04.jpg"
 sortOrder: 21
 ---
 
