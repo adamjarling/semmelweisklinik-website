@@ -17,9 +17,8 @@ const { room } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { name, tagline, location, description, specs, images } = room.data;
+const { name, location, description, specs, images } = room.data;
 const displayName = name.de;
-const displayTagline = tagline?.en;
 const displayLocation = location?.en;
 const displayDescription = description?.en;
 const displaySize = specs?.size?.en;
@@ -76,12 +75,14 @@ const displayFeatures = specs?.features?.en;
           }
         </div>
 
-        <p class="">
-          {t("rooms.detail_contact_prompt")}
-          <a href="mailto:programm@semmelweisklinik.at"
-            >programm@semmelweisklinik.at</a
-          >
-        </p>
+        <div>
+          <p><strong>{t("rooms.detail_contact_prompt")}</strong></p>
+          <p class="mt-10">
+            <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=k4T7IDJCqkGd0n-P_3sfEFN5efuep7RNp8DZIoA20jBUNVZaVERaTFRaQjlTTFc3UEJaQlNJQk1VVS4u&route=shorturl" target="_blank" rel="noopener noreferrer">
+              {t("rooms.detail_reserve_cta")} {displayName}
+            </a>
+          </p>
+        </div>
 
         {
           images &&
@@ -112,6 +113,19 @@ const displayFeatures = specs?.features?.en;
               </div>
             ))
         }
+      </div>
+
+      <div class="mt-50">
+        <h2 class="mb-25">{t('rooms.calendar_title')}</h2>
+        <p>{t('rooms.calendar_coming_soon')}</p>
+        {/* <iframe
+          src="https://kalender.digital/1d670462e848c0d7b0d0"
+          width="100%"
+          height="600"
+          frameborder="0"
+          loading="lazy"
+          title="Room booking calendar"
+        ></iframe> */}
       </div>
     </div>
   </div>
