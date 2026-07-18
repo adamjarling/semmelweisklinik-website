@@ -69,7 +69,14 @@ const slides = [
     }
   }
 
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', initSlideshow);
+  // This script is a deferred ES module, so the DOM may already be parsed
+  // by the time it runs — in which case DOMContentLoaded has already fired
+  // and a listener added now would never run. Initialize immediately if so.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlideshow);
+  } else {
+    initSlideshow();
+  }
+  // Re-initialize after client-side (View Transitions) navigations.
   document.addEventListener('astro:page-load', initSlideshow);
 </script>

@@ -101,6 +101,13 @@ const slides = [start2, start3, start4];
     setSlidesAtPosition(slidePosition);
   }
 
-  document.addEventListener('DOMContentLoaded', initCarousel);
+  // Deferred module scripts run after the DOM is parsed, so DOMContentLoaded
+  // may have already fired; initialize immediately if the DOM is ready.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
+  // Re-initialize after client-side (View Transitions) navigations.
   document.addEventListener('astro:page-load', initCarousel);
 </script>

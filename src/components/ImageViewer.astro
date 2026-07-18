@@ -51,9 +51,13 @@
     });
   }
 
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', initImageViewer);
-
-  // Re-initialize on Astro page transitions
+  // Deferred module scripts run after the DOM is parsed, so DOMContentLoaded
+  // may have already fired; initialize immediately if the DOM is ready.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initImageViewer);
+  } else {
+    initImageViewer();
+  }
+  // Re-initialize on Astro page transitions.
   document.addEventListener('astro:page-load', initImageViewer);
 </script>
