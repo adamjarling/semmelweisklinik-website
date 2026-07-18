@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ImageViewer from '../../../components/ImageViewer.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 
 export const prerender = true;
@@ -9,13 +9,13 @@ export const prerender = true;
 export async function getStaticPaths() {
   const artists = await getCollection('artists');
   return artists.map((artist) => ({
-    params: { slug: artist.slug },
+    params: { slug: artist.id },
     props: { artist },
   }));
 }
 
 const { artist } = Astro.props;
-const { Content } = await artist.render();
+const { Content } = await render(artist);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 

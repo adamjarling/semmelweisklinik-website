@@ -16,7 +16,7 @@ export default defineConfig({
     defaultLocale: "en",
     locales: ["en", "de"],
     routing: {
-      prefixDefaultLocale: false, // 'en' has no prefix (root), 'de' is at /de
+      prefixDefaultLocale: true, // both locales are prefixed: 'en' at /en, 'de' at /de ('/' redirects to /en)
     },
   },
 });

@@ -1,7 +1,8 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const artistsCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/artists' }),
   schema: z.object({
     name: z.string(),
     location: z.string().optional(),
@@ -22,7 +23,7 @@ const bilingualString = z.object({
 });
 
 const roomsCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/rooms' }),
   schema: z.object({
     name: bilingualString,
     tagline: bilingualString.optional(),

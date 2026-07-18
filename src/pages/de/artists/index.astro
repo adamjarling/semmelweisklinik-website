@@ -21,7 +21,7 @@ const sortedArtists = artists.sort((a, b) =>
         {sortedArtists.map((artist) => (
           <ArtistCard
             name={artist.data.name}
-            slug={artist.slug}
+            slug={artist.id}
             profileImage={artist.data.profileImage}
           />
         ))}
