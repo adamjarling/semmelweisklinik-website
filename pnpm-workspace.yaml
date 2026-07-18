@@ -1,0 +1,14 @@
+# pnpm reads project-wide settings from here (pnpm 10.16+, required by pnpm 11).
+#
+# minimumReleaseAge is pnpm's supply-chain "release cooldown": it refuses to
+# install any package version published more recently than N minutes ago.
+# pnpm 11 enables a ~1-day default, which rejected freshly published transitive
+# deps (e.g. astro@7.1.1) during `pnpm install --frozen-lockfile` in CI and
+# broke the build. Set to 0 to disable the cooldown.
+#
+# To re-enable a real cooldown instead, set minutes (e.g. 1440 = 1 day) and add:
+#   minimumReleaseAgeExclude:
+#     - astro
+#     - sharp
+#     - "@img/*"
+minimumReleaseAge: 0
