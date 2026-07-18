@@ -1,6 +1,6 @@
 ---
 name: "Yoram Rosilio"
-location: "Mitteltrakt, 1. Stock"
+location: "Westtrakt, 2. Stock Ecke"
 profileImage: "/images/artists/preview/Yoram_Rosilio_Foto_01.jpg"
 sortOrder: 30
 ---
