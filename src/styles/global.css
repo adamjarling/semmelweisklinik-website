@@ -401,6 +401,7 @@ a:hover {
 /* --- EVENT BANNER --- */
 .event-banner {
     margin-top: 60px;
+    margin-bottom: 160px;
 }
 .event-banner-inner {
     display: flex;

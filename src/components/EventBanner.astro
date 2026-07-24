@@ -6,15 +6,16 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const flyerHref = '/images/sommerfest2026_flyer.webp';
+const flyerSrc = '/images/sommerfest2026_flyer.webp';
+const bookletHref = '/pdf/' + encodeURIComponent('Broschuere_Booklet KUP 2026 WEB.pdf');
 ---
 
 <div class="container event-banner">
   <div class="event-banner-inner">
-    <a href={flyerHref} target="_blank" rel="noopener noreferrer" class="naked-link event-banner-image-link">
+    <a href={bookletHref} target="_blank" rel="noopener noreferrer" class="naked-link event-banner-image-link">
       <img
         class="event-banner-image"
-        src={flyerHref}
+        src={flyerSrc}
         alt={t('home.event_alt')}
         width="896"
         height="1146"
@@ -26,7 +27,7 @@ const flyerHref = '/images/sommerfest2026_flyer.webp';
       <h2 class="event-banner-title">{t('home.event_title')}</h2>
       <p class="event-banner-subtitle">{t('home.event_subtitle')}</p>
       <p class="event-banner-details">{t('home.event_dates')}<br />{t('home.event_location')}</p>
-      <a class="event-banner-cta" href={flyerHref} target="_blank" rel="noopener noreferrer">
+      <a class="event-banner-cta" href={bookletHref} target="_blank" rel="noopener noreferrer">
         {t('home.event_cta')} →
       </a>
     </div>
