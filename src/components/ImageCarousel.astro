@@ -1,104 +1,114 @@
 ---
 // ImageCarousel.astro
-// Manual carousel with arrow navigation
+// Sliding carousel with arrow navigation. Uses a seamless-loop track: a
+// clone of the last slide is prepended and a clone of the first slide is
+// appended, so there is always a neighbor to slide into view in either
+// direction. After each slide-into-a-clone transition finishes, the track
+// jumps (without a transition) back onto the matching real slide — the
+// jump is invisible because the clone and the real slide are identical.
 import { Image } from 'astro:assets';
 
 import start2 from '../assets/images/start/start-2.jpg';
 import start3 from '../assets/images/start/start-3.jpg';
 import start4 from '../assets/images/start/start-4.jpg';
 
-const slides = [start2, start3, start4];
+const slides = [
+  { image: start2, alt: 'Semmelweisklinik space 1' },
+  { image: start3, alt: 'Semmelweisklinik space 2' },
+  { image: start4, alt: 'Semmelweisklinik space 3' },
+];
+
+const loopSlides = [slides[slides.length - 1], ...slides, slides[0]];
 ---
 
 <div class="wide-slideshow-container">
-  <img
-    class="wide-slideshow-left-button"
-    src="/svg/white-box-arrow-left.svg"
-    alt="Previous"
-  />
-  <img
-    class="wide-slideshow-right-button"
-    src="/svg/white-box-arrow-right.svg"
-    alt="Next"
-  />
+  <button type="button" class="wide-slideshow-arrow wide-slideshow-left-button" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+      <path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <button type="button" class="wide-slideshow-arrow wide-slideshow-right-button" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+      <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
   <div class="wide-slideshow">
-    <Image
-      src={slides[0]}
-      alt="Semmelweisklinik space 1"
-      class="wide-slideshow-image-1"
-      widths={[400, 600, 800]}
-      sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      data-index="0"
-    />
-    <Image
-      src={slides[1]}
-      alt="Semmelweisklinik space 2"
-      class="wide-slideshow-image-2"
-      widths={[400, 600, 800]}
-      sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      data-index="1"
-    />
-    <Image
-      src={slides[2]}
-      alt="Semmelweisklinik space 3"
-      class="wide-slideshow-image-3"
-      widths={[400, 600, 800]}
-      sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      data-index="2"
-    />
+    <div class="wide-slideshow-track">
+      {loopSlides.map((slide, i) => (
+        <Image
+          src={slide.image}
+          alt={slide.alt}
+          class="wide-slideshow-slide"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          aria-hidden={i === 0 || i === loopSlides.length - 1 ? 'true' : undefined}
+        />
+      ))}
+    </div>
   </div>
 </div>
 
-<script define:vars={{ slideUrls: slides.map(s => s.src) }}>
+<script>
   function initCarousel() {
-    const listOfSlides = slideUrls;
-    const numOfSlides = listOfSlides.length;
-    let slidePosition = 0;
+    const container = document.querySelector('.wide-slideshow-container');
+    if (!container) return;
 
-    const image1 = document.querySelector('.wide-slideshow-image-1');
-    const image2 = document.querySelector('.wide-slideshow-image-2');
-    const image3 = document.querySelector('.wide-slideshow-image-3');
-    const leftButton = document.querySelector('.wide-slideshow-left-button');
-    const rightButton = document.querySelector('.wide-slideshow-right-button');
+    const track = container.querySelector('.wide-slideshow-track');
+    const leftButton = container.querySelector('.wide-slideshow-left-button');
+    const rightButton = container.querySelector('.wide-slideshow-right-button');
+    if (!track || !leftButton || !rightButton) return;
 
-    if (!image1 || !leftButton || !rightButton) return;
+    const slideEls = Array.from(track.children);
+    const realCount = slideEls.length - 2; // exclude the leading/trailing clones
+    let position = 1; // index into slideEls; 1 is the first real slide
+    let isAnimating = false;
 
-    function setSlidesAtPosition(pos) {
-      let firstSlideIndex = pos % numOfSlides;
-      if (firstSlideIndex < 0) firstSlideIndex += numOfSlides;
-
-      let secondSlideIndex = (pos + 1) % numOfSlides;
-      if (secondSlideIndex < 0) secondSlideIndex += numOfSlides;
-
-      let thirdSlideIndex = (pos + 2) % numOfSlides;
-      if (thirdSlideIndex < 0) thirdSlideIndex += numOfSlides;
-
-      if (image1) image1.setAttribute('src', listOfSlides[firstSlideIndex]);
-      if (image2) image2.setAttribute('src', listOfSlides[secondSlideIndex]);
-      if (image3) image3.setAttribute('src', listOfSlides[thirdSlideIndex]);
+    function stepWidth() {
+      if (slideEls.length < 2) return 0;
+      return slideEls[1].offsetLeft - slideEls[0].offsetLeft;
     }
 
-    function slideToLeft() {
-      slidePosition--;
-      if (slidePosition < 0) {
-        slidePosition += numOfSlides;
+    function applyTransform(withTransition) {
+      track.style.transition = withTransition ? '' : 'none';
+      track.style.transform = `translateX(-${stepWidth() * position}px)`;
+      if (!withTransition) {
+        // Force a reflow so the disabled transition takes effect before
+        // it's re-enabled, otherwise the jump itself would animate.
+        void track.offsetHeight;
+        track.style.transition = '';
       }
-      setSlidesAtPosition(slidePosition);
     }
 
-    function slideToRight() {
-      slidePosition++;
-      if (slidePosition >= numOfSlides) {
-        slidePosition -= numOfSlides;
+    function goTo(newPosition) {
+      if (isAnimating) return;
+      isAnimating = true;
+      position = newPosition;
+      applyTransform(true);
+    }
+
+    function handleTransitionEnd(event) {
+      if (event.target !== track || event.propertyName !== 'transform') return;
+      isAnimating = false;
+      if (position === slideEls.length - 1) {
+        position = 1;
+        applyTransform(false);
+      } else if (position === 0) {
+        position = realCount;
+        applyTransform(false);
       }
-      setSlidesAtPosition(slidePosition);
     }
 
-    leftButton.addEventListener('click', slideToLeft);
-    rightButton.addEventListener('click', slideToRight);
+    leftButton.addEventListener('click', () => goTo(position - 1));
+    rightButton.addEventListener('click', () => goTo(position + 1));
+    track.addEventListener('transitionend', handleTransitionEnd);
 
-    // Initialize
-    setSlidesAtPosition(slidePosition);
+    let resizeFrame;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => applyTransform(false));
+    });
+
+    applyTransform(false);
   }
 
   // Deferred module scripts run after the DOM is parsed, so DOMContentLoaded
