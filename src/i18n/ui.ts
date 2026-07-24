@@ -28,6 +28,7 @@ export const ui = {
       social_facebook: 'Facebook',
       social_location: 'Location',
       social_events: 'Events',
+      social_patreon: 'Patreon',
       partners_title: 'OUR PARTNERS',
     },
     footer: {
@@ -146,6 +147,7 @@ export const ui = {
       social_facebook: 'Facebook',
       social_location: 'Anfahrt',
       social_events: 'Events',
+      social_patreon: 'Patreon',
       partners_title: 'UNSERE KOOPERATIONS\u00ADPARTNER:INNEN',
     },
     footer: {
