@@ -397,6 +397,64 @@ a:hover {
 .info-section-separator {
     border-left: 2px solid black;
 }
+
+/* --- EVENT BANNER --- */
+.event-banner {
+    margin-top: 60px;
+}
+.event-banner-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    border: 2px solid black;
+    padding: 30px;
+}
+.event-banner-image-link {
+    flex: 0 0 220px;
+}
+.event-banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.event-banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+}
+.event-banner-badge {
+    display: inline-block;
+    width: fit-content;
+    background: black;
+    color: white;
+    font-family: 'Lexend Semibold', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+}
+.event-banner-title {
+    font-family: 'Lexend ExtraLight', sans-serif;
+    font-size: 36px;
+    margin: 0;
+}
+.event-banner-subtitle {
+    font-family: 'Lexend Light', sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+.event-banner-details {
+    font-family: 'Lexend Light', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+.event-banner-cta {
+    font-family: 'Lexend Regular', sans-serif;
+    font-size: 16px;
+    text-decoration: underline;
+    width: fit-content;
+}
 .wide-slideshow-container {
     position: relative;
     width: 100%;
@@ -664,6 +722,20 @@ a:hover {
     }
     .new-only-mobile {
         display: block;
+    }
+    .event-banner-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .event-banner-image-link {
+        flex-basis: auto;
+        width: min(220px, 60vw);
+    }
+    .event-banner-text {
+        align-items: center;
     }
     .footer-logo {
         height: 60px;
