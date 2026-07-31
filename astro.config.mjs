@@ -10,7 +10,7 @@ export default defineConfig({
       [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
     ],
   },
-  site: 'https://www.semmelweis-klinik.at', // Your domain
+  site: 'https://www.semmelweisklinik.at', // Your domain
   output: "static",
   i18n: {
     defaultLocale: "en",

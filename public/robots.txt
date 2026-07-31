@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.semmelweis-klinik.at/sitemap-index.xml
+Sitemap: https://www.semmelweisklinik.at/sitemap-index.xml

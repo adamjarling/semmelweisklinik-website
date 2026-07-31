@@ -2,7 +2,7 @@
 
 Official website for the **Semmelweisklinik** arts and culture center in Vienna, Austria.
 
-🌐 **Live Site**: [semmelweis-klinik.at](https://www.semmelweis-klinik.at/)
+🌐 **Live Site**: [semmelweisklinik.at](https://www.semmelweisklinik.at/)
 
 ---
 
@@ -145,7 +145,7 @@ pnpm dev
 
 Every push to the `main` branch automatically triggers a GitHub Actions workflow that builds the site and deploys via rsync to the production server.
 
-**Production URL**: https://www.semmelweis-klinik.at/
+**Production URL**: https://www.semmelweisklinik.at/
 
 ### Build Configuration
 
@@ -157,7 +157,7 @@ Every push to the `main` branch automatically triggers a GitHub Actions workflow
 
 ## Contact
 
-**Website**: [semmelweis-klinik.at](https://www.semmelweis-klinik.at/) Questions? adam.arling@semmelweisklinik.at
+**Website**: [semmelweisklinik.at](https://www.semmelweisklinik.at/) Questions? adam.arling@semmelweisklinik.at
 
 **General Inquiries**: info@semmelweisklinik.at
 
