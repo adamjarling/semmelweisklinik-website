@@ -36,6 +36,17 @@ Structured content lives in `src/content/` with Zod schemas defined in `src/cont
 
 Dynamic pages use `getStaticPaths()` to enumerate all collection entries and render both language variants.
 
+### Feature Flags
+
+`src/config/reservation.ts` holds a build-time toggle for the room reservation form:
+
+- `RESERVATION_FORM_ENABLED` — when `true`, room detail pages show the Microsoft Forms "click here to reserve" link; when `false`, they fall back to a `mailto:programm@semmelweisklinik.at` prompt (`rooms.detail_email_prompt`)
+- `RESERVATION_FORM_URL` — the Microsoft Forms URL, parked here so it can be restored unchanged
+
+**Currently disabled** (since 2026-08-05): the form accepts submissions without error, but nobody has traced where responses land inside the `semmelweisklinik.at` Microsoft 365 tenant. To re-enable, flip `RESERVATION_FORM_ENABLED` to `true` — that is the only edit needed, since both `src/pages/en/rooms/[slug].astro` and `src/pages/de/rooms/[slug].astro` read it.
+
+Astro evaluates the flag at build time, so the disabled branch emits nothing and the form URL never reaches the built HTML.
+
 ### Layout & Components
 
 All pages use `src/layouts/BaseLayout.astro` which wraps content with `<Header>` and `<Footer>` and handles all SEO metadata (canonical URLs, hreflang alternates, Open Graph, JSON-LD structured data).

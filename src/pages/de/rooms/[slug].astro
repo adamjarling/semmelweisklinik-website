@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import { RESERVATION_FORM_ENABLED, RESERVATION_FORM_URL } from "../../../config/reservation";
 
 export const prerender = true;
 
@@ -75,14 +76,28 @@ const displayFeatures = specs?.features?.de;
           }
         </div>
 
-        <div>
-          <p><strong>{t("rooms.detail_contact_prompt")}</strong></p>
-          <p class="mt-10">
-            <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=k4T7IDJCqkGd0n-P_3sfEFN5efuep7RNp8DZIoA20jBUNVZaVERaTFRaQjlTTFc3UEJaQlNJQk1VVS4u&route=shorturl" target="_blank" rel="noopener noreferrer">
-              {t("rooms.detail_reserve_cta")} {displayName}
-            </a>
-          </p>
-        </div>
+        {
+          RESERVATION_FORM_ENABLED ? (
+            <div>
+              <p>
+                <strong>{t("rooms.detail_contact_prompt")}</strong>
+              </p>
+              <p class="mt-10">
+                <a href={RESERVATION_FORM_URL} target="_blank" rel="noopener noreferrer">
+                  {t("rooms.detail_reserve_cta")} {displayName}
+                </a>
+              </p>
+            </div>
+          ) : (
+            <div>
+              <p>
+                {t("rooms.detail_email_prompt")}
+                <br />
+                <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
+              </p>
+            </div>
+          )
+        }
 
         {
           images &&
