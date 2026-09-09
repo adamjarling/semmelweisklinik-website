@@ -37,5 +37,25 @@ images:
     caption:
       en: "Entrance room — Bar/kitchen, opening to main room"
       de: "Eingangsraum — Bar/Küche, Öffnung zum Hauptraum"
+  - src: "/images/rooms/waschküche/360-waschküche-01.jpg"
+    caption:
+      en: "360 degree photo — Set up for an event, view 1"
+      de: "360-Grad-Foto — Bespielt, Ansicht 1"
+  - src: "/images/rooms/waschküche/360-waschküche-02.jpg"
+    caption:
+      en: "360 degree photo — Set up for an event, view 2"
+      de: "360-Grad-Foto — Bespielt, Ansicht 2"
+  - src: "/images/rooms/waschküche/360-waschküche-03.jpg"
+    caption:
+      en: "360 degree photo — Set up for an event, view 3"
+      de: "360-Grad-Foto — Bespielt, Ansicht 3"
+  - src: "/images/rooms/waschküche/360-waschküche-leer.jpg"
+    caption:
+      en: "360 degree photo — Empty room"
+      de: "360-Grad-Foto — Leerer Raum"
+  - src: "/images/rooms/waschküche/360-waschküche-vorraum.jpg"
+    caption:
+      en: "360 degree photo — Anteroom"
+      de: "360-Grad-Foto — Vorraum"
 sortOrder: 3
 ---

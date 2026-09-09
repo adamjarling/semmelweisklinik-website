@@ -57,5 +57,13 @@ images:
     caption:
       en: "Main room — Window front, view towards western entrance area"
       de: "Hauptraum — Fensterfront, Blick auf westseitigen Eingangsbereich"
+  - src: "/images/rooms/hybridraum/360-hybridraum-leer.jpg"
+    caption:
+      en: "360 degree photo — Empty room"
+      de: "360-Grad-Foto — Leerer Raum"
+  - src: "/images/rooms/hybridraum/360-hybridraum-vorraum.jpg"
+    caption:
+      en: "360 degree photo — Anteroom"
+      de: "360-Grad-Foto — Vorraum"
 sortOrder: 2
 ---

@@ -35,5 +35,13 @@ images:
     caption:
       en: "Adjoining room — Door to server room"
       de: "Nebenraum — Tür zum Serverraum"
+  - src: "/images/rooms/bewegungsraum/360-bewegungsraum-01.jpg"
+    caption:
+      en: "360 degree photo — Main room, set up for an event"
+      de: "360-Grad-Foto — Hauptraum, bespielt"
+  - src: "/images/rooms/bewegungsraum/360-bewegungsraum-vorraum.jpg"
+    caption:
+      en: "360 degree photo — Anteroom, unstaged"
+      de: "360-Grad-Foto — Vorraum, unbespielt"
 sortOrder: 1
 ---
