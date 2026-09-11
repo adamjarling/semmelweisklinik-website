@@ -119,6 +119,8 @@ export const ui = {
     program: {
       title: 'PROGRAM',
       learn_more: 'Learn more',
+      calendar_prompt: 'This page only shows a few featured programs. For all upcoming events, check the full calendar.',
+      calendar_cta: 'View calendar',
     },
   },
   de: {
@@ -239,6 +241,8 @@ export const ui = {
     program: {
       title: 'PROGRAMM',
       learn_more: 'Mehr erfahren',
+      calendar_prompt: 'Diese Seite zeigt nur einzelne ausgewählte Programme. Alle kommenden Veranstaltungen findest du im Kalender.',
+      calendar_cta: 'Zum Kalender',
     },
   },
 };

@@ -1,11 +1,20 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <BaseLayout title="Semmelweisklinik • Program">
   <div class="page-wrapper">
     <div class="content container-wide">
       <h1 class="hero-title">PROGRAM</h1>
+      <p class="mt-20">
+        {t('program.calendar_prompt')}
+        <br />
+        <a href={`/${lang}/calendar`}>{t('program.calendar_cta')}</a>
+      </p>
 
       <div class="grid-2col mt-50">
         <div class="grid-2col-item">
