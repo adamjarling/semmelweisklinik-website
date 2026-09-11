@@ -1,11 +1,11 @@
 ---
 // ImageViewer.astro
-// Global lightbox overlay for artist image galleries
+// Global lightbox overlay for image galleries
 // Include this component once in your layout and it will handle
-// all images with the class "artist-detail-image"
+// all images with the class "artist-detail-image" or "room-gallery-image"
 ---
 
-<div class="imageViewerWrapper" style="display: none;">
+<div class="imageViewerWrapper">
   <div class="imageViewerContainer">
     <img class="imageViewerImage" alt="Enlarged view" />
   </div>
@@ -20,12 +20,12 @@
 
     // Close viewer when clicking anywhere
     document.documentElement.addEventListener('click', () => {
-      imageViewerWrapper.style.display = 'none';
+      imageViewerWrapper.classList.remove('is-open');
     });
 
-    // Set up click handlers for all artist detail images
-    const artistImages = document.querySelectorAll('.artist-detail-image');
-    artistImages.forEach((img) => {
+    // Set up click handlers for all lightbox-enabled images
+    const lightboxImages = document.querySelectorAll('.artist-detail-image, .room-gallery-image');
+    lightboxImages.forEach((img) => {
       img.addEventListener('click', (event) => {
         event.stopPropagation();
 
@@ -46,7 +46,7 @@
           imageViewerImage.src = imagePath;
         }
 
-        imageViewerWrapper.style.display = 'block';
+        imageViewerWrapper.classList.add('is-open');
       });
     });
   }

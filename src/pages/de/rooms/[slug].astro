@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ImageViewer from "../../../components/ImageViewer.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
 import { RESERVATION_FORM_ENABLED, RESERVATION_FORM_URL } from "../../../config/reservation";
@@ -28,6 +29,7 @@ const displayFeatures = specs?.features?.de;
 ---
 
 <BaseLayout title={`Semmelweisklinik • ${displayName}`} description={displayDescription} ogImage={images?.[0]?.src}>
+  <ImageViewer />
   <div class="page-wrapper">
     <div class="content container-wide">
       <h1 class="hero-title">{displayName}</h1>
@@ -105,7 +107,7 @@ const displayFeatures = specs?.features?.de;
               <div>
                 <div class="grid-img-wrapper">
                   <img
-                    class="grid-2col-image"
+                    class="grid-2col-image room-gallery-image"
                     src={img.src}
                     alt={img.caption?.de ?? displayName}
                   />
