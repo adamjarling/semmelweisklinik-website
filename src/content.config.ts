@@ -1,6 +1,11 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const bilingualString = z.object({
+  en: z.string(),
+  de: z.string(),
+});
+
 const artistsCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/artists' }),
   schema: z.object({
@@ -11,15 +16,12 @@ const artistsCollection = defineCollection({
     website: z.string().url().optional(),
     instagram: z.string().url().optional(),
     facebook: z.string().url().optional(),
+    github: z.string().url().optional(),
     profileImage: z.string(),
     galleryImages: z.array(z.string()).optional(),
+    bio: bilingualString.optional(),
     sortOrder: z.number().optional(),
   }),
-});
-
-const bilingualString = z.object({
-  en: z.string(),
-  de: z.string(),
 });
 
 const roomsCollection = defineCollection({
