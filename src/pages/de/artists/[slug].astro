@@ -19,9 +19,11 @@ const { Content } = await render(artist);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { name, location, email, phone, website, instagram, facebook, profileImage, galleryImages } = artist.data;
+const { name, location, email, phone, website, instagram, facebook, github, profileImage, galleryImages, bio } = artist.data;
 
-const artistDescription = artist.body
+const bioParagraphs = bio?.[lang].split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+
+const artistDescription = (bio?.[lang] ?? artist.body)
   ?.replace(/[#*_`[\]()!]/g, '')
   .replace(/\s+/g, ' ')
   .trim()
@@ -68,6 +70,13 @@ const artistDescription = artist.body
             </div>
           )}
 
+          {github && (
+            <div class="social-link-row mt-10">
+              <img class="icon-small" src="/svg/link.svg" alt="GitHub" />
+              <p><a href={github} target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            </div>
+          )}
+
           {email && (
             <div class="social-link-row mt-10">
               <img class="icon-21" src="/svg/@.svg" alt="Email" />
@@ -83,7 +92,9 @@ const artistDescription = artist.body
           )}
 
           <div class="mt-20">
-            <Content />
+            {bioParagraphs
+              ? bioParagraphs.map((paragraph) => <p>{paragraph}</p>)
+              : <Content />}
           </div>
         </div>
       </div>
