@@ -1,18 +1,18 @@
 ---
-name: "Hannes Buchwieser"
-location: "Mitteltrakt, 2. Stock links"
-email: "johannes.buchwieser@kunstuni-linz.at"
-instagram: "https://www.instagram.com/jdb_records_vienna/"
-profileImage: "/images/artists/preview/Hannes_Buchwieser_01.jpg"
+name: 'Hannes Buchwieser'
+location: 'Mitteltrakt, 2. Stock links'
+email: 'johannes.buchwieser@kunstuni-linz.at'
+instagram: 'https://www.instagram.com/jdb_records_vienna/'
+profileImage: '/images/artists/preview/Hannes_Buchwieser_01.jpg'
 galleryImages:
-  - "/images/artists/preview/Hannes_Buchwieser_02.jpg"
-  - "/images/artists/preview/Hannes_Buchwieser_03.jpg"
-  - "/images/artists/preview/Hannes_Buchwieser_04.jpg"
-  - "/images/artists/preview/Hannes_Buchwieser_05.jpg"
-  - "/images/artists/preview/Hannes_Buchwieser_06.jpg"
-  - "/images/artists/preview/Hannes_Buchwieser_07.jpg"
-  - "/images/artists/preview/Hannes_Buchwieser_08.jpg"
-  - "/images/artists/preview/Hannes_Buchwieser_09.jpg"
+  - '/images/artists/preview/Hannes_Buchwieser_02.jpg'
+  - '/images/artists/preview/Hannes_Buchwieser_03.jpg'
+  - '/images/artists/preview/Hannes_Buchwieser_04.jpg'
+  - '/images/artists/preview/Hannes_Buchwieser_05.jpg'
+  - '/images/artists/preview/Hannes_Buchwieser_06.jpg'
+  - '/images/artists/preview/Hannes_Buchwieser_07.jpg'
+  - '/images/artists/preview/Hannes_Buchwieser_08.jpg'
+  - '/images/artists/preview/Hannes_Buchwieser_09.jpg'
 ---
 
 Hannes Buchwieser (\*1986, Garmisch-Partenkirchen, Germany) is a Vienna-based video artist and experimental musician whose work explores the relationship between individuals, modern societal structures, and technology. His practice spans video art, interactive installations, experimental music, and long-term collaborations at the Ars Electronica Center in Linz. With a background in Time-Based and Interactive Media Art from the University of Art Linz, he works across disciplines to challenge perceptions and foster dialogue between art, technology, and society.

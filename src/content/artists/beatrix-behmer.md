@@ -1,16 +1,16 @@
 ---
-name: "Beatrix Behmer"
-location: "Mitteltrakt, 1. Stock"
-email: "bea.behmer@hotmail.com"
-instagram: "https://www.instagram.com/beatrix.behmer/"
-profileImage: "/images/artists/preview/Beatrix_Behmer_01.jpg"
+name: 'Beatrix Behmer'
+location: 'Mitteltrakt, 1. Stock'
+email: 'bea.behmer@hotmail.com'
+instagram: 'https://www.instagram.com/beatrix.behmer/'
+profileImage: '/images/artists/preview/Beatrix_Behmer_01.jpg'
 galleryImages:
-  - "/images/artists/preview/Beatrix_Behmer_02.jpg"
-  - "/images/artists/preview/Beatrix_Behmer_03.jpg"
-  - "/images/artists/preview/Beatrix_Behmer_04.jpg"
-  - "/images/artists/preview/Beatrix_Behmer_05.jpg"
-  - "/images/artists/preview/Beatrix_Behmer_06.jpg"
-  - "/images/artists/preview/Beatrix_Behmer_07.jpg"
+  - '/images/artists/preview/Beatrix_Behmer_02.jpg'
+  - '/images/artists/preview/Beatrix_Behmer_03.jpg'
+  - '/images/artists/preview/Beatrix_Behmer_04.jpg'
+  - '/images/artists/preview/Beatrix_Behmer_05.jpg'
+  - '/images/artists/preview/Beatrix_Behmer_06.jpg'
+  - '/images/artists/preview/Beatrix_Behmer_07.jpg'
 ---
 
 Für Beatrix (*Wien, Semmelweisklinik - back to the roots (:) ist Kunst Ausdruck des Selbst, ein Medium der Intuition und der inneren Wahrnehmung. Jedes Bild entsteht aus Energie, Gefühl und dem Fluss des Moments, ungebunden von Logik oder Erwartung. Farbgebung, Form und Technik wandeln sich mit der Zeit und spiegeln die innere Transformation, die subtilen Schwingungen der Seele und das Zusammenspiel von Licht und Schatten im menschlichen Sein.

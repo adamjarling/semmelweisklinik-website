@@ -1,8 +1,7 @@
 ---
-name: "Yoram Rosilio"
-location: "Westtrakt, 2. Stock Ecke"
-profileImage: "/images/artists/preview/Yoram_Rosilio_Foto_01.jpg"
-sortOrder: 30
+name: 'Yoram Rosilio'
+location: 'Westtrakt, 2. Stock Ecke'
+profileImage: '/images/artists/preview/Yoram_Rosilio_Foto_01.jpg'
 ---
 
 Yoram Rosilio is a bassist in the fields of Jazz, improvised, contemporary and traditional music. He stands as a leader and composer of the International Big Band "Anti Brain Rubber Factory" and in the sextet « Tikkun ». He has been working with dance, performance, painting, theatre, sculpture and other disciplines.
