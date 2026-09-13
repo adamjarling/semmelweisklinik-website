@@ -46,6 +46,14 @@
           const imageName = imagePath.split('/').pop();
 
           if (imagePath.includes('/artists/') && !imagePath.includes('/original/')) {
+            // The original/ counterpart is assumed to exist, but it does not
+            // always — Leo Begeré has a preview with no original, and any
+            // artist added preview-only from now on will be the same. Fall
+            // back to the thumbnail rather than showing a broken image.
+            imageViewerImage.onerror = () => {
+              imageViewerImage.onerror = null;
+              imageViewerImage.src = imagePath;
+            };
             imageViewerImage.src = `/images/artists/original/${imageName?.replace(/\.[^/.]+$/, '.jpg')}`;
           } else {
             imageViewerImage.src = imagePath;
