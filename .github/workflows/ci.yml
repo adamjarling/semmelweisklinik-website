@@ -1,0 +1,40 @@
+# Runs on every pull request and on pushes to any branch except main.
+# main is covered by deploy.yml, which runs the same `pnpm verify` before it
+# builds — so a failing typecheck, format check or test blocks production.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # pnpm must be installed before setup-node so the pnpm cache works.
+      # Version is pinned to match packageManager in package.json.
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11.14.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      # astro check (types) + prettier --check (formatting) + vitest (tests)
+      - name: Verify
+        run: pnpm verify
+
+      - name: Build
+        run: pnpm build
