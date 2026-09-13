@@ -2,20 +2,20 @@
 
 /* --- FONTS --- */
 @font-face {
-  font-family: "Lexend ExtraLight";
-  src: url(/fonts/Lexend-ExtraLight.ttf) format("truetype");
+  font-family: 'Lexend ExtraLight';
+  src: url(/fonts/Lexend-ExtraLight.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Lexend Light";
-  src: url(/fonts/Lexend-Light.ttf) format("truetype");
+  font-family: 'Lexend Light';
+  src: url(/fonts/Lexend-Light.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Lexend Regular";
-  src: url(/fonts/Lexend-Regular.ttf) format("truetype");
+  font-family: 'Lexend Regular';
+  src: url(/fonts/Lexend-Regular.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Lexend Semibold";
-  src: url(/fonts/Lexend-SemiBold.ttf) format("truetype");
+  font-family: 'Lexend Semibold';
+  src: url(/fonts/Lexend-SemiBold.ttf) format('truetype');
 }
 
 /* --- BASICS --- */
@@ -40,43 +40,43 @@ li,
   scroll-behavior: smooth;
 }
 h1 {
-  font-family: "Lexend ExtraLight", sans-serif;
+  font-family: 'Lexend ExtraLight', sans-serif;
   font-size: 100px;
   font-weight: 100;
 }
 h2 {
-  font-family: "Lexend Regular", sans-serif;
+  font-family: 'Lexend Regular', sans-serif;
   font-size: 18px;
 }
 h3 {
-  font-family: "Lexend ExtraLight", sans-serif;
+  font-family: 'Lexend ExtraLight', sans-serif;
   font-size: 18px;
 }
 /* Info text on start page */
 h4 {
   font-size: 24px;
   font-weight: 100;
-  font-family: "Lexend Light", sans-serif;
+  font-family: 'Lexend Light', sans-serif;
   line-height: 2;
 }
 /* New info text on start page */
 h5 {
   font-size: 18px;
-  font-family: "Lexend Light", sans-serif;
+  font-family: 'Lexend Light', sans-serif;
   font-weight: 100;
   margin: 0;
 }
 h6 {
   font-size: 20px;
   font-weight: 100;
-  font-family: "Lexend Light", sans-serif;
+  font-family: 'Lexend Light', sans-serif;
   line-height: 1.5;
   margin-bottom: 50px;
 }
 p,
 li {
   font-size: 18px;
-  font-family: "Lexend Light", sans-serif;
+  font-family: 'Lexend Light', sans-serif;
   line-height: 1.6;
 }
 ul {
@@ -84,7 +84,7 @@ ul {
 }
 .footer-header {
   font-size: 18px;
-  font-family: "Lexend Regular", sans-serif;
+  font-family: 'Lexend Regular', sans-serif;
   line-height: 1.6;
 }
 ::selection {
@@ -354,7 +354,7 @@ ul {
 }
 .navbar-item h3::after {
   content: attr(data-text);
-  font-family: "Lexend Light", sans-serif;
+  font-family: 'Lexend Light', sans-serif;
   font-size: 18px;
   height: 0;
   overflow: hidden;
@@ -362,7 +362,7 @@ ul {
   pointer-events: none;
 }
 .navbar-item:hover h3 {
-  font-family: "Lexend Light", sans-serif;
+  font-family: 'Lexend Light', sans-serif;
   border-bottom: none;
   transition: 0s;
 }
@@ -482,10 +482,7 @@ a:hover {
 }
 .wide-slideshow-slide {
   flex: 0 0
-    calc(
-      (100% - (var(--slideshow-visible) - 1) * var(--slideshow-gap)) /
-        var(--slideshow-visible)
-    );
+    calc((100% - (var(--slideshow-visible) - 1) * var(--slideshow-gap)) / var(--slideshow-visible));
   height: 400px;
   object-fit: cover;
 }
@@ -539,7 +536,7 @@ a:hover {
 .video-title {
   margin-top: 40px;
   font-size: 22px;
-  font-family: "Lexend ExtraLight", sans-serif;
+  font-family: 'Lexend ExtraLight', sans-serif;
   max-width: 500px;
   text-align: center;
 }
@@ -832,7 +829,7 @@ a:hover {
   .hero-title {
     font-size: 32px;
     max-width: none;
-    font-family: "Lexend Light", sans-serif;
+    font-family: 'Lexend Light', sans-serif;
     margin-top: 25px;
   }
   .wide-slideshow-container {
@@ -846,7 +843,7 @@ a:hover {
   }
   .video-title {
     font-size: 16px;
-    font-family: "Lexend Light", sans-serif;
+    font-family: 'Lexend Light', sans-serif;
     margin-top: 20px;
   }
   .group-foto {

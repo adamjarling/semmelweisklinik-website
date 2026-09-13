@@ -11,4 +11,4 @@
 export const RESERVATION_FORM_ENABLED = false;
 
 export const RESERVATION_FORM_URL =
-  "https://forms.cloud.microsoft/pages/responsepage.aspx?id=k4T7IDJCqkGd0n-P_3sfEFN5efuep7RNp8DZIoA20jBUNVZaVERaTFRaQjlTTFc3UEJaQlNJQk1VVS4u&route=shorturl";
+  'https://forms.cloud.microsoft/pages/responsepage.aspx?id=k4T7IDJCqkGd0n-P_3sfEFN5efuep7RNp8DZIoA20jBUNVZaVERaTFRaQjlTTFc3UEJaQlNJQk1VVS4u&route=shorturl';

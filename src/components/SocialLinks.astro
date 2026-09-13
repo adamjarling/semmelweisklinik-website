@@ -51,17 +51,19 @@ const links = [
 ---
 
 <div class="container link-container">
-  {links.map((link) => (
-    <a
-      class="naked-link"
-      href={link.href}
-      target={link.external ? '_blank' : undefined}
-      rel={link.external ? 'noopener noreferrer' : undefined}
-    >
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 100px; text-align: center;">
-        <img class="link-svg" src={link.icon} alt={link.label} />
-        <p style="font-size: 16px; margin-top: -10px;">{link.label}</p>
-      </div>
-    </a>
-  ))}
+  {
+    links.map((link) => (
+      <a
+        class="naked-link"
+        href={link.href}
+        target={link.external ? '_blank' : undefined}
+        rel={link.external ? 'noopener noreferrer' : undefined}
+      >
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 100px; text-align: center;">
+          <img class="link-svg" src={link.icon} alt={link.label} />
+          <p style="font-size: 16px; margin-top: -10px;">{link.label}</p>
+        </div>
+      </a>
+    ))
+  }
 </div>

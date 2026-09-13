@@ -24,7 +24,11 @@ function getPathForLang(targetLang: string) {
 }
 ---
 
-<a class="navbar-language lang-switcher-link" href={getPathForLang(targetLang)} style="border-bottom: none;">
+<a
+  class="navbar-language lang-switcher-link"
+  href={getPathForLang(targetLang)}
+  style="border-bottom: none;"
+>
   <div class="lang-switcher-pill">
     <p class="lang-switcher-text">{targetLang.toUpperCase()}</p>
   </div>
