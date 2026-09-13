@@ -123,6 +123,11 @@ bio: # optional; falls back to the markdown body
 Both `bio.en` and `bio.de` are required if `bio` is present. The listing sorts
 alphabetically by `name`.
 
+> **Never delete from `public/images/artists/`.** Many files there look
+> unreferenced but are photo sets for eleven artists whose profiles have not
+> been written yet — including five with finished pages still waiting in the
+> old static site. See "Do not delete artist content" in CLAUDE.md.
+
 ### Add a room
 
 Same idea, but under `src/content/rooms/`, and **nearly every field is

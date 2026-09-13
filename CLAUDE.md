@@ -117,9 +117,41 @@ There is no CSS framework. Styling is three layers, in order of preference:
 3. **Inline `style=""`** — legacy from the static-HTML migration. Header and
    Footer still carry a lot of it. Don't add more.
 
+## Do not delete artist content
+
+**`public/images/artists/` is append-only. Never delete from it, and never
+purge it from git history.** The same goes for anything under
+`src/content/artists/`.
+
+An audit will make ~147 of those 345 files look unreferenced. They are not
+junk. 114 of them (88 MB) are complete photo sets for **eleven artists who have
+no profile page yet**:
+
+| Artist                     | Files | Legacy page to port                  |
+| -------------------------- | ----- | ------------------------------------ |
+| Ida Zahradnik              | 10    | `legacy/ida-zahradnik.html`          |
+| Josephine Teresa Grafl     | 6     | —                                    |
+| F3B5                       | 14    | `legacy/f3b5.html`                   |
+| Robin Lütolf               | 12    | `legacy/robin-luetolf.html`          |
+| Brenner / Havelka / Plessl | 20    | `legacy/brenner-havelka-plessl.html` |
+| Davide Herrera             | 10    | —                                    |
+| Jeremias Nikolaus Lindner  | 6     | —                                    |
+| Janine Weger               | 6     | —                                    |
+| Linsey Knibbeler           | 10    | —                                    |
+| Ulla Unzeitig              | 12    | `legacy/ulla-unzeitig.html`          |
+| Boris Contarin             | 8     | —                                    |
+
+The old static site had 47 artist pages; this one has 27. These photographs are
+the raw material for finishing that migration, and for several artists this
+repo may hold the only copy. The remaining ~33 "unused" files are alternate
+shots of current artists, worth 1.1 MB in total — also not worth deleting.
+
+Note that `legacy/` is gitignored, so it exists only in the original working
+copy. If you need those five pages and cannot see the directory, ask.
+
 ## Known gaps
 
-- **Artist images bypass Sharp.** 342 files in `public/images/artists/` are
+- **Artist images bypass Sharp.** 345 files in `public/images/artists/` are
   served byte-for-byte, some over 10 MB; the lightbox deliberately loads the
   full original. Rooms and program images have been migrated to `image()` and
   are the worked example to follow. Migrating artists means moving the files
