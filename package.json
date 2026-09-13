@@ -21,6 +21,7 @@
     "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.1.1",
+    "pannellum": "^2.5.7",
     "sharp": "^0.35.3"
   },
   "devDependencies": {
