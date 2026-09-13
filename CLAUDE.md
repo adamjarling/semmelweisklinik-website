@@ -119,13 +119,28 @@ There is no CSS framework. Styling is three layers, in order of preference:
 
 ## Do not delete artist content
 
-**`public/images/artists/` is append-only. Never delete from it, and never
-purge it from git history.** The same goes for anything under
-`src/content/artists/`.
+A reachability audit makes 147 of the 345 files in `public/images/artists/`
+look unreferenced. Acting on that number is a mistake — it spans two very
+different groups.
 
-An audit will make ~147 of those 345 files look unreferenced. They are not
-junk. 114 of them (88 MB) are complete photo sets for **eleven artists who have
-no profile page yet**:
+**Group 1 — the 27 artists with a profile. Never delete. (231 files, 137 MB)**
+
+Everything belonging to an artist who has a file in `src/content/artists/` is
+protected, including 33 files (1.1 MB) that are unreferenced alternate shots.
+Those are extra frames of current members, and they are not worth the 1.1 MB
+saved.
+
+**Group 2 — 11 artists with photos but no profile. On hold. (114 files, 88 MB)**
+
+Do not delete these either, but for a different reason: nobody has checked yet
+whether these eleven are still active members of the house. That check is
+Adam's, and it has not happened. Until it does, treat the files as held — and
+do not purge them from git history, which would decide the question by
+accident.
+
+If the answer comes back that some are no longer members, their files can go.
+If it comes back that they are current, the work is the opposite of deletion:
+writing the eleven missing profiles.
 
 | Artist                     | Files | Legacy page to port                  |
 | -------------------------- | ----- | ------------------------------------ |
@@ -141,10 +156,9 @@ no profile page yet**:
 | Ulla Unzeitig              | 12    | `legacy/ulla-unzeitig.html`          |
 | Boris Contarin             | 8     | —                                    |
 
-The old static site had 47 artist pages; this one has 27. These photographs are
-the raw material for finishing that migration, and for several artists this
-repo may hold the only copy. The remaining ~33 "unused" files are alternate
-shots of current artists, worth 1.1 MB in total — also not worth deleting.
+The old static site had 47 artist pages; this one has 27. For several of these
+people the repo may hold the only copy of their photographs, which is why the
+membership check has to come before any deletion rather than after.
 
 Note that `legacy/` is gitignored, so it exists only in the original working
 copy. If you need those five pages and cannot see the directory, ask.
