@@ -1,19 +1,19 @@
 ---
-name: "Je. elet Jesch"
-location: "Mitteltrakt, 2. Stock"
-email: "hello@elet.cc"
-website: "https://www.elet.cc"
-instagram: "https://www.instagram.com/irrlicht_elet/"
-profileImage: "/images/artists/preview/Je_Elet_Jesch_01.jpg"
+name: 'Je. elet Jesch'
+location: 'Mitteltrakt, 2. Stock'
+email: 'hello@elet.cc'
+website: 'https://www.elet.cc'
+instagram: 'https://www.instagram.com/irrlicht_elet/'
+profileImage: '/images/artists/preview/Je_Elet_Jesch_01.jpg'
 galleryImages:
-  - "/images/artists/preview/Je_Elet_Jesch_02.jpg"
-  - "/images/artists/preview/Je_Elet_Jesch_03.jpg"
-  - "/images/artists/preview/Je_Elet_Jesch_04.jpg"
-  - "/images/artists/preview/Je_Elet_Jesch_05.jpg"
-  - "/images/artists/preview/Je_Elet_Jesch_06.jpg"
-  - "/images/artists/preview/Je_Elet_Jesch_07.jpg"
-  - "/images/artists/preview/Je_Elet_Jesch_08.jpg"
-  - "/images/artists/preview/Je_Elet_Jesch_09.jpg"
+  - '/images/artists/preview/Je_Elet_Jesch_02.jpg'
+  - '/images/artists/preview/Je_Elet_Jesch_03.jpg'
+  - '/images/artists/preview/Je_Elet_Jesch_04.jpg'
+  - '/images/artists/preview/Je_Elet_Jesch_05.jpg'
+  - '/images/artists/preview/Je_Elet_Jesch_06.jpg'
+  - '/images/artists/preview/Je_Elet_Jesch_07.jpg'
+  - '/images/artists/preview/Je_Elet_Jesch_08.jpg'
+  - '/images/artists/preview/Je_Elet_Jesch_09.jpg'
 ---
 
 mag.art. Je. elet Jesch (dey/dem) arbeitet transdisziplinär in den Bereichen Performance, Skulptur und Videoinstallation an künstlerischen Projekten in Wien und Salzburg. Neben dem Studium der Transmedialen Kunst an der Universität für Angewandte Kunst (2008-15) absolvierte dey diverse Ausbildungen im tänzerischen Bereich u.a. am MoveOn Dancecenter (2012-14).

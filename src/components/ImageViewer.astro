@@ -1,8 +1,16 @@
 ---
 // ImageViewer.astro
-// Global lightbox overlay for image galleries
-// Include this component once in your layout and it will handle
-// all images with the class "artist-detail-image" or "room-gallery-image"
+// Global lightbox overlay. Include it once per page that has a gallery; it
+// then handles every image carrying `.artist-detail-image` or
+// `.room-gallery-image`.
+//
+// Two sources of full-size images, because the two collections are at
+// different stages of the image migration:
+//   - Rooms go through astro:assets, so the page pre-generates a large WebP
+//     and passes its URL in `data-full`. Preferred whenever present.
+//   - Artists are still plain files under public/, where the thumbnail lives
+//     in artists/preview/ and the full version in artists/original/ under the
+//     same basename. Falling back to that swap until artists migrate too.
 ---
 
 <div class="imageViewerWrapper">
@@ -23,27 +31,33 @@
       imageViewerWrapper.classList.remove('is-open');
     });
 
-    // Set up click handlers for all lightbox-enabled images
     const lightboxImages = document.querySelectorAll('.artist-detail-image, .room-gallery-image');
     lightboxImages.forEach((img) => {
       img.addEventListener('click', (event) => {
         event.stopPropagation();
 
         const imgElement = event.currentTarget as HTMLImageElement;
-        const imagePath = imgElement.src;
+        const preGenerated = imgElement.dataset.full;
 
-        // For optimized images, extract the original filename
-        // The src might be like /_astro/image.hash.webp or the original path
-        const imageName = imagePath.split('/').pop();
-
-        // Try to use the original image if it's in the artists/original folder
-        // Otherwise, just use the current src
-        if (imagePath.includes('/artists/') && !imagePath.includes('/original/')) {
-          // Try to construct path to original
-          const originalPath = `/images/artists/original/${imageName?.replace(/\.[^/.]+$/, '.jpg')}`;
-          imageViewerImage.src = originalPath;
+        if (preGenerated) {
+          imageViewerImage.src = preGenerated;
         } else {
-          imageViewerImage.src = imagePath;
+          const imagePath = imgElement.src;
+          const imageName = imagePath.split('/').pop();
+
+          if (imagePath.includes('/artists/') && !imagePath.includes('/original/')) {
+            // The original/ counterpart is assumed to exist, but it does not
+            // always — Leo Begeré has a preview with no original, and any
+            // artist added preview-only from now on will be the same. Fall
+            // back to the thumbnail rather than showing a broken image.
+            imageViewerImage.onerror = () => {
+              imageViewerImage.onerror = null;
+              imageViewerImage.src = imagePath;
+            };
+            imageViewerImage.src = `/images/artists/original/${imageName?.replace(/\.[^/.]+$/, '.jpg')}`;
+          } else {
+            imageViewerImage.src = imagePath;
+          }
         }
 
         imageViewerWrapper.classList.add('is-open');

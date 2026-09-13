@@ -1,13 +1,13 @@
 ---
-name: "Danylo Kovach"
-website: "https://www.danylokovach.eu/"
-instagram: "https://www.instagram.com/danyakovach/"
-profileImage: "/images/artists/preview/Danylo_Kovach_01.jpg"
+name: 'Danylo Kovach'
+website: 'https://www.danylokovach.eu/'
+instagram: 'https://www.instagram.com/danyakovach/'
+profileImage: '/images/artists/preview/Danylo_Kovach_01.jpg'
 galleryImages:
-  - "/images/artists/preview/Danylo_Kovach_02.jpg"
-  - "/images/artists/preview/Danylo_Kovach_03.jpg"
-  - "/images/artists/preview/Danylo_Kovach_04.jpg"
-  - "/images/artists/preview/Danylo_Kovach_05.jpg"
+  - '/images/artists/preview/Danylo_Kovach_02.jpg'
+  - '/images/artists/preview/Danylo_Kovach_03.jpg'
+  - '/images/artists/preview/Danylo_Kovach_04.jpg'
+  - '/images/artists/preview/Danylo_Kovach_05.jpg'
 ---
 
 Danylo Kovach was born into an artistic family in 1992 in the city of Zaporizhzhya, Ukraine. Since 2022 he lives and works in Vienna.

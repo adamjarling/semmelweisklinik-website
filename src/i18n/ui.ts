@@ -4,7 +4,8 @@ export const ui = {
   en: {
     head: {
       title: 'Semmelweisklinik • Center for Arts and Culture Vienna',
-      description: 'We offer rooms for workshops, seminars, and rehearsals as well as studio spaces and a large venue for theatre, music, and more.',
+      description:
+        'We offer rooms for workshops, seminars, and rehearsals as well as studio spaces and a large venue for theatre, music, and more.',
     },
     nav: {
       rooms: 'ROOMS',
@@ -15,9 +16,12 @@ export const ui = {
     },
     home: {
       hero_title: 'CENTER FOR ARTS AND CULTURE SEMMELWEIS\u00ADKLINIK',
-      intro_p1: 'In June 2022, we opened the decentralised Semmelweisklinik art and culture center on the site of the former Ignaz Semmelweis Women\'s Clinic (House 4), a creative interim use of 3,800 m2 currently until the end of 2026. Our self-managed center is intended as a low-threshold space for independent artistic production, inclusive exchange and cooperation as well as education and social action.',
-      intro_p2: 'In 40 studios with around 110 artists and cultural operators, seven public event spaces and meeting zones, we explore experimental possibilities for a diverse, robust and sustainable urban society. Joint processes in our microcosm continuously confront us with current socio-political issues such as gender equality, diversity-oriented openness and climate-friendly methods, which we want to address in an artistic and regenerative way.',
-      intro_p3: 'Our organisational structure, activities and programmes are characterised by innovative strategies, participatory methods and engagement with society as a whole; we actively network with artists, cultural operators and organisations at local, national and international level.',
+      intro_p1:
+        "In June 2022, we opened the decentralised Semmelweisklinik art and culture center on the site of the former Ignaz Semmelweis Women's Clinic (House 4), a creative interim use of 3,800 m2 currently until the end of 2026. Our self-managed center is intended as a low-threshold space for independent artistic production, inclusive exchange and cooperation as well as education and social action.",
+      intro_p2:
+        'In 40 studios with around 110 artists and cultural operators, seven public event spaces and meeting zones, we explore experimental possibilities for a diverse, robust and sustainable urban society. Joint processes in our microcosm continuously confront us with current socio-political issues such as gender equality, diversity-oriented openness and climate-friendly methods, which we want to address in an artistic and regenerative way.',
+      intro_p3:
+        'Our organisational structure, activities and programmes are characterised by innovative strategies, participatory methods and engagement with society as a whole; we actively network with artists, cultural operators and organisations at local, national and international level.',
       stats_studios: 'STUDIOS',
       stats_artists: 'ARTISTS / CULTURAL OPERATORS',
       stats_spaces: 'OPEN EVENT SPACES / WORKSHOPS / MEETING ZONES',
@@ -50,16 +54,21 @@ export const ui = {
       web_design_code_by: 'WEB DESIGN & CODE BY',
       webzauber_names: 'Webzauber, Sören Herschel & Maryann Alexy',
       photography_by: 'PHOTOGRAPHY BY',
-      photographers: 'Johanna Lea Lassnig, Elisabeth Blum, Manuel Fasch, Laura Sperl, Daniela Schindler & others',
+      photographers:
+        'Johanna Lea Lassnig, Elisabeth Blum, Manuel Fasch, Laura Sperl, Daniela Schindler & others',
       legal_notice: 'Legal Notice',
       data_protection: 'Data Protection',
     },
     rooms: {
       title: 'ROOMS FOR RENT',
+      learn_more: 'Learn more',
       rent_heading: 'Rent a room in the Semmelweisklinik',
-      rent_description_1: 'On 3800m² and three floors, we have a variety of rooms to rent on a daily basis. We have space for your project, installation, event, photo shoot, or other activity. Rent a comfy seminar room, a minimalist-looking white box, a large-scale kitchen, or something else!',
-      rent_description_2: 'Directly in front of the building is a parking lot, which you can use for loading activities. An electricity connection of the Wiener Netze is located in an adjacent house.',
-      rent_description_3: 'Most of our rooms on this page also have adjoining rooms that can be used as well. In addition, the Semmelweisklinik offers countless other rooms, nooks and crannies that could be interesting for your project – we would be happy to give you a tour!',
+      rent_description_1:
+        'On 3800m² and three floors, we have a variety of rooms to rent on a daily basis. We have space for your project, installation, event, photo shoot, or other activity. Rent a comfy seminar room, a minimalist-looking white box, a large-scale kitchen, or something else!',
+      rent_description_2:
+        'Directly in front of the building is a parking lot, which you can use for loading activities. An electricity connection of the Wiener Netze is located in an adjacent house.',
+      rent_description_3:
+        'Most of our rooms on this page also have adjoining rooms that can be used as well. In addition, the Semmelweisklinik offers countless other rooms, nooks and crannies that could be interesting for your project – we would be happy to give you a tour!',
       rent_contact: 'Are you interested in renting a room? Send us an email to:',
       detail_location: 'Location',
       detail_size: 'Size',
@@ -71,7 +80,8 @@ export const ui = {
       calendar_title: 'Room Calendar',
       calendar_coming_soon: 'Coming soon.',
       pricing_rooms_heading: 'Standard prices for art and cultural events',
-      pricing_rooms_intro: 'We are a non-profit association that provides spaces for artists and cultural practitioners and offers prices that are as low as possible. For profit-oriented projects or those that do not fall into the area of art and culture, other prices may apply.',
+      pricing_rooms_intro:
+        'We are a non-profit association that provides spaces for artists and cultural practitioners and offers prices that are as low as possible. For profit-oriented projects or those that do not fall into the area of art and culture, other prices may apply.',
       pricing_hybridraum_rates: 'Daily rate: EUR 250,00',
       pricing_bewegungsraum_rates: 'Hourly rate: EUR 25,00 / Daily rate: EUR 160,00',
       pricing_kueche_rates: 'Daily rate: EUR 600,00',
@@ -81,7 +91,8 @@ export const ui = {
       pricing_additional_heading: 'Standard prices for additional costs',
       pricing_event_support_name: 'Event support*',
       pricing_event_support_price: 'EUR 30,00/hour',
-      pricing_event_support_note: 'obligatory min. 1 person, depending on room + number of people, the approximate number of hours will be given in advance',
+      pricing_event_support_note:
+        'obligatory min. 1 person, depending on room + number of people, the approximate number of hours will be given in advance',
       pricing_security_name: 'Security/night watch',
       pricing_security_price: 'EUR 30,00/hour',
       pricing_security_note: 'obligatory for events after 22h',
@@ -100,33 +111,53 @@ export const ui = {
       title: 'PEOPLE',
       location: 'Location',
       contact: 'Contact',
+      website: 'Website',
+      selected_works: 'Selected Works',
     },
     calendar: {
       title: 'CALENDAR',
-      description: 'Browse upcoming events, workshops, open studios, and performances at the Semmelweisklinik Center for Arts and Culture in Vienna.',
+      description:
+        'Browse upcoming events, workshops, open studios, and performances at the Semmelweisklinik Center for Arts and Culture in Vienna.',
+    },
+    // Impressum and Datenschutzerklärung are legally required to be in German,
+    // so only the page chrome is translated — the body copy is German in both
+    // locales. `german_only_note` renders on the English page only.
+    legal: {
+      notice_title: 'LEGAL NOTICE',
+      notice_head: 'Semmelweisklinik • Legal Notice',
+      notice_german_only:
+        'Note: As required by Austrian law, this legal notice (Impressum) is provided in German.',
+      privacy_title: 'DATA PROTECTION',
+      privacy_head: 'Semmelweisklinik • Data Protection',
+      privacy_german_only:
+        'Note: As required by Austrian law, this data protection policy (Datenschutzerklärung) is provided in German.',
     },
     newsletter: {
       title: 'NEWSLETTER',
-      description: "Sign up for the Semmelweisklinik newsletter and stay informed about future developments. We'll respect your privacy and won't spam you.",
+      description:
+        "Sign up for the Semmelweisklinik newsletter and stay informed about future developments. We'll respect your privacy and won't spam you.",
       privacy_info: 'For more information about how we use your email address, you can read our',
       privacy_link_text: 'data protection information',
       privacy_note: '(only in German)',
     },
     participate: {
       title: 'PARTICIPATE',
-      description: 'Become part of the Semmelweisklinik community — volunteer, donate, join events, or get involved with our arts and culture center in Vienna.',
+      description:
+        'Become part of the Semmelweisklinik community — volunteer, donate, join events, or get involved with our arts and culture center in Vienna.',
     },
     program: {
       title: 'PROGRAM',
       learn_more: 'Learn more',
-      calendar_prompt: 'This page only shows a few featured programs. For all upcoming events, check the full calendar.',
+      calendar_prompt:
+        'This page only shows a few featured programs. For all upcoming events, check the full calendar.',
       calendar_cta: 'View calendar',
     },
   },
   de: {
     head: {
       title: 'Semmelweisklinik • Kunst und Kulturverein',
-      description: 'Wir bieten Räume für Workshops, Seminare und Proben sowie Ateliers und einen großen Veranstaltungsort für Theater, Musik und mehr.',
+      description:
+        'Wir bieten Räume für Workshops, Seminare und Proben sowie Ateliers und einen großen Veranstaltungsort für Theater, Musik und mehr.',
     },
     nav: {
       rooms: 'RÄUME',
@@ -137,9 +168,12 @@ export const ui = {
     },
     home: {
       hero_title: 'KUNST- UND KULTUR\u00ADZENTRUM SEMMELWEIS\u00ADKLINIK',
-      intro_p1: 'Am Standort der ehemaligen Ignaz-Semmelweis-Frauenklinik (Haus 4) haben wir im Juni 2022 das dezentrale Kunst- und Kulturzentrum Semmelweisklinik eröffnet, eine kreative Zwischennutzung auf 3.800 m2 gegenwärtig bis Ende 2026. Unser selbstverwaltetes Zentrum versteht sich als niederschwelliger Ort für unabhängige künstlerische Produktion, inklusiven Austausch und Kooperationen sowie Bildung und Soziales.',
-      intro_p2: 'In 40 Ateliers mit rund 110 Künstler:innen und Kulturakteur:innen, sieben öffentlichen Veranstaltungsräumen, Werkstätten und Begegnungszonen loten wir experimentelle Möglichkeiten aus für eine vielfältige, robuste und zukunftsfähige Stadtgesellschaft. Gemeinsame Prozesse in unserem Mikrokosmos konfrontieren uns ständig mit aktuellen gesellschaftspolitischen Themen wie Gendergerechtigkeit, diversitätsorientierter Öffnung und klimagerechten Methoden, denen wir künstlerisch und regenerativ begegnen möchten.',
-      intro_p3: 'Unsere Organisationsstruktur, Aktivitäten und Programme zeichnen sich durch innovative Strategien, partizipative Methoden und die Auseinandersetzung mit der gesamten Gesellschaft aus. Wir vernetzen uns aktiv mit Künstler:innen, Kulturakteur:innen und Organisationen auf lokaler, nationaler und internationaler Ebene.',
+      intro_p1:
+        'Am Standort der ehemaligen Ignaz-Semmelweis-Frauenklinik (Haus 4) haben wir im Juni 2022 das dezentrale Kunst- und Kulturzentrum Semmelweisklinik eröffnet, eine kreative Zwischennutzung auf 3.800 m2 gegenwärtig bis Ende 2026. Unser selbstverwaltetes Zentrum versteht sich als niederschwelliger Ort für unabhängige künstlerische Produktion, inklusiven Austausch und Kooperationen sowie Bildung und Soziales.',
+      intro_p2:
+        'In 40 Ateliers mit rund 110 Künstler:innen und Kulturakteur:innen, sieben öffentlichen Veranstaltungsräumen, Werkstätten und Begegnungszonen loten wir experimentelle Möglichkeiten aus für eine vielfältige, robuste und zukunftsfähige Stadtgesellschaft. Gemeinsame Prozesse in unserem Mikrokosmos konfrontieren uns ständig mit aktuellen gesellschaftspolitischen Themen wie Gendergerechtigkeit, diversitätsorientierter Öffnung und klimagerechten Methoden, denen wir künstlerisch und regenerativ begegnen möchten.',
+      intro_p3:
+        'Unsere Organisationsstruktur, Aktivitäten und Programme zeichnen sich durch innovative Strategien, partizipative Methoden und die Auseinandersetzung mit der gesamten Gesellschaft aus. Wir vernetzen uns aktiv mit Künstler:innen, Kulturakteur:innen und Organisationen auf lokaler, nationaler und internationaler Ebene.',
       stats_studios: 'ATELIERS',
       stats_artists: 'KÜNSTLER:INNEN / KULTURAKTEUR:INNEN',
       stats_spaces: 'OFFENE VERANSTALTUNGSRÄUME / WERKSTÄTTEN / BEGEGNUNGSZONEN',
@@ -172,16 +206,21 @@ export const ui = {
       web_design_code_by: 'WEB DESIGN & CODE VON',
       webzauber_names: 'Webzauber, Sören Herschel & Maryann Alexy',
       photography_by: 'FOTOGRAFIE VON',
-      photographers: 'Johanna Lea Lassnig, Elisabeth Blum, Manuel Fasch, Laura Sperl, Daniela Schindler & andere',
+      photographers:
+        'Johanna Lea Lassnig, Elisabeth Blum, Manuel Fasch, Laura Sperl, Daniela Schindler & andere',
       legal_notice: 'Impressum',
       data_protection: 'Datenschutzerklärung',
     },
     rooms: {
       title: 'RÄUME ZU MIETEN',
+      learn_more: 'Mehr erfahren',
       rent_heading: 'Miete einen Raum in der Semmelweisklinik',
-      rent_description_1: 'Auf 3800m² und drei Stockwerken haben wir Räumlichkeiten verschiedenster Art tageweise zu vermieten. Wir haben Platz für dein Projekt, Installation, Event, Fotoshooting, oder andere Aktivitäten. Miete einen gemütlichen Seminarraum, eine Halle mit Industrie-Flair, eine Großküche, oder was anderes!',
-      rent_description_2: 'Direkt vor dem Haus ist ein Parkplatz, der für Ladetätigkeiten genutzt werden kann. Ein Stromanschluss der Wiener Netze befindet sich im Nebenhaus.',
-      rent_description_3: 'Jeder der Räume hat zusätzlich Nebenräume in unmittelbarer Nähe. Zusätzlich bietet die Semmelweisklinik auch zahllose andere Räumlichkeiten, Winkel und Ecken die für dein Projekt interessant sein können – wir würden uns freuen, dir eine Tour zu geben!',
+      rent_description_1:
+        'Auf 3800m² und drei Stockwerken haben wir Räumlichkeiten verschiedenster Art tageweise zu vermieten. Wir haben Platz für dein Projekt, Installation, Event, Fotoshooting, oder andere Aktivitäten. Miete einen gemütlichen Seminarraum, eine Halle mit Industrie-Flair, eine Großküche, oder was anderes!',
+      rent_description_2:
+        'Direkt vor dem Haus ist ein Parkplatz, der für Ladetätigkeiten genutzt werden kann. Ein Stromanschluss der Wiener Netze befindet sich im Nebenhaus.',
+      rent_description_3:
+        'Jeder der Räume hat zusätzlich Nebenräume in unmittelbarer Nähe. Zusätzlich bietet die Semmelweisklinik auch zahllose andere Räumlichkeiten, Winkel und Ecken die für dein Projekt interessant sein können – wir würden uns freuen, dir eine Tour zu geben!',
       rent_contact: 'Interessierst du dich dafür, einen Raum zu mieten? Schick uns eine Email an:',
       detail_location: 'Lage',
       detail_size: 'Größe',
@@ -193,7 +232,8 @@ export const ui = {
       calendar_title: 'Raumbelegungskalender',
       calendar_coming_soon: 'Demnächst verfügbar.',
       pricing_rooms_heading: 'Richtpreise für Kunst- und Kulturveranstaltungen',
-      pricing_rooms_intro: 'Wir sind ein non-profit Verein, der Räume für Kunst– und Kulturschaffende zur Verfügung stellt und möglichst niederschwellige Preise anbietet. Für gewinnorientierte Projekte oder die, die nicht in den Bereich Kunst und Kultur fallen, können andere Preise anfallen.',
+      pricing_rooms_intro:
+        'Wir sind ein non-profit Verein, der Räume für Kunst– und Kulturschaffende zur Verfügung stellt und möglichst niederschwellige Preise anbietet. Für gewinnorientierte Projekte oder die, die nicht in den Bereich Kunst und Kultur fallen, können andere Preise anfallen.',
       pricing_hybridraum_rates: 'Tagespreis: EUR 250,00',
       pricing_bewegungsraum_rates: 'Stundenpreis: EUR 25,00 / Tagespreis: EUR 160,00',
       pricing_kueche_rates: 'Tagespreis: EUR 600,00',
@@ -203,7 +243,8 @@ export const ui = {
       pricing_additional_heading: 'Richtpreise für Zusatzkosten',
       pricing_event_support_name: 'Veranstaltungsbetreuung*',
       pricing_event_support_price: 'EUR 30,00/Std',
-      pricing_event_support_note: 'verpflichtend mind. 1 Person, abhängig von Raum + Personenanzahl, die ungefähre Stundenanzahl wird vorab angegeben',
+      pricing_event_support_note:
+        'verpflichtend mind. 1 Person, abhängig von Raum + Personenanzahl, die ungefähre Stundenanzahl wird vorab angegeben',
       pricing_security_name: 'Security/Nachtwächterin',
       pricing_security_price: 'EUR 30,00/Std',
       pricing_security_note: 'verpflichtend für Veranstaltungen nach 22h',
@@ -222,26 +263,43 @@ export const ui = {
       title: 'MENSCHEN',
       location: 'Standort',
       contact: 'Kontakt',
+      website: 'Webseite',
+      selected_works: 'Ausgewählte Arbeiten',
     },
     calendar: {
       title: 'KALENDER',
-      description: 'Alle kommenden Veranstaltungen, Workshops, Open Studios und Aufführungen im Kunst- und Kulturzentrum Semmelweisklinik Wien.',
+      description:
+        'Alle kommenden Veranstaltungen, Workshops, Open Studios und Aufführungen im Kunst- und Kulturzentrum Semmelweisklinik Wien.',
+    },
+    legal: {
+      notice_title: 'IMPRESSUM',
+      notice_head: 'Semmelweisklinik • Impressum',
+      notice_german_only:
+        'Hinweis: Gemäß österreichischem Recht liegt dieses Impressum auf Deutsch vor.',
+      privacy_title: 'DATENSCHUTZ-ERKLÄRUNG',
+      privacy_head: 'Semmelweisklinik • Datenschutz',
+      privacy_german_only:
+        'Hinweis: Gemäß österreichischem Recht liegt diese Datenschutzerklärung auf Deutsch vor.',
     },
     newsletter: {
       title: 'NEWSLETTER',
-      description: 'Melde dich für den Newsletter der Semmelweisklinik an und bleibe über zukünftige Entwicklungen informiert. Wir respektieren deine Privatsphäre und werden dich nicht mit Spam belästigen.',
-      privacy_info: 'Weitere Informationen darüber, wie wir deine E-Mail-Adresse verwenden, findest du in unserer',
+      description:
+        'Melde dich für den Newsletter der Semmelweisklinik an und bleibe über zukünftige Entwicklungen informiert. Wir respektieren deine Privatsphäre und werden dich nicht mit Spam belästigen.',
+      privacy_info:
+        'Weitere Informationen darüber, wie wir deine E-Mail-Adresse verwenden, findest du in unserer',
       privacy_link_text: 'Datenschutzerklärung',
       privacy_note: '',
     },
     participate: {
       title: 'MITWIRKEN',
-      description: 'Werde Teil der Semmelweisklinik-Gemeinschaft — als Ehrenamtliche:r, Spender:in, bei Veranstaltungen oder als aktives Mitglied unseres Kunst- und Kulturzentrums.',
+      description:
+        'Werde Teil der Semmelweisklinik-Gemeinschaft — als Ehrenamtliche:r, Spender:in, bei Veranstaltungen oder als aktives Mitglied unseres Kunst- und Kulturzentrums.',
     },
     program: {
       title: 'PROGRAMM',
       learn_more: 'Mehr erfahren',
-      calendar_prompt: 'Diese Seite zeigt nur einzelne ausgewählte Programme. Alle kommenden Veranstaltungen findest du im Kalender.',
+      calendar_prompt:
+        'Diese Seite zeigt nur einzelne ausgewählte Programme. Alle kommenden Veranstaltungen findest du im Kalender.',
       calendar_cta: 'Zum Kalender',
     },
   },

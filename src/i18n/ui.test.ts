@@ -161,3 +161,29 @@ describe('ui translations', () => {
     });
   });
 });
+/**
+ * The highest-value test in this file.
+ *
+ * `t()` fails silently: a key missing from a locale falls back to English, and
+ * a key missing from both is returned verbatim, so a half-translated string
+ * ships as English text or as a raw dot-path like "rooms.detail_size" with no
+ * build error. Comparing the two key sets is the only thing that catches it.
+ */
+function flattenKeys(obj: Record<string, unknown>, prefix = ''): string[] {
+  return Object.entries(obj).flatMap(([key, value]) => {
+    const path = prefix ? `${prefix}.${key}` : key;
+    return value !== null && typeof value === 'object' && !Array.isArray(value)
+      ? flattenKeys(value as Record<string, unknown>, path)
+      : [path];
+  });
+}
+
+describe('translation key parity', () => {
+  it('should define exactly the same keys in en and de', () => {
+    const en = flattenKeys(ui.en).sort();
+    const de = flattenKeys(ui.de).sort();
+
+    expect(de.filter((k) => !en.includes(k))).toEqual([]); // present in de, missing from en
+    expect(en.filter((k) => !de.includes(k))).toEqual([]); // present in en, missing from de
+  });
+});

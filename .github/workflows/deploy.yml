@@ -23,22 +23,28 @@ jobs:
           # broke the build; pinning prevents surprise policy/behavior changes.
           version: 11.14.0
 
-      # Step 3: Setup Node.js 22 with pnpm cache for faster installs
+      # Step 3: Setup Node.js with pnpm cache for faster installs.
+      # The version comes from .nvmrc so local dev and CI cannot drift apart.
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "22"
-          cache: "pnpm"
+          node-version-file: .nvmrc
+          cache: 'pnpm'
 
       # Step 4: Install dependencies using the lockfile (no accidental upgrades)
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
 
-      # Step 5: Build the Astro static site → output goes to dist/
+      # Step 5: Typecheck, format-check and test. A failure here stops the
+      # deploy, so production can never receive a build that does not verify.
+      - name: Verify
+        run: pnpm verify
+
+      # Step 6: Build the Astro static site → output goes to dist/
       - name: Build Astro site
         run: pnpm build
 
-      # Step 6: Configure SSH using the private key stored as a GitHub Secret.
+      # Step 7: Configure SSH using the private key stored as a GitHub Secret.
       # The key is stored base64-encoded to avoid line-ending issues when pasting
       # into GitHub Secrets. ssh-keyscan fetches the server's public host key into
       # known_hosts so rsync can verify the server identity without an interactive prompt.
@@ -49,7 +55,7 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p ${{ secrets.SSH_PORT || '22' }} -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
-      # Step 7: Sync the built files to the web root on the web host.
+      # Step 8: Sync the built files to the web root on the web host.
       # --delete removes stale Astro files from the server but --exclude
       # protects server-managed directories from being deleted.
       - name: Deploy via rsync

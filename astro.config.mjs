@@ -1,22 +1,33 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import rehypeExternalLinks from "rehype-external-links";
+import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
+import sitemap from '@astrojs/sitemap';
+import rehypeExternalLinks from 'rehype-external-links';
 
 export default defineConfig({
+  site: 'https://www.semmelweisklinik.at',
+
+  // Static site generation. There is no server, no adapter and no runtime —
+  // `pnpm build` emits plain HTML into dist/, which CI rsyncs to the host.
+  output: 'static',
+
   integrations: [sitemap()],
+
   markdown: {
-    rehypePlugins: [
-      [rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] }],
-    ],
+    // Astro 7 moved remark/rehype plugins behind `markdown.processor`; the
+    // old top-level `markdown.rehypePlugins` key still works but warns.
+    processor: unified({
+      rehypePlugins: [[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]],
+    }),
   },
-  site: 'https://www.semmelweisklinik.at', // Your domain
-  output: "static",
+
   i18n: {
-    defaultLocale: "en",
-    locales: ["en", "de"],
+    defaultLocale: 'en',
+    locales: ['en', 'de'],
     routing: {
-      prefixDefaultLocale: true, // both locales are prefixed: 'en' at /en, 'de' at /de ('/' redirects to /en)
+      // Both locales are prefixed: English at /en, German at /de.
+      // `/` is redirected to `/en` by src/pages/index.astro.
+      prefixDefaultLocale: true,
     },
   },
 });

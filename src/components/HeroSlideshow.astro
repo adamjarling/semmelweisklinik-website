@@ -23,18 +23,20 @@ const slides = [
 ---
 
 <div class="slideshow-container">
-  {slides.map((slide, index) => (
-    <div class="mySlides fade" data-index={index}>
-      <Image
-        src={slide.src}
-        alt={`Semmelweisklinik ${index + 1}`}
-        class="slideshow-image"
-        style={`object-position: ${slide.position};`}
-        widths={[800, 1200, 1600, 2000]}
-        sizes="100vw"
-      />
-    </div>
-  ))}
+  {
+    slides.map((slide, index) => (
+      <div class="mySlides fade" data-index={index}>
+        <Image
+          src={slide.src}
+          alt={`Semmelweisklinik ${index + 1}`}
+          class="slideshow-image"
+          style={`object-position: ${slide.position};`}
+          widths={[800, 1200, 1600, 2000]}
+          sizes="100vw"
+        />
+      </div>
+    ))
+  }
 </div>
 
 <script>
@@ -44,7 +46,7 @@ const slides = [
 
     function showSlides() {
       // Hide all slides
-      slides.forEach(slide => {
+      slides.forEach((slide) => {
         (slide as HTMLElement).style.display = 'none';
       });
 

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ImageViewer from '../../../components/ImageViewer.astro';
+import { getCollection, render } from 'astro:content';
+import { getLangFromUrl, getLocalePaths, useTranslations } from '../../../i18n/utils';
+
+export const prerender = true;
+
+// Two params, so this builds locales × artists: 2 × 27 = 54 pages.
+export async function getStaticPaths() {
+  const artists = await getCollection('artists');
+  return getLocalePaths().flatMap(({ params: { lang } }) =>
+    artists.map((artist) => ({
+      params: { lang, slug: artist.id },
+      props: { artist },
+    })),
+  );
+}
+
+const { artist } = Astro.props;
+const { Content } = await render(artist);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const {
+  name,
+  location,
+  email,
+  phone,
+  website,
+  instagram,
+  facebook,
+  github,
+  profileImage,
+  galleryImages,
+  bio,
+} = artist.data;
+
+const bioParagraphs = bio?.[lang]
+  .split(/\n\s*\n/)
+  .map((p) => p.trim())
+  .filter(Boolean);
+
+const artistDescription = (bio?.[lang] ?? artist.body)
+  ?.replace(/[#*_`[\]()!]/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+  .slice(0, 160);
+---
+
+<BaseLayout
+  title={`Semmelweisklinik • ${name}`}
+  description={artistDescription}
+  ogImage={profileImage}
+>
+  <ImageViewer />
+  <div class="page-wrapper">
+    <div class="content container-wide">
+      <div class="artist-detail-section">
+        <h1 class="only-mobile hero-title hero-title-no-margin">{name}</h1>
+
+        <img class="artist-detail-image" src={profileImage} alt={name} />
+
+        <div class="artist-info-container">
+          <h1 class="only-desktop hero-title hero-title-desktop">{name}</h1>
+
+          {
+            location && (
+              <div class="social-link-row artist-location-row">
+                <img class="icon-21" src="/svg/map-pin.svg" alt="Location" />
+                <p>{location}</p>
+              </div>
+            )
+          }
+
+          {
+            website && (
+              <div class="social-link-row mt-10">
+                <img class="icon-small" src="/svg/link.svg" alt="Website" />
+                <p>
+                  <a href={website} target="_blank" rel="noopener noreferrer">
+                    {t('artists.website')}
+                  </a>
+                </p>
+              </div>
+            )
+          }
+
+          {
+            instagram && (
+              <div class="social-link-row mt-10">
+                <img class="icon-small" src="/svg/link.svg" alt="Instagram" />
+                <p>
+                  <a href={instagram} target="_blank" rel="noopener noreferrer">
+                    Instagram
+                  </a>
+                </p>
+              </div>
+            )
+          }
+
+          {
+            facebook && (
+              <div class="social-link-row mt-10">
+                <img class="icon-small" src="/svg/link.svg" alt="Facebook" />
+                <p>
+                  <a href={facebook} target="_blank" rel="noopener noreferrer">
+                    Facebook
+                  </a>
+                </p>
+              </div>
+            )
+          }
+
+          {
+            github && (
+              <div class="social-link-row mt-10">
+                <img class="icon-small" src="/svg/link.svg" alt="GitHub" />
+                <p>
+                  <a href={github} target="_blank" rel="noopener noreferrer">
+                    GitHub
+                  </a>
+                </p>
+              </div>
+            )
+          }
+
+          {
+            email && (
+              <div class="social-link-row mt-10">
+                <img class="icon-21" src="/svg/@.svg" alt="Email" />
+                <p>{email}</p>
+              </div>
+            )
+          }
+
+          {
+            phone && (
+              <div class="social-link-row mt-10">
+                <img class="icon-19" src="/svg/phone.svg" alt="Phone" />
+                <p>{phone}</p>
+              </div>
+            )
+          }
+
+          <div class="mt-20">
+            {bioParagraphs ? bioParagraphs.map((paragraph) => <p>{paragraph}</p>) : <Content />}
+          </div>
+        </div>
+      </div>
+
+      {
+        galleryImages && galleryImages.length > 0 && (
+          <div class="artist-more-works-section">
+            <h2 class="mb-25">{t('artists.selected_works')}</h2>
+            <div class="artist-more-works-gallery">
+              {galleryImages.map((img) => (
+                <img class="artist-detail-image" src={img} alt={`${name} work`} />
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

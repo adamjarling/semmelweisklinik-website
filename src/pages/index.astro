@@ -1,14 +1,23 @@
 ---
-// Redirect root to English (default locale).
-// - Netlify: netlify.toml + _redirects handle this at CDN level (force = true), so this file is never served there.
-// - Other hosts: the <script> below fires before first paint, so no visible flash.
+// Redirects / → /en (the default locale).
+//
+// Both locales are URL-prefixed (`prefixDefaultLocale: true` in
+// astro.config.mjs), so nothing is served at the bare root. This page covers
+// it two ways: a <meta refresh> for crawlers and no-JS clients, and a
+// location.replace() that fires before first paint so there is no visible flash.
+//
+// public/_redirects holds the same rule for hosts that honour it. The current
+// host (rsync to a shared server) does not, which is why this page exists.
 ---
+
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="refresh" content="0;url=/en" />
     <link rel="canonical" href="/en" />
-    <script>location.replace('/en')</script>
+    <script>
+      location.replace('/en');
+    </script>
   </head>
 </html>

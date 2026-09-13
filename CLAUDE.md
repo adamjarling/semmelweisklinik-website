@@ -1,60 +1,176 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code (claude.ai/code) when working in this repository.
 
 ## Commands
 
 ```bash
-pnpm dev          # Start dev server at localhost:4321
-pnpm build        # Build for production to ./dist/
-pnpm preview      # Preview production build locally
-pnpm test         # Run unit tests with Vitest
+pnpm dev       # dev server at localhost:4321
+pnpm build     # production build → ./dist/
+pnpm preview   # serve the production build locally
+pnpm verify    # astro check + prettier --check + vitest  (what CI runs)
+pnpm test      # vitest only
+pnpm format    # prettier --write .
 ```
 
-Run a single test file:
-```bash
-pnpm vitest run src/i18n/utils.test.ts
-```
+Run a single test file: `pnpm vitest run src/i18n/utils.test.ts`
+
+Node version comes from `.nvmrc` (22); CI reads the same file. pnpm is pinned
+via `packageManager` in package.json.
 
 ## Architecture
 
-**Astro 5 static site** (SSG, zero client-side JS by default) for Semmelweisklinik — an arts center in Vienna. Deployed via GitHub Actions → rsync to a custom server on push to `main`.
+Astro 7 static site (SSG, zero client JS by default) for Semmelweisklinik, an
+arts centre in Vienna. Pushing to `main` runs `pnpm verify`, builds, and rsyncs
+`dist/` to a shared host over SSH. There is no server, no adapter, no runtime.
 
-### i18n
+### Routing and i18n — the one rule that matters
 
-The site is bilingual (English/German). Every page under `src/pages/` is duplicated under `src/pages/en/` and `src/pages/de/`. English is the default locale (`/` redirects to `/en`).
+The site is bilingual (English default, German). Pages live in **two places**,
+and which one you use is a deliberate decision:
 
-- `src/i18n/ui.ts` — all translation strings as nested objects keyed by `"en"` and `"de"`
-- `src/i18n/utils.ts` — `getLangFromUrl(url)` and `useTranslations(lang)` for use in `.astro` files
-- When adding new UI text, add both `en` and `de` entries to `ui.ts`, then use `t("key.path")` in components
+```
+src/pages/[lang]/…   → shared page, built once per locale via getStaticPaths()
+src/pages/en/…       → English-only file, paired with a German twin
+src/pages/de/…       → the German twin
+```
 
-### Content Collections
+**Default to `src/pages/[lang]/`.** Use it whenever the two locales differ only
+in short UI strings, which then live in `src/i18n/ui.ts` and are read with
+`t('some.key')`. Add `export function getStaticPaths() { return getLocalePaths(); }`
+and the page builds at both `/en/...` and `/de/...`.
 
-Structured content lives in `src/content/` with Zod schemas defined in `src/content/config.ts`:
-- `artists/` — 30+ markdown files; each generates `/en/artists/[slug]` and `/de/artists/[slug]`
-- `rooms/` — 4 markdown files; each generates `/en/rooms/[slug]` and `/de/rooms/[slug]`
+**Only use the `en/` + `de/` pair when a page is mostly per-language prose** —
+long editorial copy that would be unreadable as dictionary entries. Today that
+is exactly five pairs: everything under `program/`, plus `participate` and
+`intern`. Do not add to this list without a reason.
 
-Dynamic pages use `getStaticPaths()` to enumerate all collection entries and render both language variants.
+Supporting pieces:
 
-### Feature Flags
+- `src/i18n/ui.ts` — all UI strings, nested objects keyed `"en"` / `"de"`
+- `src/i18n/utils.ts` — `getLangFromUrl`, `getLocalePaths`, `useTranslations`
+- `t()` returns a `string` and **fails silently**: a missing key falls back to
+  English, and if it is missing there too you get the key itself rendered on
+  the page. The key-parity test in `ui.test.ts` is what catches that — when you
+  add a key to one locale, add it to the other.
 
-`src/config/reservation.ts` holds a build-time toggle for the room reservation form:
+### Content collections
 
-- `RESERVATION_FORM_ENABLED` — when `true`, room detail pages show the Microsoft Forms "click here to reserve" link; when `false`, they fall back to a `mailto:programm@semmelweisklinik.at` prompt (`rooms.detail_email_prompt`)
-- `RESERVATION_FORM_URL` — the Microsoft Forms URL, parked here so it can be restored unchanged
+Schemas in `src/content.config.ts`, validated at build time.
 
-**Currently disabled** (since 2026-08-05): the form accepts submissions without error, but nobody has traced where responses land inside the `semmelweisklinik.at` Microsoft 365 tenant. To re-enable, flip `RESERVATION_FORM_ENABLED` to `true` — that is the only edit needed, since both `src/pages/en/rooms/[slug].astro` and `src/pages/de/rooms/[slug].astro` read it.
+- `artists/` — 27 markdown files → `/en/artists/<slug>` and `/de/artists/<slug>`
+- `rooms/` — 5 markdown files → `/en/rooms/<slug>` and `/de/rooms/<slug>`
 
-Astro evaluates the flag at build time, so the disabled branch emits nothing and the form URL never reaches the built HTML.
+Bilingual fields are typed `{ en, de }` and **both are required** — you cannot
+add a room with only a German description.
 
-### Layout & Components
+Room _names_ are deliberately German in both locales ("Hybridraum", "Küche"):
+they are the proper names of the physical spaces, not translatable labels.
 
-All pages use `src/layouts/BaseLayout.astro` which wraps content with `<Header>` and `<Footer>` and handles all SEO metadata (canonical URLs, hreflang alternates, Open Graph, JSON-LD structured data).
+### Images — two systems, and which to use
 
-### Styling
+| Where                    | How                                                   | Optimised      |
+| ------------------------ | ----------------------------------------------------- | -------------- |
+| `src/assets/images/`     | imported, rendered with `<Image>` from `astro:assets` | yes, via Sharp |
+| `public/images/artists/` | absolute URL strings in frontmatter, raw `<img>`      | no             |
 
-Global styles in `src/styles/global.css`. No CSS framework — custom CSS with scoped `<style>` blocks in `.astro` files.
+**New images go in `src/assets/images/` and render through `<Image>`.** The
+`public/` path exists only for the artist photos, which have not been migrated
+(see Known gaps).
 
-### Testing
+For room images the collection schema uses Astro's `image()` helper, so
+frontmatter paths are **relative to the markdown file**, not URLs:
 
-Vitest with `happy-dom` environment. Tests cover i18n utilities and component logic (not full rendering). Test files co-located with source files as `*.test.ts`.
+```yaml
+images:
+  - src: '../../assets/images/rooms/hybridraum/photo.jpg'
+    caption:
+      en: 'Main room — window front' # em dash splits title from description
+      de: 'Hauptraum — Fensterfront'
+```
+
+Filenames must not contain spaces — they become ESM import specifiers.
+
+### Feature flags
+
+`src/config/reservation.ts` gates the room reservation form. Currently
+disabled: the Microsoft Form accepts submissions but nobody has traced where
+responses land in the `semmelweisklinik.at` M365 tenant, so room pages fall
+back to a `mailto:`. Flip `RESERVATION_FORM_ENABLED` to re-enable — that is the
+only edit needed. Astro evaluates it at build time, so the disabled branch
+emits nothing and the form URL never reaches the HTML.
+
+This file is the model for how to park a disabled feature in this repo.
+
+### Layout and styling
+
+`src/layouts/BaseLayout.astro` wraps every page with `<Header>` / `<Footer>`
+and owns all SEO: canonical URL, hreflang alternates, Open Graph, Twitter card,
+JSON-LD. Pass `title`, `description`, `ogImage` as props.
+
+There is no CSS framework. Styling is three layers, in order of preference:
+
+1. **Utility classes** in `src/styles/global.css` — spacing (`mt-50`, `mb-25`),
+   layout (`container-wide`, `grid-2col`, `page-wrapper`), type (`text-26`,
+   `hero-title`), visibility (`only-mobile`, `only-desktop`). Check here first.
+2. **Scoped `<style>`** in a component, for rules that belong to it alone.
+3. **Inline `style=""`** — legacy from the static-HTML migration. Header and
+   Footer still carry a lot of it. Don't add more.
+
+## Do not delete artist content
+
+A reachability audit makes 147 of the 345 files in `public/images/artists/`
+look unreferenced. Acting on that number is a mistake — it spans two very
+different groups.
+
+**Group 1 — the 27 artists with a profile. Never delete. (231 files, 137 MB)**
+
+Everything belonging to an artist who has a file in `src/content/artists/` is
+protected, including 33 files (1.1 MB) that are unreferenced alternate shots.
+Those are extra frames of current members, and they are not worth the 1.1 MB
+saved.
+
+**Group 2 — 11 artists with photos but no profile. On hold. (114 files, 88 MB)**
+
+Do not delete these either, but for a different reason: nobody has checked yet
+whether these eleven are still active members of the house. That check is
+Adam's, and it has not happened. Until it does, treat the files as held — and
+do not purge them from git history, which would decide the question by
+accident.
+
+If the answer comes back that some are no longer members, their files can go.
+If it comes back that they are current, the work is the opposite of deletion:
+writing the eleven missing profiles.
+
+| Artist                     | Files | Legacy page to port                  |
+| -------------------------- | ----- | ------------------------------------ |
+| Ida Zahradnik              | 10    | `legacy/ida-zahradnik.html`          |
+| Josephine Teresa Grafl     | 6     | —                                    |
+| F3B5                       | 14    | `legacy/f3b5.html`                   |
+| Robin Lütolf               | 12    | `legacy/robin-luetolf.html`          |
+| Brenner / Havelka / Plessl | 20    | `legacy/brenner-havelka-plessl.html` |
+| Davide Herrera             | 10    | —                                    |
+| Jeremias Nikolaus Lindner  | 6     | —                                    |
+| Janine Weger               | 6     | —                                    |
+| Linsey Knibbeler           | 10    | —                                    |
+| Ulla Unzeitig              | 12    | `legacy/ulla-unzeitig.html`          |
+| Boris Contarin             | 8     | —                                    |
+
+The old static site had 47 artist pages; this one has 27. For several of these
+people the repo may hold the only copy of their photographs, which is why the
+membership check has to come before any deletion rather than after.
+
+Note that `legacy/` is gitignored, so it exists only in the original working
+copy. If you need those five pages and cannot see the directory, ask.
+
+## Known gaps
+
+- **Artist images bypass Sharp.** 345 files in `public/images/artists/` are
+  served byte-for-byte, some over 10 MB; the lightbox deliberately loads the
+  full original. Rooms and program images have been migrated to `image()` and
+  are the worked example to follow. Migrating artists means moving the files
+  into `src/assets/`, switching `profileImage`/`galleryImages` to `image()`,
+  rewriting 27 frontmatter blocks, and reworking `ImageViewer.astro`'s
+  original-swap fallback. Expect build time to go from ~2s to minutes.
+- **`t()` keys are untyped.** Dot-path strings, not a union. A typo renders the
+  key. Typed keys would be a real improvement.

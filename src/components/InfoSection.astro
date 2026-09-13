@@ -16,14 +16,16 @@ const stats = [
 <div style="display: flex; flex-direction: column; align-items: center;">
   <div class="info-section">
     <div class="info-section-separator"></div>
-    {stats.map((stat, index) => (
-      <>
-        <div style="max-width: 260px;">
-          <p class="info-section-number">{stat.number}</p>
-          <p style="margin-top: -25px;">{stat.label}</p>
-        </div>
-        <div class="info-section-separator"></div>
-      </>
-    ))}
+    {
+      stats.map((stat, index) => (
+        <>
+          <div style="max-width: 260px;">
+            <p class="info-section-number">{stat.number}</p>
+            <p style="margin-top: -25px;">{stat.label}</p>
+          </div>
+          <div class="info-section-separator" />
+        </>
+      ))
+    }
   </div>
 </div>

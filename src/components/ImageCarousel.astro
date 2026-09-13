@@ -22,43 +22,63 @@ const loopSlides = [slides[slides.length - 1], ...slides, slides[0]];
 ---
 
 <div class="wide-slideshow-container">
-  <button type="button" class="wide-slideshow-arrow wide-slideshow-left-button" aria-label="Previous slide">
+  <button
+    type="button"
+    class="wide-slideshow-arrow wide-slideshow-left-button"
+    aria-label="Previous slide"
+  >
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-      <path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M15 5L8 12L15 19"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
     </svg>
   </button>
-  <button type="button" class="wide-slideshow-arrow wide-slideshow-right-button" aria-label="Next slide">
+  <button
+    type="button"
+    class="wide-slideshow-arrow wide-slideshow-right-button"
+    aria-label="Next slide"
+  >
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-      <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M9 5L16 12L9 19"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
     </svg>
   </button>
   <div class="wide-slideshow">
     <div class="wide-slideshow-track">
-      {loopSlides.map((slide, i) => (
-        <Image
-          src={slide.image}
-          alt={slide.alt}
-          class="wide-slideshow-slide"
-          widths={[400, 600, 800]}
-          sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          aria-hidden={i === 0 || i === loopSlides.length - 1 ? 'true' : undefined}
-        />
-      ))}
+      {
+        loopSlides.map((slide, i) => (
+          <Image
+            src={slide.image}
+            alt={slide.alt}
+            class="wide-slideshow-slide"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            aria-hidden={i === 0 || i === loopSlides.length - 1 ? 'true' : undefined}
+          />
+        ))
+      }
     </div>
   </div>
 </div>
 
 <script>
   function initCarousel() {
-    const container = document.querySelector('.wide-slideshow-container');
+    const container = document.querySelector<HTMLElement>('.wide-slideshow-container');
     if (!container) return;
 
-    const track = container.querySelector('.wide-slideshow-track');
-    const leftButton = container.querySelector('.wide-slideshow-left-button');
-    const rightButton = container.querySelector('.wide-slideshow-right-button');
+    const track = container.querySelector<HTMLElement>('.wide-slideshow-track');
+    const leftButton = container.querySelector<HTMLElement>('.wide-slideshow-left-button');
+    const rightButton = container.querySelector<HTMLElement>('.wide-slideshow-right-button');
     if (!track || !leftButton || !rightButton) return;
 
-    const slideEls = Array.from(track.children);
+    const slideEls = Array.from(track.children) as HTMLElement[];
     const realCount = slideEls.length - 2; // exclude the leading/trailing clones
     let position = 1; // index into slideEls; 1 is the first real slide
     let isAnimating = false;
@@ -68,7 +88,8 @@ const loopSlides = [slides[slides.length - 1], ...slides, slides[0]];
       return slideEls[1].offsetLeft - slideEls[0].offsetLeft;
     }
 
-    function applyTransform(withTransition) {
+    function applyTransform(withTransition: boolean) {
+      if (!track) return;
       track.style.transition = withTransition ? '' : 'none';
       track.style.transform = `translateX(-${stepWidth() * position}px)`;
       if (!withTransition) {
@@ -79,14 +100,14 @@ const loopSlides = [slides[slides.length - 1], ...slides, slides[0]];
       }
     }
 
-    function goTo(newPosition) {
+    function goTo(newPosition: number) {
       if (isAnimating) return;
       isAnimating = true;
       position = newPosition;
       applyTransform(true);
     }
 
-    function handleTransitionEnd(event) {
+    function handleTransitionEnd(event: TransitionEvent) {
       if (event.target !== track || event.propertyName !== 'transform') return;
       isAnimating = false;
       if (position === slideEls.length - 1) {
@@ -102,7 +123,7 @@ const loopSlides = [slides[slides.length - 1], ...slides, slides[0]];
     rightButton.addEventListener('click', () => goTo(position + 1));
     track.addEventListener('transitionend', handleTransitionEnd);
 
-    let resizeFrame;
+    let resizeFrame = 0;
     window.addEventListener('resize', () => {
       cancelAnimationFrame(resizeFrame);
       resizeFrame = requestAnimationFrame(() => applyTransform(false));

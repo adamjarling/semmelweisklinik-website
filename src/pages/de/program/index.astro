@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import coverbild250726SwkSommerfestCJohannaLeaLassnig69 from '../../../assets/images/program/sommerfest-2025/Coverbild_250726_SWK_Sommerfest_c_Johanna_Lea_Lassnig-69.jpg';
+import collectiveReflectionsOnAiArtCultureTitle from '../../../assets/images/program/collective-reflections-ai-art-culture/collective_reflections_on_ai_art_culture-title.jpg';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -19,10 +22,12 @@ const t = useTranslations(lang);
       <div class="grid-2col mt-50">
         <div class="grid-2col-item">
           <a href="/de/program/sommerfest-2025" class="naked-link">
-            <img
+            <Image
               class="grid-2col-image program-image"
-              src="/images/program/sommerfest-2025/Coverbild_250726_SWK_Sommerfest_c_Johanna_Lea_Lassnig-69.jpg"
+              src={coverbild250726SwkSommerfestCJohannaLeaLassnig69}
               alt="Sommerfest 2025"
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 800px) 90vw, 45vw"
             />
           </a>
           <p class="only-desktop text-32">Klinik unter Palmen 2025</p>
@@ -35,16 +40,19 @@ const t = useTranslations(lang);
 
         <div class="grid-2col-item">
           <a href="/de/program/collective-reflections-ai-art-culture" class="naked-link">
-            <img
+            <Image
               class="grid-2col-image program-image"
-              src="/images/program/collective-reflections-ai-art-culture/collective_reflections_on_ai_art_culture-title.jpg"
+              src={collectiveReflectionsOnAiArtCultureTitle}
               alt="Collective Reflections on AI, Art & Culture"
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 800px) 90vw, 45vw"
             />
           </a>
           <p class="only-desktop text-32">Collective reflections on AI, Art & Culture</p>
           <p class="only-mobile text-28">Collective reflections on AI, Art & Culture</p>
           <p>
-            Eine sechsteilige Workshop-Reihe an der Schnittstelle von Kreativität und KI (Mai-September 2025)<br />
+            Eine sechsteilige Workshop-Reihe an der Schnittstelle von Kreativität und KI
+            (Mai-September 2025)<br />
             <a href="/de/program/collective-reflections-ai-art-culture">Mehr erfahren</a>
           </p>
         </div>

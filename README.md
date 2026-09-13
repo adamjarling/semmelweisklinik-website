@@ -2,174 +2,219 @@
 
 Official website for the **Semmelweisklinik** arts and culture center in Vienna, Austria.
 
-🌐 **Live Site**: [semmelweisklinik.at](https://www.semmelweisklinik.at/)
+🌐 **Live site**: [semmelweisklinik.at](https://www.semmelweisklinik.at/)
 
 ---
 
-## About Semmelweisklinik
-
-The Semmelweisklinik is a decentralized arts and culture center located at the site of the former Ignaz Semmelweis Women's Clinic (House 4) in Vienna. Opened in June 2022, this self-managed creative space spans **3,800 m²** and operates as an interim use project until the end of 2026.
-
-### Mission
-
-The center serves as a **low-threshold space** for:
-- Independent artistic production
-- Inclusive exchange and cooperation
-- Education and social engagement
-- Experimental possibilities for a diverse, robust, and sustainable urban society
-
-### The Space
-
-- **40 studios** hosting ~110 artists and cultural operators
-- **7 public event spaces** for performances, exhibitions, and gatherings
-- **Meeting zones** for collaboration and community building
-- **Rentable rooms** including performance spaces, seminar rooms, a large-scale kitchen, and specialized workshops
-
-### Values
-
-The Semmelweisklinik actively addresses socio-political issues through artistic and regenerative approaches:
-- Gender equality
-- Diversity-oriented openness
-- Climate-friendly methods
-- Participatory decision-making
-- Local and international networking
-
----
-
-## Technical Implementation
-
-This website is built with **Astro**, a modern static site generator that delivers exceptional performance while providing the flexibility needed for a dynamic, multilingual arts organization website.
-
-### Why Astro?
-
-Astro enables this website to be:
-
-- **Blazingly Fast**: Zero JavaScript by default means instant page loads
-- **Content-Focused**: Built-in content collections make managing 30+ artist profiles and room listings effortless
-- **Multilingual**: Native i18n routing supports English (primary) and German seamlessly
-- **Developer-Friendly**: Component-based architecture makes updates and maintenance straightforward
-- **SEO Optimized**: Static HTML generation ensures excellent search engine visibility
-- **Image Optimized**: Automatic image optimization with Sharp provides responsive, optimized images
-
-### Key Features
-
-- **Bilingual Content**: Full German and English support with automatic routing
-- **Dynamic Routes**: Individual pages auto-generated for each artist and room from markdown files
-- **Content Collections**: Structured content management for artists, rooms, and program events
-- **Responsive Design**: Mobile-first approach ensures accessibility on all devices
-- **Event Calendar**: Integrated program and event management system
-- **Newsletter Integration**: Built-in newsletter signup functionality
-
-### Tech Stack
-
-- **Framework**: [Astro](https://astro.build) v5.17
-- **Image Processing**: Sharp v0.33
-- **Testing**: Vitest + Happy DOM
-- **Deployment**: GitHub Actions with rsync to production server
-- **Node Version**: Node 20
-
----
-
-## Project Structure
-
-```text
-/
-├── public/
-│   ├── svg/              # Partner logos and icons
-│   └── ...               # Static assets
-├── src/
-│   ├── assets/
-│   │   └── images/       # Optimized images
-│   ├── components/       # Reusable Astro components
-│   ├── content/
-│   │   ├── artists/      # Artist profiles (markdown)
-│   │   └── rooms/        # Room descriptions (markdown)
-│   ├── i18n/
-│   │   ├── ui.ts         # Translation strings
-│   │   └── utils.ts      # i18n utilities
-│   ├── layouts/          # Page layouts
-│   ├── pages/
-│   │   ├── de/           # German pages
-│   │   ├── en/           # English pages
-│   │   └── index.astro   # Homepage (redirects to /en)
-│   └── styles/           # Global styles
-├── astro.config.mjs      # Astro configuration
-└── package.json
-```
-
-### Content Management
-
-**Artists**: Add new artist profiles by creating markdown files in `src/content/artists/`
-
-**Rooms**: Add new rentable spaces by creating markdown files in `src/content/rooms/`
-
-**Programs**: Add events and programs in `src/pages/[de|en]/program/`
-
----
-
-## Development
-
-### Prerequisites
-
-- Node.js 20 or higher
-- pnpm (preferred package manager)
-
-### Commands
-
-All commands are run from the root of the project:
-
-| Command             | Action                                           |
-| :------------------ | :----------------------------------------------- |
-| `pnpm install`      | Install dependencies                             |
-| `pnpm dev`          | Start local dev server at `localhost:4321`       |
-| `pnpm build`        | Build production site to `./dist/`               |
-| `pnpm preview`      | Preview build locally before deploying           |
-| `pnpm test`         | Run tests with Vitest                            |
-| `pnpm astro ...`    | Run Astro CLI commands                           |
-
-### Local Development
+## Quick start
 
 ```sh
-# Install dependencies
+nvm use            # Node 22, from .nvmrc
 pnpm install
-
-# Start the dev server
-pnpm dev
-
-# Open http://localhost:4321 in your browser
+pnpm dev           # http://localhost:4321
 ```
+
+| Command        | What it does                                                     |
+| :------------- | :--------------------------------------------------------------- |
+| `pnpm dev`     | Dev server at `localhost:4321`                                   |
+| `pnpm build`   | Production build → `./dist/` (~2s, 89 pages)                     |
+| `pnpm preview` | Serve the production build locally                               |
+| `pnpm verify`  | `astro check` + `prettier --check` + `vitest` — **what CI runs** |
+| `pnpm test`    | Tests only                                                       |
+| `pnpm format`  | Reformat everything with Prettier                                |
+
+Run `pnpm verify` before opening a pull request. It is the same command the
+deploy workflow runs, and a failure there blocks production.
+
+---
+
+## If you're coming from Next.js
+
+Astro's concepts map closely onto Next's; almost none of the names match.
+
+| In Next.js               | Here                                                                                  |
+| :----------------------- | :------------------------------------------------------------------------------------ |
+| `app/layout.tsx`         | `src/layouts/BaseLayout.astro` — also owns all SEO (canonical, hreflang, OG, JSON-LD) |
+| `app/page.tsx`           | `src/pages/[lang]/index.astro`                                                        |
+| `generateStaticParams()` | `getStaticPaths()`, exported from the route file itself                               |
+| Server Components        | The `---` frontmatter block. Runs at **build time only** — no request, no runtime     |
+| `'use client'`           | A plain `<script>` in the component. No framework, no hydration                       |
+| `next/image`             | `<Image>` from `astro:assets`                                                         |
+| Contentlayer / MDX       | Content collections, Zod schemas in `src/content.config.ts`                           |
+| `next-intl`              | `src/i18n/ui.ts` + `useTranslations(lang)`                                            |
+| `middleware.ts`          | Nothing. `src/pages/index.astro` is a static page redirecting `/` → `/en`             |
+| Vercel                   | GitHub Actions → `rsync` over SSH on push to `main`. No preview deploys               |
+
+The biggest adjustment: **there is no server and no client framework.** The
+build emits plain HTML files. Interactivity is hand-written DOM code in
+`<script>` tags (see `ImageCarousel.astro`), and it must be idempotent because
+Astro re-runs it after view transitions.
+
+---
+
+## Project structure
+
+```text
+src/
+├── pages/
+│   ├── [lang]/              # shared pages — built once per locale
+│   │   ├── index.astro
+│   │   ├── calendar.astro
+│   │   ├── newsletter.astro
+│   │   ├── impressum.astro
+│   │   ├── datenschutz.astro
+│   │   ├── artists/{index,[slug]}.astro
+│   │   └── rooms/{index,[slug]}.astro
+│   ├── en/                  # English-only, prose-heavy pages…
+│   ├── de/                  # …and their German twins
+│   │   ├── participate.astro
+│   │   ├── intern.astro
+│   │   └── program/*.astro
+│   └── index.astro          # / → /en
+├── layouts/BaseLayout.astro # page shell + all SEO metadata
+├── components/              # Astro components
+├── content/
+│   ├── artists/             # 27 markdown profiles
+│   └── rooms/               # 5 markdown room descriptions
+├── content.config.ts        # Zod schemas for both collections
+├── i18n/{ui,utils}.ts       # translation strings + helpers
+├── config/reservation.ts    # build-time feature flag
+├── assets/images/           # optimised by Sharp at build time
+└── styles/global.css        # the whole stylesheet (no framework)
+
+public/                      # served as-is, NOT optimised
+├── images/artists/          # see "Known gaps" in CLAUDE.md
+├── svg/                     # logos, icons, partner marks
+└── pdf/                     # downloadable booklets
+```
+
+**Why two page directories?** A page goes in `[lang]/` when the locales differ
+only in short UI strings — those live in `src/i18n/ui.ts` and are read with
+`t('key')`. It goes in `en/` + `de/` only when it is mostly per-language prose.
+See CLAUDE.md for the full rule.
+
+---
+
+## Common tasks
+
+### Add an artist
+
+1. Create `src/content/artists/<slug>.md`. The slug becomes the URL.
+2. Put the portrait in `public/images/artists/preview/` and any gallery shots
+   in `public/images/artists/original/`.
+3. Reference them as absolute URL strings:
+
+```yaml
+---
+name: 'Firstname Lastname'
+location: 'Westtrakt, 1. Stock' # optional
+email: 'hello@example.org' # optional
+website: 'https://example.org' # optional — must be a full URL
+instagram: 'https://instagram.com/…' # optional
+profileImage: '/images/artists/preview/Name_01.jpg'
+galleryImages: # optional
+  - '/images/artists/original/Name_02.jpg'
+bio: # optional; falls back to the markdown body
+  en: 'English bio…'
+  de: 'Deutsche Biografie…'
+---
+```
+
+Both `bio.en` and `bio.de` are required if `bio` is present. The listing sorts
+alphabetically by `name`.
+
+> **Don't delete from `public/images/artists/` on the strength of an audit.**
+> 147 of the 345 files there look unreferenced. 33 are alternate shots of
+> artists who are on the site — keep them. The other 114 are photo sets for
+> eleven artists who have no profile yet, and whether they are still members of
+> the house has not been checked. See "Do not delete artist content" in
+> CLAUDE.md.
+
+### Add a room
+
+Same idea, but under `src/content/rooms/`, and **nearly every field is
+bilingual**. Images go in `src/assets/images/rooms/<room>/` and are referenced
+by a path **relative to the markdown file** (they run through Sharp):
+
+```yaml
+---
+name: { en: 'Hybrid Room', de: 'Hybridraum' } # name.de is shown in BOTH locales
+tagline: { en: 'Bright and airy', de: 'Hell und luftig' }
+location: { en: 'Middle tract', de: 'Mitteltrakt' }
+description: { en: '…', de: '…' }
+specs:
+  size: { en: '75m²', de: '75m²' }
+  features:
+    en: ['South-facing windows']
+    de: ['Südseitige Fensterfront']
+images: # at least one is required — images[0] is the listing thumbnail
+  - src: '../../assets/images/rooms/hybridraum/photo.jpg'
+    caption:
+      en: 'Main room — window front' # em dash splits title from description
+      de: 'Hauptraum — Fensterfront'
+sortOrder: 1 # controls order in the rooms listing
+---
+```
+
+Filenames must not contain spaces.
+
+### Add a program event
+
+Program pages are **not** a collection — they are hand-built pages, because
+each has bespoke layout, portraits and PDF links. You need three edits:
+
+1. `src/pages/en/program/<slug>.astro`
+2. `src/pages/de/program/<slug>.astro`
+3. A card added to both `program/index.astro` files
+
+Images go in `src/assets/images/program/<slug>/`, imported at the top of the
+page and rendered with `<Image>`.
+
+### Turn the room reservation form back on
+
+Set `RESERVATION_FORM_ENABLED = true` in `src/config/reservation.ts`. That is
+the only edit — both room pages read the flag. See the comment in that file for
+why it is currently off.
 
 ---
 
 ## Deployment
 
-Every push to the `main` branch automatically triggers a GitHub Actions workflow that builds the site and deploys via rsync to the production server.
+Every push to `main` triggers `.github/workflows/deploy.yml`, which runs
+`pnpm verify`, builds, and rsyncs `dist/` to the production server over SSH.
+A verify failure stops the deploy.
 
-**Production URL**: https://www.semmelweisklinik.at/
+Pull requests and non-`main` branches run `.github/workflows/ci.yml`, which
+runs the same checks plus a build.
 
-### Build Configuration
+There are no preview deployments. Use `pnpm preview` locally.
 
-- **Build Command**: `pnpm build`
-- **Publish Directory**: `dist`
-- **Node Version**: 20.x
+---
+
+## About Semmelweisklinik
+
+A decentralized arts and culture center on the site of the former Ignaz
+Semmelweis Women's Clinic (House 4), opened June 2022. A self-managed creative
+interim use of **3,800 m²**, running until the end of 2026.
+
+- **40 studios** hosting ~110 artists and cultural operators
+- **7 public event spaces** for performances, exhibitions and gatherings
+- **Rentable rooms** — performance spaces, seminar rooms, a large-scale
+  kitchen, and specialised workshops
+
+The center addresses socio-political questions through artistic and
+regenerative approaches: gender equality, diversity-oriented openness,
+climate-friendly methods, participatory decision-making, and local and
+international networking.
 
 ---
 
 ## Contact
 
-**Website**: [semmelweisklinik.at](https://www.semmelweisklinik.at/) Questions? adam.arling@semmelweisklinik.at
-
-**General Inquiries**: info@semmelweisklinik.at
-
-**Program/Venue Bookings**: programm@semmelweisklinik.at
-
-**Location**: Hockegasse 37, Haus 4, 1180 Vienna, Austria
-
----
-
-## Contributing
-
-This is the official website for a physical arts organization. For content updates, corrections, or technical improvements, please contact the team directly.
+- **General**: info@semmelweisklinik.at
+- **Program / venue bookings**: programm@semmelweisklinik.at
+- **This website**: adam.arling@semmelweisklinik.at
+- **Location**: Hockegasse 37, Haus 4, 1180 Vienna, Austria
 
 ---
 
@@ -177,4 +222,4 @@ This is the official website for a physical arts organization. For content updat
 
 ©2022-2026 Kunst- und Kulturzentrum Semmelweisklinik. All Rights Reserved.
 
-**Web Design & Development**: Webzauber, Sören Herschel & Maryann Alexy
+**Original web design & development**: Webzauber, Sören Herschel & Maryann Alexy

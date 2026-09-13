@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ImageViewer from '../../../components/ImageViewer.astro';
+import { Image, getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, getLocalePaths, useTranslations } from '../../../i18n/utils';
+import { RESERVATION_FORM_ENABLED, RESERVATION_FORM_URL } from '../../../config/reservation';
+
+export const prerender = true;
+
+// Two params, so this builds locales × rooms: 2 × 5 = 10 pages.
+export async function getStaticPaths() {
+  const rooms = await getCollection('rooms');
+  return getLocalePaths().flatMap(({ params: { lang } }) =>
+    rooms.map((room) => ({
+      params: { lang, slug: room.id },
+      props: { room },
+    })),
+  );
+}
+
+const { room } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { name, location, description, specs, images } = room.data;
+
+// Room names are deliberately German in both locales: "Hybridraum" and "Küche"
+// are the proper names of the physical spaces, not translatable labels.
+const displayName = name.de;
+const displayLocation = location?.[lang];
+const displayDescription = description?.[lang];
+const displaySize = specs?.size?.[lang];
+const displayCapacity = specs?.capacity?.[lang];
+const displayFeatures = specs?.features?.[lang];
+
+// The gallery renders responsive thumbnails, but the lightbox wants the
+// largest sensible version. Pre-generate one per image and hand it to
+// ImageViewer via `data-full` — never upscaling past the source.
+const gallery = await Promise.all(
+  (images ?? []).map(async (img) => ({
+    ...img,
+    full: (await getImage({ src: img.src, width: Math.min(2000, img.src.width), format: 'webp' }))
+      .src,
+  })),
+);
+
+const ogImage = images?.[0]?.src.src;
+---
+
+<BaseLayout
+  title={`Semmelweisklinik • ${displayName}`}
+  description={displayDescription}
+  ogImage={ogImage}
+>
+  <ImageViewer />
+  <div class="page-wrapper">
+    <div class="content container-wide">
+      <h1 class="hero-title">{displayName}</h1>
+      {displayDescription && <p class="mt-20">{displayDescription}</p>}
+
+      <div class="grid-2col mt-50">
+        <div class="grid-2col-item room-specs">
+          {
+            displayLocation && (
+              <>
+                <h2>{t('rooms.detail_location')}</h2>
+                <p>{displayLocation}</p>
+              </>
+            )
+          }
+
+          {
+            displaySize && (
+              <>
+                <h2>{t('rooms.detail_size')}</h2>
+                <p>{displaySize}</p>
+              </>
+            )
+          }
+
+          {
+            displayCapacity && (
+              <>
+                <h2>{t('rooms.detail_capacity')}</h2>
+                <p>{displayCapacity}</p>
+              </>
+            )
+          }
+
+          {
+            displayFeatures && displayFeatures.length > 0 && (
+              <>
+                <h2>{t('rooms.detail_features')}</h2>
+                <ul>
+                  {displayFeatures.map((feature) => (
+                    <li>{feature}</li>
+                  ))}
+                </ul>
+              </>
+            )
+          }
+        </div>
+
+        {
+          RESERVATION_FORM_ENABLED ? (
+            <div>
+              <p>
+                <strong>{t('rooms.detail_contact_prompt')}</strong>
+              </p>
+              <p class="mt-10">
+                <a href={RESERVATION_FORM_URL} target="_blank" rel="noopener noreferrer">
+                  {t('rooms.detail_reserve_cta')} {displayName}
+                </a>
+              </p>
+            </div>
+          ) : (
+            <div>
+              <p>
+                {t('rooms.detail_email_prompt')}
+                <br />
+                <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
+              </p>
+            </div>
+          )
+        }
+
+        {
+          gallery.map((img) => (
+            <div>
+              <div class="grid-img-wrapper">
+                <Image
+                  class="grid-2col-image room-gallery-image"
+                  src={img.src}
+                  alt={img.caption?.[lang] ?? displayName}
+                  data-full={img.full}
+                  widths={[400, 800, 1200]}
+                  sizes="(max-width: 800px) 90vw, 45vw"
+                />
+              </div>
+              {img.caption?.[lang] &&
+                (() => {
+                  // Captions are authored as "Title — description"; the em dash
+                  // is the separator, and the description half is optional.
+                  const [title, desc] = img.caption[lang].split(' — ');
+                  return (
+                    <p class="mt-10">
+                      <strong>{title}</strong>
+                      {desc && (
+                        <>
+                          <br />
+                          {desc}
+                        </>
+                      )}
+                    </p>
+                  );
+                })()}
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-50">
+        <h2 class="mb-25">{t('rooms.calendar_title')}</h2>
+        <p>{t('rooms.calendar_coming_soon')}</p>
+        {
+          /* Per-room booking calendar, parked until the kalender.digital feed is
+            confirmed to be the one the office actually maintains. Restore by
+            replacing the "coming soon" line above with:
+            <iframe src="https://kalender.digital/1d670462e848c0d7b0d0"
+                    width="100%" height="600" frameborder="0" loading="lazy"
+                    title={t('rooms.calendar_title')}></iframe> */
+        }
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .room-specs > * + * {
+    margin-top: 4px;
+  }
+</style>

@@ -35,12 +35,14 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.where_to_find_us')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          {addressLines.map((line: string, i: number) => (
-            <>
-              {line}
-              {i < addressLines.length - 1 && <br />}
-            </>
-          ))}
+          {
+            addressLines.map((line: string, i: number) => (
+              <>
+                {line}
+                {i < addressLines.length - 1 && <br />}
+              </>
+            ))
+          }
         </p>
       </div>
 
@@ -50,14 +52,20 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.follow_us')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          {socialLinks.map((link, i) => (
-            <>
-              <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
-                {link.label}
-              </a>
-              {i < socialLinks.length - 1 && <br />}
-            </>
-          ))}
+          {
+            socialLinks.map((link, i) => (
+              <>
+                <a
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+                {i < socialLinks.length - 1 && <br />}
+              </>
+            ))
+          }
         </p>
       </div>
 
@@ -100,7 +108,11 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.web_design_code_by')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          <a href="mailto:adam.arling@semmelweisklinik.at">Adam J. Arling</a>, <a href="https://www.webzauber.at/" target="_blank" rel="noopener noreferrer">Webzauber</a>, Sören Herschel & Maryann Alexy
+          <a href="mailto:adam.arling@semmelweisklinik.at">Adam J. Arling</a>, <a
+            href="https://www.webzauber.at/"
+            target="_blank"
+            rel="noopener noreferrer">Webzauber</a
+          >, Sören Herschel & Maryann Alexy
         </p>
       </div>
 
@@ -110,16 +122,20 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.photography_by')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          {photographers.map((p, i) => (
-            <>
-              {p.href ? (
-                <a href={p.href} target="_blank" rel="noopener noreferrer">{p.name}</a>
-              ) : (
-                p.name
-              )}
-              {i < photographers.length - 1 && ', '}
-            </>
-          ))}
+          {
+            photographers.map((p, i) => (
+              <>
+                {p.href ? (
+                  <a href={p.href} target="_blank" rel="noopener noreferrer">
+                    {p.name}
+                  </a>
+                ) : (
+                  p.name
+                )}
+                {i < photographers.length - 1 && ', '}
+              </>
+            ))
+          }
           {' '}& others
         </p>
       </div>
@@ -136,4 +152,3 @@ const addressLines = t('footer.address').split('\n');
 </div>
 
 <!-- Close the outer container div from Header -->
-</div>
