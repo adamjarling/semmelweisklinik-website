@@ -60,12 +60,12 @@ images:
   - src: '../../assets/images/rooms/hybridraum/360-hybridraum-leer.jpg'
     sphere: true
     caption:
-      en: '360 degree photo — Empty room'
+      en: '360 degree view — Empty room'
       de: '360-Grad-Ansicht — Leerer Raum'
   - src: '../../assets/images/rooms/hybridraum/360-hybridraum-vorraum.jpg'
     sphere: true
     caption:
-      en: '360 degree photo — Anteroom'
+      en: '360 degree view — Anteroom'
       de: '360-Grad-Ansicht — Vorraum'
 sortOrder: 2
 ---

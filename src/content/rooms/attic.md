@@ -12,12 +12,12 @@ images:
   - src: '../../assets/images/rooms/attic/360-dachboden-01.jpg'
     sphere: true
     caption:
-      en: '360 degree photo — Room 1'
+      en: '360 degree view — Room 1'
       de: '360-Grad-Ansicht — Raum 1'
   - src: '../../assets/images/rooms/attic/360-dachboden-02.jpg'
     sphere: true
     caption:
-      en: '360 degree photo — Room 2'
+      en: '360 degree view — Room 2'
       de: '360-Grad-Ansicht — Raum 2'
 sortOrder: 5
 ---
