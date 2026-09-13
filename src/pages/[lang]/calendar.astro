@@ -1,12 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, getLocalePaths, useTranslations } from '../../i18n/utils';
+
+// Builds this page once per locale: /en/... and /de/...
+export function getStaticPaths() {
+  return getLocalePaths();
+}
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<BaseLayout title={`Semmelweisklinik • ${t('nav.calendar')}`} description={t('calendar.description') as string}>
+<BaseLayout
+  title={`Semmelweisklinik • ${t('nav.calendar')}`}
+  description={t('calendar.description')}
+>
   <div class="page-wrapper">
     <div class="content container-wide">
       <h1 class="hero-title mb-25">{t('calendar.title')}</h1>

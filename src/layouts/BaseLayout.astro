@@ -14,11 +14,7 @@ interface Props {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const {
-  title = t('head.title') as string,
-  description = t('head.description') as string,
-  ogImage,
-} = Astro.props;
+const { title = t('head.title'), description = t('head.description'), ogImage } = Astro.props;
 
 const siteBase = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const currentPath = Astro.url.pathname;
@@ -26,30 +22,35 @@ const canonicalUrl = `${siteBase}${currentPath}`;
 const enUrl = `${siteBase}${currentPath.replace(/^\/(de|en)/, '/en')}`;
 const deUrl = `${siteBase}${currentPath.replace(/^\/(de|en)/, '/de')}`;
 const ogLocale = lang === 'de' ? 'de_AT' : 'en_US';
-const ogImageUrl = ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteBase}${ogImage}`) : `${siteBase}/images/og-default.jpg`;
+const ogImageUrl = ogImage
+  ? ogImage.startsWith('http')
+    ? ogImage
+    : `${siteBase}${ogImage}`
+  : `${siteBase}/images/og-default.jpg`;
 
 const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness"],
-  "name": "Semmelweisklinik",
-  "alternateName": "Kunst- und Kulturzentrum Semmelweisklinik",
-  "url": siteBase,
-  "logo": `${siteBase}/svg/logo.svg`,
-  "image": `${siteBase}/images/og-default.jpg`,
-  "description": "Center for Arts and Culture in Vienna, Austria. 40 studios with 110+ artists and cultural operators, event spaces, workshops, and meeting zones.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Hockegasse 37, Haus 4",
-    "addressLocality": "Vienna",
-    "postalCode": "1180",
-    "addressCountry": "AT"
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  name: 'Semmelweisklinik',
+  alternateName: 'Kunst- und Kulturzentrum Semmelweisklinik',
+  url: siteBase,
+  logo: `${siteBase}/svg/logo.svg`,
+  image: `${siteBase}/images/og-default.jpg`,
+  description:
+    'Center for Arts and Culture in Vienna, Austria. 40 studios with 110+ artists and cultural operators, event spaces, workshops, and meeting zones.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Hockegasse 37, Haus 4',
+    addressLocality: 'Vienna',
+    postalCode: '1180',
+    addressCountry: 'AT',
   },
-  "email": "info@semmelweisklinik.at",
-  "sameAs": [
-    "https://www.instagram.com/semmelweisklinik/",
-    "https://www.facebook.com/zwischenkulturwien",
-    "https://www.linkedin.com/company/semmelweisklinik"
-  ]
+  email: 'info@semmelweisklinik.at',
+  sameAs: [
+    'https://www.instagram.com/semmelweisklinik/',
+    'https://www.facebook.com/zwischenkulturwien',
+    'https://www.linkedin.com/company/semmelweisklinik',
+  ],
 };
 ---
 
@@ -59,12 +60,25 @@ const organizationSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href="/svg/logo.svg" media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/svg+xml" href="/svg/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/svg/logo.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/svg/logo-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="booking, venue, vienna, event, culture, music, workshops, theatre, performance, art, arts, artist, studio, rent, renting, atelier" />
+    <meta
+      name="keywords"
+      content="booking, venue, vienna, event, culture, music, workshops, theatre, performance, art, arts, artist, studio, rent, renting, atelier"
+    />
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="de" href={deUrl} />
     <link rel="alternate" hreflang="x-default" href={enUrl} />

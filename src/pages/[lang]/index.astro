@@ -13,7 +13,12 @@ import groupFoto from '../../assets/images/start/group-foto.jpg';
 import inMedioStill from '../../assets/images/start/in-medio-still.jpg';
 import resetNetwork from '../../assets/images/start/reset-network.jpg';
 
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, getLocalePaths, useTranslations } from '../../i18n/utils';
+
+// Builds this page once per locale: /en/... and /de/...
+export function getStaticPaths() {
+  return getLocalePaths();
+}
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -76,8 +81,15 @@ const t = useTranslations(lang);
 
     <!-- Video Section -->
     <div class="container video-container">
-      <div style="width: min(800px, 100%); display: flex; flex-direction: column; align-items: center;">
-        <a class="naked-link" href="https://player.vimeo.com/video/856325390" target="_blank" rel="noopener noreferrer">
+      <div
+        style="width: min(800px, 100%); display: flex; flex-direction: column; align-items: center;"
+      >
+        <a
+          class="naked-link"
+          href="https://player.vimeo.com/video/856325390"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Image
             src={inMedioStill}
             alt="In Medio documentary"
@@ -111,16 +123,19 @@ const t = useTranslations(lang);
       </p>
       <div class="cooperation-logos">
         <img style="width: 100px;" src="/svg/ig-kultur-wien.svg" alt="IG Kultur Wien" />
-        <img style="width: 170px;" src="/svg/bundes-immobilien-gesellschaft.svg" alt="Bundes Immobilien Gesellschaft" />
+        <img
+          style="width: 170px;"
+          src="/svg/bundes-immobilien-gesellschaft.svg"
+          alt="Bundes Immobilien Gesellschaft"
+        />
         <img style="width: 90px;" src="/svg/kreative-räume-wien.svg" alt="Kreative Räume Wien" />
         <img style="width: 190px;" src="/svg/d-arts.svg" alt="D-Arts" />
-        <Image
-          src={resetNetwork}
-          alt="Reset Network"
-          style="width: 80px;"
-          width={80}
+        <Image src={resetNetwork} alt="Reset Network" style="width: 80px;" width={80} />
+        <img
+          style="width: 120px;"
+          src="/svg/european-textile-network.svg"
+          alt="European Textile Network"
         />
-        <img style="width: 120px;" src="/svg/european-textile-network.svg" alt="European Textile Network" />
         <img style="width: 120px;" src="/svg/hakuk-logo.svg" alt="Hakuk" />
       </div>
     </div>
