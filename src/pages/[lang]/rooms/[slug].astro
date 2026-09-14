@@ -5,6 +5,7 @@ import { Image, getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, getLocalePaths, useTranslations } from '../../../i18n/utils';
 import { RESERVATION_FORM_ENABLED, RESERVATION_FORM_URL } from '../../../config/reservation';
+import 'pannellum/build/pannellum.css';
 
 export const prerender = true;
 
@@ -129,14 +130,23 @@ const ogImage = images?.[0]?.src.src;
           gallery.map((img) => (
             <div>
               <div class="grid-img-wrapper">
-                <Image
-                  class="grid-2col-image room-gallery-image"
-                  src={img.src}
-                  alt={img.caption?.[lang] ?? displayName}
-                  data-full={img.full}
-                  widths={[400, 800, 1200]}
-                  sizes="(max-width: 800px) 90vw, 45vw"
-                />
+                {img.sphere ? (
+                  <div
+                    class="grid-2col-image room-sphere-viewer"
+                    data-panorama={img.full}
+                    role="img"
+                    aria-label={img.caption?.[lang] ?? displayName}
+                  />
+                ) : (
+                  <Image
+                    class="grid-2col-image room-gallery-image"
+                    src={img.src}
+                    alt={img.caption?.[lang] ?? displayName}
+                    data-full={img.full}
+                    widths={[400, 800, 1200]}
+                    sizes="(max-width: 800px) 90vw, 45vw"
+                  />
+                )}
               </div>
               {img.caption?.[lang] &&
                 (() => {
@@ -176,8 +186,61 @@ const ogImage = images?.[0]?.src.src;
   </div>
 </BaseLayout>
 
+<script>
+  async function initSphereViewers() {
+    const sphereContainers = document.querySelectorAll<HTMLElement>('.room-sphere-viewer');
+    if (sphereContainers.length === 0) return;
+
+    await import('pannellum/build/pannellum.js');
+    const pannellum = window.pannellum;
+    if (!pannellum?.viewer) return;
+
+    sphereContainers.forEach((container) => {
+      if (container.dataset.initialized === 'true') return;
+      const panorama = container.dataset.panorama;
+      if (!panorama) return;
+
+      pannellum.viewer(container, {
+        type: 'equirectangular',
+        panorama,
+        hfov: 120,
+        autoLoad: true,
+        showFullscreenCtrl: true,
+        showZoomCtrl: true,
+        mouseZoom: false,
+      });
+      container.dataset.initialized = 'true';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSphereViewers);
+  } else {
+    initSphereViewers();
+  }
+  document.addEventListener('astro:page-load', initSphereViewers);
+</script>
+
 <style>
   .room-specs > * + * {
     margin-top: 4px;
+  }
+
+  .room-sphere-viewer {
+    width: min(38.5vw, 100%);
+    max-width: 100%;
+    height: 25.7vw;
+    cursor: grab;
+  }
+
+  :global(.pnlm-container) {
+    border: none;
+  }
+
+  @media (max-width: 800px) {
+    .room-sphere-viewer {
+      width: min(80vw, 100%);
+      height: 55vw;
+    }
   }
 </style>

@@ -84,6 +84,7 @@ const roomsCollection = defineCollection({
         .array(
           z.object({
             src: image(),
+            sphere: z.boolean().optional(),
             // Rendered as "<strong>title</strong><br>description" — the em
             // dash is the separator the room page splits on.
             caption: bilingualString.optional(),

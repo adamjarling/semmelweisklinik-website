@@ -48,8 +48,9 @@ images:
       en: 'Entrance room — North-facing windows and movable industrial pots'
       de: 'Eingangsraum — Nordseitige Fenster und rollbare Industriekochtöpfe'
   - src: '../../assets/images/rooms/küche/360-küche.jpg'
+    sphere: true
     caption:
-      en: '360 degree photo — Set up for an event'
-      de: '360-Grad-Foto — Bespielt'
+      en: '360 degree view — Set up for an event'
+      de: '360-Grad-Ansicht — Bespielt'
 sortOrder: 4
 ---
