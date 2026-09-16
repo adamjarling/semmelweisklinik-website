@@ -3,7 +3,7 @@ name: 'Adam J. Arling'
 website: 'https://adamarling.com'
 instagram: 'https://www.instagram.com/adamjarling/'
 github: 'https://github.com/adamjarling'
-profileImage: '/images/artists/preview/Adam_Arling_01.jpg'
+profileImage: '../../assets/images/artists/adam-arling/Adam_Arling_01.jpg'
 bio:
   en: |
     Adam J. Arling is a Chicago-born, Vienna-based guitarist, songwriter, and musician. His work spans alternative rock, hard rock, garage rock, and blues-influenced styles, drawing on the raw sounds of the '60s and '70s.

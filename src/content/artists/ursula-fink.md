@@ -4,12 +4,12 @@ location: 'Mitteltrakt, 1. Stock'
 email: 'hi@movingintopresence.at'
 website: 'https://www.movingintopresence.at/'
 instagram: 'https://www.instagram.com/ursulafink_/'
-profileImage: '/images/artists/preview/Ursula_Fink_01.jpg'
+profileImage: '../../assets/images/artists/ursula-fink/Ursula_Fink_01.jpg'
 galleryImages:
-  - '/images/artists/original/Ursula_Fink_02.jpg'
-  - '/images/artists/original/Ursula_Fink_03.jpg'
-  - '/images/artists/original/Ursula_Fink_04.jpg'
-  - '/images/artists/original/Ursula_Fink_05.jpg'
+  - '../../assets/images/artists/ursula-fink/Ursula_Fink_02.jpg'
+  - '../../assets/images/artists/ursula-fink/Ursula_Fink_03.jpg'
+  - '../../assets/images/artists/ursula-fink/Ursula_Fink_04.jpg'
+  - '../../assets/images/artists/ursula-fink/Ursula_Fink_05.jpg'
 ---
 
 As an artist and choregrapher I create site specific art, installations and performance on topics of resonance, (dis) connection, co-hearance within and between bodies. My ongoing research revolves around the phenomenon and ecopsychology of humanness, physical listening and deep listening practises and how they can affect political realities, participatory processes and collective intelligence. (Listening Body Practise ©)

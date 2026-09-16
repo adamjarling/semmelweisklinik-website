@@ -58,7 +58,7 @@ Supporting pieces:
 
 Schemas in `src/content.config.ts`, validated at build time.
 
-- `artists/` — 27 markdown files → `/en/artists/<slug>` and `/de/artists/<slug>`
+- `artists/` — 28 markdown files → `/en/artists/<slug>` and `/de/artists/<slug>`
 - `rooms/` — 5 markdown files → `/en/rooms/<slug>` and `/de/rooms/<slug>`
 
 Bilingual fields are typed `{ en, de }` and **both are required** — you cannot
@@ -67,19 +67,21 @@ add a room with only a German description.
 Room _names_ are deliberately German in both locales ("Hybridraum", "Küche"):
 they are the proper names of the physical spaces, not translatable labels.
 
-### Images — two systems, and which to use
+### Images — all through Sharp
 
-| Where                    | How                                                   | Optimised      |
-| ------------------------ | ----------------------------------------------------- | -------------- |
-| `src/assets/images/`     | imported, rendered with `<Image>` from `astro:assets` | yes, via Sharp |
-| `public/images/artists/` | absolute URL strings in frontmatter, raw `<img>`      | no             |
+Every image in the site — rooms, program, and artists — lives in
+`src/assets/images/` and is imported, never referenced by URL. Room and
+artist collection schemas both use Astro's `image()` helper, so frontmatter
+paths are **relative to the markdown file**, not URLs. `<Image>` /
+`getImage()` from `astro:assets` render them; a bare `<img src="...">`
+pointing at one of these paths won't work, since `image()` resolves to an
+`ImageMetadata` object at build time, not a string.
 
-**New images go in `src/assets/images/` and render through `<Image>`.** The
-`public/` path exists only for the artist photos, which have not been migrated
-(see Known gaps).
+`public/images/artists/` still exists, but only holds unreferenced content
+now — see "Do not delete artist content" below. Nothing in the build reads
+from it any more.
 
-For room images the collection schema uses Astro's `image()` helper, so
-frontmatter paths are **relative to the markdown file**, not URLs:
+Room images additionally carry a caption; artist images don't:
 
 ```yaml
 images:
@@ -119,16 +121,18 @@ There is no CSS framework. Styling is three layers, in order of preference:
 
 ## Do not delete artist content
 
-A reachability audit makes 147 of the 345 files in `public/images/artists/`
-look unreferenced. Acting on that number is a mistake — it spans two very
-different groups.
+As of the artist image migration (see Known gaps), `public/images/artists/`
+no longer holds any file the build actually reads — every profiled artist's
+`profileImage`/`galleryImages` source now lives in
+`src/assets/images/artists/<slug>/`. What's left under `public/` is two
+groups of files that were already unreferenced before the migration, plus a
+third, new one:
 
-**Group 1 — the 27 artists with a profile. Never delete. (231 files, 137 MB)**
+**Group 1 — the 28 artists with a profile. Never delete.**
 
 Everything belonging to an artist who has a file in `src/content/artists/` is
-protected, including 33 files (1.1 MB) that are unreferenced alternate shots.
-Those are extra frames of current members, and they are not worth the 1.1 MB
-saved.
+protected, including unreferenced alternate shots — extra frames of current
+members, not worth deleting to save a few MB.
 
 **Group 2 — 11 artists with photos but no profile. On hold. (114 files, 88 MB)**
 
@@ -156,21 +160,26 @@ writing the eleven missing profiles.
 | Ulla Unzeitig              | 12    | `legacy/ulla-unzeitig.html`          |
 | Boris Contarin             | 8     | —                                    |
 
-The old static site had 47 artist pages; this one has 27. For several of these
+The old static site had 47 artist pages; this one has 28. For several of these
 people the repo may hold the only copy of their photographs, which is why the
 membership check has to come before any deletion rather than after.
 
 Note that `legacy/` is gitignored, so it exists only in the original working
 copy. If you need those five pages and cannot see the directory, ask.
 
+**Group 3 — leftover duplicates from the image migration. Pending cleanup.**
+
+For every profiled artist's image, the migration moved the better of its two
+copies (`original/` if present, else `preview/`) into `src/assets/`. The
+other copy — a hand-shrunk `preview/` file made obsolete by Sharp generating
+its own thumbnails now — is still sitting in `public/images/artists/`,
+unreferenced. Unlike Groups 1 and 2, these aren't unique photographs: the
+image they duplicate already exists, at higher quality, in `src/assets/`. A
+sandbox permission gate blocked their deletion mid-migration (bulk `git rm`
+reads as irreversible destruction); removing them is safe and was left for a
+human to explicitly confirm rather than retried around.
+
 ## Known gaps
 
-- **Artist images bypass Sharp.** 345 files in `public/images/artists/` are
-  served byte-for-byte, some over 10 MB; the lightbox deliberately loads the
-  full original. Rooms and program images have been migrated to `image()` and
-  are the worked example to follow. Migrating artists means moving the files
-  into `src/assets/`, switching `profileImage`/`galleryImages` to `image()`,
-  rewriting 27 frontmatter blocks, and reworking `ImageViewer.astro`'s
-  original-swap fallback. Expect build time to go from ~2s to minutes.
 - **`t()` keys are untyped.** Dot-path strings, not a union. A typo renders the
   key. Typed keys would be a real improvement.

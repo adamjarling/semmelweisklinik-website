@@ -5,15 +5,15 @@ email: 'simbiosiscolective@gmail.com'
 phone: '0688/64890821'
 website: 'https://simbiosiskolective.wordpress.com'
 instagram: 'https://www.instagram.com/ixquickayapa/'
-profileImage: '/images/artists/preview/Ixquic_Bendita_01.jpg'
+profileImage: '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_01.jpg'
 galleryImages:
-  - '/images/artists/preview/Ixquic_Bendita_02.jpg'
-  - '/images/artists/preview/Ixquic_Bendita_03.jpg'
-  - '/images/artists/preview/Ixquic_Bendita_04.jpg'
-  - '/images/artists/preview/Ixquic_Bendita_05.jpg'
-  - '/images/artists/preview/Ixquic_Bendita_07.jpg'
-  - '/images/artists/preview/Ixquic_Bendita_08.jpg'
-  - '/images/artists/preview/Ixquic_Bendita_09.jpg'
+  - '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_02.jpg'
+  - '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_03.jpg'
+  - '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_04.jpg'
+  - '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_05.jpg'
+  - '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_07.jpg'
+  - '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_08.jpg'
+  - '../../assets/images/artists/ixquic-bendita/Ixquic_Bendita_09.jpg'
 ---
 
 Multidisciplinary Artist - Cultural Worker - Alchemist of Everyday Resistance

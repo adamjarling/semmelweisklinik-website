@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ImageViewer from '../../../components/ImageViewer.astro';
+import { Image, getImage } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import { getLangFromUrl, getLocalePaths, useTranslations } from '../../../i18n/utils';
 
@@ -46,12 +47,24 @@ const artistDescription = (bio?.[lang] ?? artist.body)
   .replace(/\s+/g, ' ')
   .trim()
   .slice(0, 160);
+
+// The gallery (and the profile photo, which is also clickable) renders
+// responsive thumbnails, but the lightbox wants the largest sensible
+// version. Pre-generate one per image and hand it to ImageViewer via
+// `data-full` — never upscaling past the source. Mirrors rooms/[slug].astro.
+const profileFull = (await getImage({ src: profileImage, width: 2000, format: 'webp' })).src;
+const galleryFull = await Promise.all(
+  (galleryImages ?? []).map(async (img) => ({
+    src: img,
+    full: (await getImage({ src: img, width: Math.min(2000, img.width), format: 'webp' })).src,
+  })),
+);
 ---
 
 <BaseLayout
   title={`Semmelweisklinik • ${name}`}
   description={artistDescription}
-  ogImage={profileImage}
+  ogImage={profileImage.src}
 >
   <ImageViewer />
   <div class="page-wrapper">
@@ -59,7 +72,14 @@ const artistDescription = (bio?.[lang] ?? artist.body)
       <div class="artist-detail-section">
         <h1 class="only-mobile hero-title hero-title-no-margin">{name}</h1>
 
-        <img class="artist-detail-image" src={profileImage} alt={name} />
+        <Image
+          class="artist-detail-image"
+          src={profileImage}
+          alt={name}
+          data-full={profileFull}
+          widths={[320, 640, 960]}
+          sizes="min(320px, 80vw)"
+        />
 
         <div class="artist-info-container">
           <h1 class="only-desktop hero-title hero-title-desktop">{name}</h1>
@@ -150,12 +170,19 @@ const artistDescription = (bio?.[lang] ?? artist.body)
       </div>
 
       {
-        galleryImages && galleryImages.length > 0 && (
+        galleryFull.length > 0 && (
           <div class="artist-more-works-section">
             <h2 class="mb-25">{t('artists.selected_works')}</h2>
             <div class="artist-more-works-gallery">
-              {galleryImages.map((img) => (
-                <img class="artist-detail-image" src={img} alt={`${name} work`} />
+              {galleryFull.map((img) => (
+                <Image
+                  class="artist-detail-image"
+                  src={img.src}
+                  alt={`${name} work`}
+                  data-full={img.full}
+                  widths={[320, 640, 960]}
+                  sizes="min(320px, 80vw)"
+                />
               ))}
             </div>
           </div>

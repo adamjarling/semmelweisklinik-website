@@ -3,11 +3,11 @@ name: 'Martina Nowak'
 email: 'martina.nowak@reflex.at'
 website: 'https://www.liliwaitsforyou.com'
 instagram: 'https://www.instagram.com/lili_waits_for_you/'
-profileImage: '/images/artists/preview/Martina_Nowak_01.jpg'
+profileImage: '../../assets/images/artists/martina-nowak/Martina_Nowak_01.jpg'
 galleryImages:
-  - '/images/artists/original/Martina_Nowak_02.jpg'
-  - '/images/artists/original/Martina_Nowak_03.jpg'
-  - '/images/artists/original/Martina_Nowak_04.jpg'
+  - '../../assets/images/artists/martina-nowak/Martina_Nowak_02.jpg'
+  - '../../assets/images/artists/martina-nowak/Martina_Nowak_03.jpg'
+  - '../../assets/images/artists/martina-nowak/Martina_Nowak_04.jpg'
 bio:
   en: |
     Clown, visual artist, graphic designer, writer, and shiatsu practitioner.

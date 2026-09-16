@@ -2,12 +2,12 @@
 name: 'Natasja H'
 email: 'tasjha@yahoo.com'
 website: 'https://www.art-by-natasja.com'
-profileImage: '/images/artists/preview/Natasja_H_01.jpg'
+profileImage: '../../assets/images/artists/natasja-h/Natasja_H_01.jpg'
 galleryImages:
-  - '/images/artists/preview/Natasja_H_02.jpg'
-  - '/images/artists/preview/Natasja_H_03.jpg'
-  - '/images/artists/preview/Natasja_H_04.jpg'
-  - '/images/artists/preview/Natasja_H_05.jpg'
+  - '../../assets/images/artists/natasja-h/Natasja_H_02.jpg'
+  - '../../assets/images/artists/natasja-h/Natasja_H_03.jpg'
+  - '../../assets/images/artists/natasja-h/Natasja_H_04.jpg'
+  - '../../assets/images/artists/natasja-h/Natasja_H_05.jpg'
 ---
 
 In the act of creation, I find my place.

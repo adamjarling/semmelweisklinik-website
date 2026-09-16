@@ -20,29 +20,33 @@ const bilingualString = z.object({
 /**
  * Artists — `src/content/artists/*.md` → `/en/artists/<slug>` + `/de/artists/<slug>`.
  *
- * Note the asymmetry with rooms: artist images are plain strings pointing at
- * `public/images/artists/...`, so they are served unoptimised. Rooms and
- * program images have been migrated to `image()` (below); artists have not,
- * because there are 342 of them. See "Known gaps" in CLAUDE.md.
+ * Like rooms, images go through `image()` and Sharp: `profileImage` and each
+ * entry in `galleryImages` are paths RELATIVE TO THE MARKDOWN FILE, not
+ * URLs, pointing at `src/assets/images/artists/<slug>/`. This closed the gap
+ * described in CLAUDE.md — the on-disk `preview/` + `original/` pair under
+ * `public/` was a hand-maintained stand-in for what Sharp now generates
+ * per-use (thumbnail crops, retina widths, a lightbox size), computed from a
+ * single higher-quality source instead of a single guessed-at 480px preview.
  *
  * `bio` is the bilingual body copy. The markdown body is a single-language
  * fallback used only when `bio` is absent.
  */
 const artistsCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/artists' }),
-  schema: z.object({
-    name: z.string(),
-    location: z.string().optional(),
-    email: z.string().optional(),
-    phone: z.string().optional(),
-    website: z.string().url().optional(),
-    instagram: z.string().url().optional(),
-    facebook: z.string().url().optional(),
-    github: z.string().url().optional(),
-    profileImage: z.string(),
-    galleryImages: z.array(z.string()).optional(),
-    bio: bilingualString.optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      location: z.string().optional(),
+      email: z.string().optional(),
+      phone: z.string().optional(),
+      website: z.string().url().optional(),
+      instagram: z.string().url().optional(),
+      facebook: z.string().url().optional(),
+      github: z.string().url().optional(),
+      profileImage: image(),
+      galleryImages: z.array(image()).optional(),
+      bio: bilingualString.optional(),
+    }),
 });
 
 /**
