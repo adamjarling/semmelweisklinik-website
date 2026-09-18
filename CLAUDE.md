@@ -58,7 +58,7 @@ Supporting pieces:
 
 Schemas in `src/content.config.ts`, validated at build time.
 
-- `artists/` — 28 markdown files → `/en/artists/<slug>` and `/de/artists/<slug>`
+- `artists/` — 29 markdown files → `/en/artists/<slug>` and `/de/artists/<slug>`
 - `rooms/` — 5 markdown files → `/en/rooms/<slug>` and `/de/rooms/<slug>`
 
 Bilingual fields are typed `{ en, de }` and **both are required** — you cannot
@@ -128,7 +128,7 @@ no longer holds any file the build actually reads — every profiled artist's
 groups of files that were already unreferenced before the migration, plus a
 third, new one:
 
-**Group 1 — the 28 artists with a profile. Never delete.**
+**Group 1 — the 29 artists with a profile. Never delete.**
 
 Everything belonging to an artist who has a file in `src/content/artists/` is
 protected, including unreferenced alternate shots — extra frames of current
@@ -160,7 +160,7 @@ writing the eleven missing profiles.
 | Ulla Unzeitig              | 12    | `legacy/ulla-unzeitig.html`          |
 | Boris Contarin             | 8     | —                                    |
 
-The old static site had 47 artist pages; this one has 28. For several of these
+The old static site had 47 artist pages; this one has 29. For several of these
 people the repo may hold the only copy of their photographs, which is why the
 membership check has to come before any deletion rather than after.
 
