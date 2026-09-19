@@ -33,6 +33,7 @@ const {
   facebook,
   github,
   profileImage,
+  profileImageCredit,
   galleryImages,
   bio,
 } = artist.data;
@@ -80,6 +81,13 @@ const galleryFull = await Promise.all(
           widths={[320, 640, 960]}
           sizes="min(320px, 80vw)"
         />
+        {
+          profileImageCredit && (
+            <p class="text-12 mt-10">
+              {t('artists.photo_credit')} {profileImageCredit}
+            </p>
+          )
+        }
 
         <div class="artist-info-container">
           <h1 class="only-desktop hero-title hero-title-desktop">{name}</h1>

@@ -44,6 +44,9 @@ const artistsCollection = defineCollection({
       facebook: z.string().url().optional(),
       github: z.string().url().optional(),
       profileImage: image(),
+      // Rendered as a small caption under the profile photo, e.g. when it
+      // wasn't the artist's own — a photographer credit, not a bio field.
+      profileImageCredit: z.string().optional(),
       galleryImages: z.array(image()).optional(),
       bio: bilingualString.optional(),
     }),

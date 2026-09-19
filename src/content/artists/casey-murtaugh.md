@@ -2,10 +2,7 @@
 name: 'Casey Murtaugh'
 instagram: 'https://www.instagram.com/caseymolloymurtaugh/'
 profileImage: '../../assets/images/artists/casey-murtaugh/Casey_Murtaugh_01.jpg'
-galleryImages:
-  - '../../assets/images/artists/casey-murtaugh/Casey_Murtaugh_02.jpg'
-  - '../../assets/images/artists/casey-murtaugh/Casey_Murtaugh_03.jpg'
-  - '../../assets/images/artists/casey-murtaugh/Casey_Murtaugh_04.jpg'
+profileImageCredit: 'Markus Gesierich'
 bio:
   en: |
     Chicago-born visual artist and educator Casey grounds her practice in play and material experimentation. Working through an intuitive, iterative loop, she expands small-scale sketches into larger structures, then zooms in on micro-details within those works to spark new studies. Outside the studio, long walks, quiet observation, live music, and a dedicated hot yoga practice sustain her creative rhythm.

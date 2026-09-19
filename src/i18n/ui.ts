@@ -113,6 +113,7 @@ export const ui = {
       contact: 'Contact',
       website: 'Website',
       selected_works: 'Selected Works',
+      photo_credit: 'Photo:',
     },
     calendar: {
       title: 'CALENDAR',
@@ -265,6 +266,7 @@ export const ui = {
       contact: 'Kontakt',
       website: 'Webseite',
       selected_works: 'Ausgewählte Arbeiten',
+      photo_credit: 'Foto:',
     },
     calendar: {
       title: 'KALENDER',
