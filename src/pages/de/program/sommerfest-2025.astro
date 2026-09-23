@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ObfuscatedEmail from '../../../components/ObfuscatedEmail.astro';
 import { Image } from 'astro:assets';
 import coverbild250726SwkSommerfestCJohannaLeaLassnig69 from '../../../assets/images/program/sommerfest-2025/Coverbild_250726_SWK_Sommerfest_c_Johanna_Lea_Lassnig-69.jpg';
 import img250726swksommerfestcelisabethblum171 from '../../../assets/images/program/sommerfest-2025/250726_SWK_Sommerfest_c_Elisabeth_Blum_171.jpg';
@@ -169,7 +170,7 @@ import startseite250726SwkSommerfestCJohannaLeaLassnig141 from '../../../assets/
 
       <p class="mt-40">
         Rückfragen für Presse und Interessierte:<br />
-        <a href="mailto:info@semmelweisklinik.at">info@semmelweisklinik.at</a>
+        <ObfuscatedEmail address="info@semmelweisklinik.at" />
       </p>
 
       <div class="divider"></div>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ImageViewer from '../../../components/ImageViewer.astro';
+import ObfuscatedEmail from '../../../components/ObfuscatedEmail.astro';
 import { Image, getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, getLocalePaths, useTranslations } from '../../../i18n/utils';
@@ -120,7 +121,7 @@ const ogImage = images?.[0]?.src.src;
               <p>
                 {t('rooms.detail_email_prompt')}
                 <br />
-                <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
+                <ObfuscatedEmail address="programm@semmelweisklinik.at" />
               </p>
             </div>
           )

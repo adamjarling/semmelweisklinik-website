@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import participateImg from '../../assets/images/participate/participate.jpg';
+import ObfuscatedEmail from '../../components/ObfuscatedEmail.astro';
 ---
 
 <BaseLayout
@@ -46,9 +47,8 @@ import participateImg from '../../assets/images/participate/participate.jpg';
         </p>
       </div>
       <p class="mt-20">
-        Bei Interesse melde dich unter <a href="mailto:info@semmelweisklinik.at"
-          >info@semmelweisklinik.at</a
-        > - wir besprechen gerne, wie du mitwirken kannst.
+        Bei Interesse melde dich unter <ObfuscatedEmail address="info@semmelweisklinik.at" /> - wir besprechen
+        gerne, wie du mitwirken kannst.
       </p>
 
       <div class="divider"></div>
@@ -68,9 +68,9 @@ import participateImg from '../../assets/images/participate/participate.jpg';
       <h2>Gib uns dein Feedback!</h2>
       <p class="mt-20">
         Wir freuen uns über positive Rückmeldungen und Zuspruch. Hast du eine besondere Erfahrung
-        bei uns gemacht? Teile sie mit uns unter <a href="mailto:info@semmelweisklinik.at"
-          >info@semmelweisklinik.at</a
-        >.
+        bei uns gemacht? Teile sie mit uns unter <ObfuscatedEmail
+          address="info@semmelweisklinik.at"
+        />.
       </p>
 
       <div class="divider"></div>

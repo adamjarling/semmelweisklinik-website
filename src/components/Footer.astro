@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import ObfuscatedEmail from './ObfuscatedEmail.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -75,7 +76,7 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.book_a_venue')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          <a href={`mailto:${t('footer.email_program')}`}>{t('footer.email_program')}</a>
+          <ObfuscatedEmail address={t('footer.email_program')} />
         </p>
       </div>
 
@@ -85,7 +86,7 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.general_questions')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          <a href={`mailto:${t('footer.email_info')}`}>{t('footer.email_info')}</a>
+          <ObfuscatedEmail address={t('footer.email_info')} />
         </p>
       </div>
     </div>
@@ -108,10 +109,9 @@ const addressLines = t('footer.address').split('\n');
           {t('footer.web_design_code_by')}
         </div>
         <p style="text-align: center; font-family: 'Lexend ExtraLight', sans-serif;">
-          <a href="mailto:adam.arling@semmelweisklinik.at">Adam J. Arling</a>, <a
-            href="https://www.webzauber.at/"
-            target="_blank"
-            rel="noopener noreferrer">Webzauber</a
+          <ObfuscatedEmail address="adam.arling@semmelweisklinik.at">Adam J. Arling</ObfuscatedEmail
+          >, <a href="https://www.webzauber.at/" target="_blank" rel="noopener noreferrer"
+            >Webzauber</a
           >, Sören Herschel & Maryann Alexy
         </p>
       </div>

@@ -1,0 +1,29 @@
+---
+// Keeps email addresses out of the static HTML entirely - the address is
+// split into two data attributes (never rendered as "user@domain" anywhere
+// in the markup) and only reassembled into an href/visible text by the
+// script below, at runtime, in the visitor's browser. Harvesting bots that
+// just fetch and regex the page source (the vast majority of them) never
+// see a real address; only bots that execute JavaScript would.
+interface Props {
+  address: string;
+}
+
+const { address } = Astro.props;
+const [user, domain] = address.split('@');
+---
+
+<a class="obfuscated-email" data-user={user} data-domain={domain}><slot /></a>
+<noscript>{user} [at] {domain.replace('.', ' [dot] ')}</noscript>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('a.obfuscated-email').forEach((el) => {
+    const { user, domain } = el.dataset;
+    if (!user || !domain) return;
+    const address = `${user}@${domain}`;
+    el.href = `mailto:${address}`;
+    if (!el.textContent?.trim()) {
+      el.textContent = address;
+    }
+  });
+</script>

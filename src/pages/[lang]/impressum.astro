@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLangFromUrl, getLocalePaths, useTranslations } from '../../i18n/utils';
+import ObfuscatedEmail from '../../components/ObfuscatedEmail.astro';
 
 // Builds this page once per locale: /en/... and /de/...
 export function getStaticPaths() {
@@ -39,7 +40,7 @@ const t = useTranslations(lang);
         Hockegasse 37, Haus 4<br />
         1180 Wien<br />
         Österreich<br /><br />
-        <a href="mailto:info@semmelweisklinik.at">info@semmelweisklinik.at</a>
+        <ObfuscatedEmail address="info@semmelweisklinik.at" />
       </p>
       <p class="mt-20">
         Berufsbezeichnung: Verein<br />

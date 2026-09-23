@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RoomCard from '../../../components/RoomCard.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, getLocalePaths, useTranslations } from '../../../i18n/utils';
+import ObfuscatedEmail from '../../../components/ObfuscatedEmail.astro';
 
 // Builds this page once per locale: /en/... and /de/...
 export function getStaticPaths() {
@@ -46,7 +47,7 @@ const sortedRooms = rooms.sort((a, b) => {
           <p>{t('rooms.rent_description_3')}</p><br />
           <p>
             {t('rooms.rent_contact')}<br />
-            <a href="mailto:programm@semmelweisklinik.at">programm@semmelweisklinik.at</a>
+            <ObfuscatedEmail address="programm@semmelweisklinik.at" />
           </p>
         </div>
       </div>
