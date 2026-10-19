@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
+import coverSommerfest2026 from '../../../assets/images/program/sommerfest-2026/260725_SWK_Sommerfest_c_Johanna_Lea_Lassnig-68.jpg';
 import coverbild250726SwkSommerfestCJohannaLeaLassnig69 from '../../../assets/images/program/sommerfest-2025/Coverbild_250726_SWK_Sommerfest_c_Johanna_Lea_Lassnig-69.jpg';
 import collectiveReflectionsOnAiArtCultureTitle from '../../../assets/images/program/collective-reflections-ai-art-culture/collective_reflections_on_ai_art_culture-title.jpg';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
@@ -20,6 +21,24 @@ const t = useTranslations(lang);
       </p>
 
       <div class="grid-2col mt-50">
+        <div class="grid-2col-item">
+          <a href="/en/program/sommerfest-2026" class="naked-link">
+            <Image
+              class="grid-2col-image program-image"
+              src={coverSommerfest2026}
+              alt="Summer Festival 2026"
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 800px) 90vw, 45vw"
+            />
+          </a>
+          <p class="only-desktop text-32">Klinik unter Palmen 2026</p>
+          <p class="only-mobile text-28">Klinik unter Palmen 2026</p>
+          <p>
+            A review of our summer festival (24-25 July 2026)<br />
+            <a href="/en/program/sommerfest-2026">Learn more</a>
+          </p>
+        </div>
+
         <div class="grid-2col-item">
           <a href="/en/program/sommerfest-2025" class="naked-link">
             <Image

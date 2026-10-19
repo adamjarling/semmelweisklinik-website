@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ObfuscatedEmail from '../../../components/ObfuscatedEmail.astro';
+import { Image } from 'astro:assets';
+import coverSommerfest2026 from '../../../assets/images/program/sommerfest-2026/260725_SWK_Sommerfest_c_Elisabeth_Blum_303.jpg';
+import imgCrowd from '../../../assets/images/program/sommerfest-2026/260724_SWK_Sommerfest_c_Johanna_Lea_Lassnig-09.jpg';
+import imgSwkBleibt from '../../../assets/images/program/sommerfest-2026/260724_SWK_Sommerfest_c_Elisabeth_Blum_229.jpg';
+import imgNet from '../../../assets/images/program/sommerfest-2026/260724_SWK_Sommerfest_c_Markus_Gesierich-15.jpg';
+import imgClown from '../../../assets/images/program/sommerfest-2026/260725_SWK_Sommerfest_c_Johanna_Lea_Lassnig-68.jpg';
+import imgKritzelwald from '../../../assets/images/program/sommerfest-2026/260724_SWK_Sommerfest_c_Markus_Gesierich-58.jpg';
+import imgNight from '../../../assets/images/program/sommerfest-2026/260724_SWK_Sommerfest_c_Johanna_Lea_Lassnig-64.jpg';
+---
+
+<BaseLayout
+  title="Semmelweisklinik • Summer Festival 2026"
+  description="Klinik unter Palmen 2026: a two-day summer festival at the Semmelweisklinik arts and culture centre in Vienna with music, variety, workshops and over 1,000 visitors."
+  ogImage={coverSommerfest2026.src}
+>
+  <div class="page-wrapper">
+    <div class="content container-narrow">
+      <h1 class="hero-title">SUMMER FESTIVAL 2026</h1>
+      <Image
+        class="mt-50 full-width-image"
+        src={coverSommerfest2026}
+        alt="Visitors strolling between the festival stalls"
+        widths={[600, 1000, 1600]}
+        sizes="(max-width: 900px) 100vw, 900px"
+      />
+
+      <p class="mt-50">
+        Already for the fourth time, the "Klinik unter Palmen" summer festival took place on the
+        last weekend of July. For two days, the Semmelweisklinik became a lively place full of
+        music, art, lovely encounters and children's laughter.
+      </p>
+      <p class="mt-20">
+        With a lot of heart, love and sweat, the members of the Kulturverein Semmelweisklinik
+        transform the former clinic grounds in Vienna's 18th district into a very special oasis for
+        art, culture and community. And you can feel it at the festival: behind "Klinik unter
+        Palmen" is a community that wants to create a place where everyone feels welcome.
+      </p>
+      <Image
+        class="mt-30 full-width-image"
+        src={imgCrowd}
+        alt="Hand-painted signposts at the Summer Festival 2026"
+        widths={[600, 1000, 1600]}
+        sizes="(max-width: 900px) 100vw, 900px"
+      />
+      <h2 class="mt-50">Crazy Creatures</h2>
+      <p class="mt-20">
+        This year's motto, "Crazy Creatures", was impossible to miss on arrival. All over the
+        grounds, visitors met funny, quirky and imaginative creatures, brought to life with great
+        attention to detail by Ute Zaunbauer, Ebrahim Eskandari, Mia Mayer and other artists from
+        the Semmelweisklinik, among others.
+      </p>
+      <p class="mt-20">
+        A particular eye-catcher was the oversized fox head enthroned above the main stage, gazing
+        down at the visitors. When the lights and fog set in during the evening, the stage turned
+        into a downright magical backdrop.
+      </p>
+      <Image
+        class="mt-30 full-width-image"
+        src={imgSwkBleibt}
+        alt="A cardboard sign reading SWK bleibt in the park"
+        widths={[600, 1000, 1600]}
+        sizes="(max-width: 900px) 100vw, 900px"
+      />
+      <h2 class="mt-50">Music, variety and plenty to discover</h2>
+      <p class="mt-20">
+        On the two outdoor stages, 19 acts provided a varied programme. Besides numerous concerts by
+        Viennese artists, there was the variety show MIAO, a DJ workshop for FLINTA* people, dance
+        performances by Dafne Moreno and a show by the rapper Koko Cappelle, whose grand performance
+        moved the audience to cheering and tears.
+      </p>
+      <div class="portrait mt-30">
+        <Image
+          class="mt-30 full-width-image"
+          src={imgNight}
+          alt="Audience dancing in coloured light and fog"
+          widths={[600, 1000, 1600]}
+          sizes="(max-width: 900px) 100vw, 900px"
+        />
+      </div>
+      <p class="mt-20">
+        But there was plenty to experience away from the stages as well. All over the grounds, small
+        and large discoveries awaited: home-built mini-golf courses, a ball pit and a
+        screen-printing station invited visitors to join in.
+      </p>
+      <p class="mt-20">
+        In the kids' corner, the youngest visitors could get creative in workshops and readings and
+        watch a performance by Clown Wully. Under shady trees, a large canvas became a fairy-tale
+        "Kritzelwald" (doodle forest), where small and large artists could immortalise themselves
+        with their drawings. Anyone wanting to try something new could practise juggling with clubs
+        and balls in the circus corner. In the nearby sculpture garden, visitors could discover
+        works in clay and other materials by artists from the house, and take a little souvenir home
+        at the end.
+      </p>
+      <Image
+        class="mt-30 full-width-image"
+        src={imgClown}
+        alt="Clown Wully performing for children in the park"
+        widths={[600, 1000, 1600]}
+        sizes="(max-width: 900px) 100vw, 900px"
+      />
+      <Image
+        class="mt-30 full-width-image"
+        src={imgKritzelwald}
+        alt="A child painting on the Kritzelwald canvas"
+        widths={[600, 1000, 1600]}
+        sizes="(max-width: 900px) 100vw, 900px"
+      />
+      <p class="mt-20">
+        And anyone who needed a break from the hustle and bustle could simply laze in the shade in
+        one of the many hammocks, or sit down on the big carpet of the Common Ground community,
+        which keeps growing through continuous weaving, and chat with others.
+      </p>
+      <Image
+        class="mt-30 full-width-image"
+        src={imgNet}
+        alt="A visitor resting in a net of cords strung between trees"
+        widths={[600, 1000, 1600]}
+        sizes="(max-width: 900px) 100vw, 900px"
+      />
+      <p class="mt-20">
+        In the cool laundry room, the Radical Relaxation Resort was a very special retreat. Besides
+        an exhibition by various artists, visitors could relax with a foot bath. There were also
+        fantastic, extra-galactic laser projections that made the walls glow.
+      </p>
+      <h2 class="mt-50">A festival that connects</h2>
+      <p class="mt-20">
+        More than 1,000 visitors came over the two days and celebrated the existence of the Kunst-
+        und Kulturverein Semmelweisklinik together with us. It is a place that we want to keep
+        filling with life, art, culture and lovely encounters in the future.
+      </p>
+      <p class="mt-20">
+        A festival like this is only possible thanks to the many people who contributed their time,
+        their ideas and their energy: 28 artists helped shape the grounds and the programme, and 62
+        Helping Hands pulled the festival off, from planning through set-up and supervision to
+        cleaning up together. In the end, what remains are not only memories of two beautiful summer
+        days, but above all the feeling of having created something special together.
+      </p>
+      <p class="mt-20">
+        Thank you to everyone who was there, took part, helped, marvelled, danced, laughed and
+        filled this place with life. We are already looking forward to next time!
+      </p>
+
+      <p class="mt-30 text-12">Photos: Elisabeth Blum, Johanna Lea Lassnig, Markus Gesierich</p>
+
+      <p class="mt-40">
+        Press and general inquiries:<br />
+        <ObfuscatedEmail address="info@semmelweisklinik.at" />
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .portrait {
+    max-width: 560px;
+    margin-inline: auto;
+  }
+  .portrait :global(img) {
+    width: 100%;
+    height: auto;
+  }
+</style>
